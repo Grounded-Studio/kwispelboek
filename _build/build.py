@@ -25,51 +25,63 @@ T = {
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
   "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Binnenkort voor Android.",
   "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen")],
-  "h1": 'Elk huisdier,<br><span class="accent">op tijd verzorgd</span>',
-  "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij, en herinnert je op het juiste moment. Geen account: alles blijft op je telefoon.",
+  "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
+  "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
   "soon_small": "BINNENKORT OP", "soon": "Google Play",
   "notify": "Hou me op de hoogte", "notify_subject": "Laat me weten wanneer Kwispelboek uitkomt",
   "badges": ["Gratis te gebruiken", "Geen account", "Geen advertenties"],
-  "alt_today": "Kwispelboek: het Vandaag-scherm met medicijnen en zorg",
-  "alt_profile": "Kwispelboek: profiel van een hond met handige tools",
+  "alt_today": "Kwispelboek: het Vandaag-scherm met voortgangsring, je dieren en wat er nu moet gebeuren",
+  "alt_profile": "Kwispelboek: profiel van een hond met de tabbladen Zorg, Gezondheid en Paspoort",
   "trust": [("🔒", "Je gegevens blijven op je telefoon"), ("🚫", "Geen advertenties of tracking"), ("🐾", "Hond, kat, konijn, vogel & meer"), ("💬", "Nederlands & Engels")],
   "feat_eyebrow": "Functies", "feat_title": "Alles voor de gezondheid van je dier, op één plek",
-  "feat_lead": "Voor baasjes die rust willen: niets vergeten, en bij de dierenarts alles bij de hand.",
+  "feat_lead": "Voor baasjes die rust willen: niets vergeten, alles bij de hand, en het mag best een beetje leuk zijn.",
   "features": [
+   ("☀️", "", "Vandaag in één oogopslag", "Een voortgangsring, ‘Nu doen’ op volgorde van belang, wat er later vandaag komt en een balk met de hele week. Voor al je dieren samen.", False),
+   ("🐾", "amber", "Afvinken is een feestje", "Tik op ✓ en er verschijnt een pootstempel. Alles gedaan? Dan komen er confetti en een blije Kwispel, en houd je je reeks bij.", False),
+   ("➕", "", "Alles noteren met één knop", "De grote gele + in het midden: vaccinatie, medicijn, gewicht, dierenartsbezoek of paspoort scannen. Kies wat, kies voor wie, klaar.", False),
    ("🔔", "", "Herinneringen op tijd", "Vaccinaties, ontworming en vlooien- en tekenmiddel met herhaalschema. Een melding vooraf én op de dag zelf.", False),
-   ("📅", "", "Rustig Vandaag-scherm", "Verlopen, vandaag en binnenkort voor al je dieren samen. Afvinken en de volgende datum staat er meteen.", False),
-   ("💊", "sage", "Medicijnen & kuren", "Dosis en tijden per dag, doorlopend of als kuur. Tik op ‘Gegeven’ of ‘Later’ direct in de melding.", False),
-   ("🩺", "sage", "Dierenartsbezoeken & kosten", "Reden, notities en kosten, met het totaal van dit jaar. Bewaar een foto van recept of rekening.", False),
+   ("📅", "sage", "Agenda per maand", "Gekleurde stipjes per dier laten zien wat er wanneer komt, met verjaardagen en adoptiedagen erbij.", False),
+   ("🎨", "amber", "Elk dier een eigen kleur", "Kies uit acht kleuren. Die kleur komt overal terug: op de kaart, in de agenda en bij de taken.", False),
+   ("💊", "sage", "Medicijnen & kuren", "Dosis met − en +, tijden per dag, doorlopend of als kuur. Je ziet in blokjes hoe ver de kuur is.", False),
+   ("🩺", "sage", "Dierenarts & kosten", "Bezoeken met reden, notities, foto’s en kosten, met het totaal van dit jaar. Je dierenarts bellen of de route openen in één tik.", False),
    ("⚖️", "amber", "Gewichtsgrafiek", "Weeg regelmatig en zie veranderingen op tijd. In kilo’s, of in grammen voor vogels.", False),
-   ("🧭", "amber", "Tijdlijn per dier", "Alles wat er gebeurde, per jaar en te filteren: vaccinaties met batchnummers, bezoeken, medicijnen en wegingen.", False),
+   ("🪪", "", "Paspoort & tijdlijn", "Chipnummer en gegevens als een overzichtelijk paspoortkaartje, en een tijdlijn met alles wat er gebeurde.", False),
+   ("🎉", "amber", "Verjaardagen met feestkaartje", "Op de verjaardag of adoptiedag een feestkaart op Vandaag, en een vrolijk kaartje om te delen.", False),
+   ("📱", "sage", "Widgets op je beginscherm", "Een groot en een klein widget met je voortgang, je dieren en wat het eerst moet. Zonder de app te openen.", False),
    ("✈️", "", "Reischecklist", "Op vakantie met je dier? Zie in één oogopslag of chip, paspoort en rabiësvaccinatie op tijd in orde zijn.", False),
    ("📣", "", "Vermist-poster", "Is je dier zoek? Maak in een minuut een poster met foto, kenmerken en je telefoonnummer om te printen of te delen.", False),
-   ("🎂", "amber", "Verjaardagen & adoptiedagen", "Een vrolijke melding op de verjaardag of adoptiedag van je dier.", False),
-   ("📱", "sage", "Widget op je beginscherm", "Zie zonder de app te openen wat er vandaag voor je dieren te doen is.", False),
-   ("☎️", "sage", "Dierenarts met één tik", "Naam, nummer en adres van je dierenarts bij elk dier. Direct bellen of de route openen.", False),
    ("💾", "amber", "Back-up in één bestand", "Alle dieren, gegevens en foto’s in één bestand. Zet het in Google Drive en zet het terug op een nieuwe telefoon.", False),
    ("📄", "", "PDF voor de dierenarts", "Een overzichtelijk document met chipnummer, vaccinaties met batchnummers, medicijnen, gewicht en recente bezoeken.", True),
    ("🧑‍🍼", "", "Overzicht voor de oppas", "Voer, karakter, medicijnen en contactgegevens in één PDF voor de oppas of het pension.", True),
    ("📷", "", "Paspoort scannen", "Fotografeer de vaccinatiepagina en de datums en batchnummers worden ingevuld. Jij controleert altijd eerst.", True),
   ],
   "spots": [
-   ("today", "Vandaag", "Eén scherm, en je weet wat er moet gebeuren",
-    "Open de app en zie meteen welke medicijnen vandaag op het schema staan, wat verlopen is en wat eraan komt. Voor al je dieren tegelijk.",
-    ["Medicijnen per tijdstip, met ‘gegeven’ in één tik", "Kleuren voor verlopen, vandaag en binnenkort", "Afvinken plant de volgende keer automatisch"]),
-   ("profile", "Per dier", "Alles over je dier op één plek",
-    "Zorg, medicijnen, gewicht en dierenartsbezoeken per dier, met handige tools voor als het erop aankomt.",
-    ["Status in één oogopslag: alles in orde of wat er moet gebeuren", "PDF voor de dierenarts en oppasoverzicht", "Reischecklist en vermist-poster altijd bij de hand"]),
-   ("travel", "Op reis", "Zorgeloos op vakantie met je dier",
-    "Vul je bestemming en reisdatum in en Kwispelboek controleert of je dier klaar is voor de reis, ruim op tijd.",
-    ["Controleert chip, paspoort en rabiësvaccinatie", "Let op de 21-dagenregel na een eerste rabiësprik", "Checklist als PDF om mee te nemen"]),
+   ("today", "Vandaag", "Open de app en je weet wat er moet gebeuren",
+    "Een persoonlijk blok met hoe ver je bent, en daaronder één lijst op volgorde van belang. Wat te laat is staat bovenaan.",
+    ["Voortgangsring: ‘2 van 5 gedaan’", "Je dieren met een bolletje voor wat openstaat", "‘Deze week’ met stipjes per dier"]),
+   ("done", "Beloning", "Alles gedaan? Dan is het feest",
+    "Elke keer dat je iets afvinkt verschijnt een pootstempel. Is alles voor vandaag klaar, dan komen er confetti en een blije Kwispel.",
+    ["Afvinken met één tik, ongedaan maken kan altijd", "Je reeks: zoveel dagen op rij alles op tijd", "Kwispel, onze mascotte, viert het met je mee"]),
+   ("profile", "Per dier", "Alles over je dier, in drie tabbladen",
+    "Een banner in de eigen kleur van je dier, vier handige knoppen en de tabbladen Zorg, Gezondheid en Paspoort. Geen eindeloos scrollen meer.",
+    ["Zorg: vaccinaties, ontworming en medicijnkuren", "Gezondheid: gewicht, dierenarts en kosten", "Paspoort: chip en gegevens als een kaartje"]),
+   ("agenda", "Agenda", "De hele maand, met een stipje per dier",
+    "Zie in één oogopslag wanneer welke behandeling komt. Tik op een dag en je ziet wat er gepland staat.",
+    ["Verjaardagen en adoptiedagen staan er vanzelf bij", "Medicijnkuren per dag", "Een rustige dag? Dan ligt Kwispel te slapen"]),
+   ("card", "Feest", "Verjaardag? Maak er een kaartje van",
+    "Op de verjaardag of adoptiedag van je dier staat er een feestkaart op Vandaag. Maak in één tik een vrolijk kaartje om te delen met familie en vrienden.",
+    ["Kies uit vier kleuren", "Delen via WhatsApp, Instagram of mail", "Een melding op de dag zelf, zodat je het niet vergeet"]),
   ],
   "shots_eyebrow": "Screenshots", "shots_title": "Zo ziet Kwispelboek eruit",
   "shots_lead": "Echte schermen uit de app, met voorbeelddieren.",
-  "shots": [("today", "Vandaag"), ("pets", "Mijn dieren"), ("profile", "Profiel"), ("profile2", "Medicijnen & gewicht"), ("travel", "Reischecklist")],
+  "shots": [("today", "Vandaag"), ("pets", "Mijn dieren"), ("profile", "Profiel"), ("health", "Gezondheid"), ("agenda", "Agenda"), ("add", "Snel noteren"), ("party", "Verjaardag"), ("done", "Alles gedaan!")],
+  "kw_eyebrow": "Kwispel", "kw_title": "Maak kennis met Kwispel",
+  "kw_lead": "Onze mascotte laat zich zien op de momenten die ertoe doen.",
+  "kw": [("happy", "Blij", "Als alles voor vandaag gedaan is"), ("sleeping", "Slaapt", "Op een rustige dag zonder taken"), ("curious", "Nieuwsgierig", "Als er nog iets ingevuld kan worden"), ("party", "Feest", "Op verjaardagen en adoptiedagen")],
   "pro_eyebrow": "Prijzen", "pro_title": "Gratis beginnen, PRO als je meer wilt",
   "pro_lead": "Alle logboeken, herinneringen, de gewichtsgrafiek en back-ups zijn gratis. PRO neem je per maand of per jaar en zeg je op elk moment op via Google Play.",
   "free_title": "Gratis", "free_price": "Voor altijd, zonder advertenties",
-  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Widget en back-ups", "1 foto per dierenartsbezoek"],
+  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Agenda, widgets en feestkaartjes", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Back-ups en 1 foto per bezoek"],
   "pro_title2": "PRO", "pro_price": "€ 2,99 per maand of € 19,99 per jaar",
   "pro_items": ["Onbeperkt aantal huisdieren", "PDF-overzicht voor de dierenarts", "Overzicht voor de oppas of het pension", "Reischecklist als PDF", "Paspoort, rekening of medicijnetiket scannen met AI", "Onbeperkt foto’s per bezoek"],
   "faq_eyebrow": "Vragen", "faq_title": "Veelgestelde vragen",
@@ -94,51 +106,63 @@ T = {
   "title": "Wagbook – Pet health log for dogs, cats & more",
   "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Coming soon to Android.",
   "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ")],
-  "h1": 'Every pet,<br><span class="accent">cared for on time</span>',
-  "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets, and reminds you at the right moment. No account: everything stays on your phone.",
+  "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
+  "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account: everything stays on your phone.",
   "soon_small": "COMING SOON TO", "soon": "Google Play",
   "notify": "Let me know", "notify_subject": "Let me know when Wagbook launches",
   "badges": ["Free to use", "No account", "No ads"],
-  "alt_today": "Wagbook: the Today screen with medication and care",
-  "alt_profile": "Wagbook: a dog's profile with handy tools",
+  "alt_today": "Wagbook: the Today screen with progress ring, your pets and what to do now",
+  "alt_profile": "Wagbook: a dog's profile with the tabs Care, Health and Passport",
   "trust": [("🔒", "Your data stays on your phone"), ("🚫", "No ads, no tracking"), ("🐾", "Dogs, cats, rabbits, birds & more"), ("🌍", "English & Dutch")],
   "feat_eyebrow": "Features", "feat_title": "Everything for your pet’s health, in one place",
-  "feat_lead": "For owners who want peace of mind: nothing forgotten, everything at hand at the vet.",
+  "feat_lead": "For owners who want peace of mind: nothing forgotten, everything at hand, and a little fun along the way.",
   "features": [
+   ("☀️", "", "Today at a glance", "A progress ring, ‘To do now’ with the most important first, what’s coming later today and a strip with the whole week. For all your pets together.", False),
+   ("🐾", "amber", "Ticking off is a treat", "Tap ✓ and a paw stamp appears. All done? Then there’s confetti and a happy Kwispel, and you keep your streak going.", False),
+   ("➕", "", "Log anything with one button", "The big yellow + in the middle: vaccination, medicine, weight, vet visit or passport scan. Choose what, choose for whom, done.", False),
    ("🔔", "", "Reminders on time", "Vaccinations, deworming and flea & tick treatments with repeat schedules. A reminder in advance and on the day itself.", False),
-   ("📅", "", "One calm Today screen", "Overdue, today and coming up for all your pets together. Tick it off and the next date is planned for you.", False),
-   ("💊", "sage", "Medication & courses", "Dose and times of day, ongoing or as a course. Tap ‘Given’ or ‘Later’ right in the notification.", False),
-   ("🩺", "sage", "Vet visits & costs", "Reason, notes and costs, with this year’s total. Keep a photo of the prescription or invoice.", False),
+   ("📅", "sage", "Monthly calendar", "Coloured dots per pet show what’s coming when, with birthdays and adoption days included.", False),
+   ("🎨", "amber", "A colour for every pet", "Choose from eight colours. It shows up everywhere: on the card, in the calendar and on the tasks.", False),
+   ("💊", "sage", "Medication & courses", "Dose with − and +, times of day, ongoing or as a course. Little blocks show how far along the course is.", False),
+   ("🩺", "sage", "Vet & costs", "Visits with reason, notes, photos and costs, with this year’s total. Call your vet or get directions in one tap.", False),
    ("⚖️", "amber", "Weight chart", "Weigh regularly and spot changes early. In kilos, or in grams for birds.", False),
-   ("🧭", "amber", "Timeline per pet", "Everything that happened, by year and filterable: vaccinations with batch numbers, visits, medication and weighings.", False),
+   ("🪪", "", "Passport & timeline", "Microchip number and details as a tidy passport card, and a timeline of everything that happened.", False),
+   ("🎉", "amber", "Birthdays with a party card", "On a birthday or adoption day a party card on Today, and a cheerful card to share.", False),
+   ("📱", "sage", "Home screen widgets", "A large and a small widget with your progress, your pets and what comes first. Without opening the app.", False),
    ("✈️", "", "Travel checklist", "Going abroad with your pet? See at a glance whether microchip, passport and rabies vaccination are in order in time.", False),
    ("📣", "", "Missing poster", "Pet gone missing? Make a poster with photo, markings and your phone number in a minute, to print or share.", False),
-   ("🎂", "amber", "Birthdays & gotcha days", "A cheerful notification on your pet’s birthday or adoption day.", False),
-   ("📱", "sage", "Home screen widget", "See what’s due for your pets today without opening the app.", False),
-   ("☎️", "sage", "Your vet in one tap", "Name, number and address of the vet for each pet. Call or get directions straight away.", False),
    ("💾", "amber", "Backup in one file", "All pets, records and photos in one file. Keep it in Google Drive and restore it on a new phone.", False),
    ("📄", "", "PDF for the vet", "A clear overview with microchip number, vaccinations with batch numbers, medication, weight and recent visits.", True),
    ("🧑‍🍼", "", "Pet sitter overview", "Food, character, medication and contact details in one PDF for the sitter or boarding kennel.", True),
    ("📷", "", "Scan the pet passport", "Photograph the vaccination page and the dates and batch numbers are filled in. You always check first.", True),
   ],
   "spots": [
-   ("today", "Today", "One screen, and you know what to do",
-    "Open the app and instantly see which medication is due today, what is overdue and what is coming up. For all your pets at once.",
-    ["Medication by time of day, marked as given in one tap", "Colours for overdue, today and coming up", "Ticking off plans the next time automatically"]),
-   ("profile", "Per pet", "Everything about your pet in one place",
-    "Care, medication, weight and vet visits per pet, with handy tools for when it matters.",
-    ["Status at a glance: all up to date, or what needs doing", "PDF for the vet and a pet sitter overview", "Travel checklist and missing poster always at hand"]),
-   ("travel", "Travel", "Holidays with your pet, without the worry",
-    "Enter your destination and travel dates, and Wagbook checks whether your pet is ready to travel, well in advance.",
-    ["Checks microchip, passport and rabies vaccination", "Watches the 21-day rule after a first rabies shot", "Checklist as a PDF to take along"]),
+   ("today", "Today", "Open the app and you know what to do",
+    "A personal header showing how far you are, and below it one list with the most important first. Anything overdue sits at the top.",
+    ["Progress ring: ‘2 of 5 done’", "Your pets, with a badge for what’s still open", "‘This week’ with a dot per pet"]),
+   ("done", "Reward", "All done? Time to celebrate",
+    "Every time you tick something off, a paw stamp appears. When everything for today is done, there’s confetti and a happy Kwispel.",
+    ["Tick off in one tap, undo any time", "Your streak: so many days in a row, all on time", "Kwispel, our mascot, celebrates with you"]),
+   ("profile", "Per pet", "Everything about your pet, in three tabs",
+    "A banner in your pet’s own colour, four handy buttons and the tabs Care, Health and Passport. No more endless scrolling.",
+    ["Care: vaccinations, deworming and medication courses", "Health: weight, vet and costs", "Passport: microchip and details as a card"]),
+   ("agenda", "Calendar", "The whole month, with a dot per pet",
+    "See at a glance when each treatment is due. Tap a day to see what’s planned.",
+    ["Birthdays and adoption days added automatically", "Medication courses per day", "A quiet day? Kwispel takes a nap"]),
+   ("card", "Party", "Birthday? Make it a card",
+    "On your pet’s birthday or adoption day there’s a party card on Today. Make a cheerful card in one tap to share with family and friends.",
+    ["Choose from four colours", "Share via WhatsApp, Instagram or email", "A reminder on the day, so you never forget"]),
   ],
   "shots_eyebrow": "Screenshots", "shots_title": "See Wagbook in action",
   "shots_lead": "Real screens from the app, with example pets.",
-  "shots": [("today", "Today"), ("pets", "My pets"), ("profile", "Pet profile"), ("profile2", "Medication & weight"), ("travel", "Travel checklist")],
+  "shots": [("today", "Today"), ("pets", "My pets"), ("profile", "Pet profile"), ("health", "Health"), ("agenda", "Calendar"), ("add", "Quick log"), ("party", "Birthday"), ("done", "All done!")],
+  "kw_eyebrow": "Kwispel", "kw_title": "Meet Kwispel",
+  "kw_lead": "Our mascot shows up at the moments that matter.",
+  "kw": [("happy", "Happy", "When everything for today is done"), ("sleeping", "Sleeping", "On a quiet day without tasks"), ("curious", "Curious", "When there’s still something to fill in"), ("party", "Party", "On birthdays and adoption days")],
   "pro_eyebrow": "Pricing", "pro_title": "Free to start, PRO when you need more",
   "pro_lead": "All logs, reminders, the weight chart and backups are free. PRO is available monthly or yearly, and you can cancel anytime in Google Play.",
   "free_title": "Free", "free_price": "Forever, without ads",
-  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Widget and backups", "1 photo per vet visit"],
+  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Calendar, widgets and party cards", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Backups and 1 photo per visit"],
   "pro_title2": "PRO", "pro_price": "€2.99 a month or €19.99 a year",
   "pro_items": ["Unlimited pets", "PDF overview for the vet", "Overview for the pet sitter or kennel", "Travel checklist as PDF", "Scan a passport, invoice or medicine label with AI", "Unlimited photos per visit"],
   "faq_eyebrow": "FAQ", "faq_title": "Frequently asked questions",
@@ -219,14 +243,14 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <link rel="alternate" hreflang="{lang}" href="{DOMAIN}{path}">
 <link rel="alternate" hreflang="{other}" href="{DOMAIN}{alt_path}">
 <link rel="alternate" hreflang="x-default" href="{DOMAIN}{path if lang == 'nl' else alt_path}">
-<meta name="theme-color" content="#FAF6F1">
+<meta name="theme-color" content="#F2F6F9">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/poppins-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/poppins-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="preload" href="/assets/fonts/nunito-black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{T[lang]['name']}">
 <meta property="og:locale" content="{'nl_NL' if lang == 'nl' else 'en_US'}">
@@ -321,6 +345,8 @@ def home(lang):
     faq = "".join(f"<details><summary>{escape(q)}</summary><p>{escape(a)}</p></details>" for q, a in t["faq"])
     trust = "".join(f'<li><span aria-hidden="true">{i}</span>{escape(x)}</li>' for i, x in t["trust"])
     badges = "".join(f"<span><i></i>{escape(b)}</span>" for b in t["badges"])
+    kw = "".join(f'<figure class="kw-{m}"><img src="/assets/img/kwispel-{m}.svg" alt="" width="150" height="150" loading="lazy">'
+                 f'<figcaption><b>{escape(n)}</b><span>{escape(d)}</span></figcaption></figure>' for m, n, d in t["kw"])
 
     return head(lang, t["title"], t["desc"], t["path"], other["path"], lang, extra) + header(lang, t["path"], other["path"]) + f"""<main id="main">
 <section class="hero" style="padding-top:48px">
@@ -352,6 +378,13 @@ def home(lang):
   <div class="wrap">{spots}</div>
 </section>
 
+<section class="kw-band" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">{t['kw_eyebrow']}</span><h2>{escape(t['kw_title'])}</h2><p class="lead">{escape(t['kw_lead'])}</p></div>
+    <div class="kw">{kw}</div>
+  </div>
+</section>
+
 <section id="{ids[1]}" style="padding-top:40px">
   <div class="wrap">
     <div class="head"><span class="eyebrow">{t['shots_eyebrow']}</span><h2>{escape(t['shots_title'])}</h2><p class="lead">{escape(t['shots_lead'])}</p></div>
@@ -379,7 +412,7 @@ def home(lang):
 <section style="padding-top:20px;padding-bottom:40px">
   <div class="wrap">
     <div class="cta">
-      <img src="/assets/img/icon.webp" alt="" width="76" height="76" loading="lazy">
+      <img class="cta-kw" src="/assets/img/kwispel-party.svg" alt="" width="130" height="130" loading="lazy">
       <h2>{escape(t['cta_title'])}</h2>
       <p>{escape(t['cta_text'])}</p>
       <div class="actions">{soon}<a class="btn btn-primary" href="mailto:{MAIL}?subject={subject}">{MAIL_SVG}{t['notify']}</a></div>
@@ -413,11 +446,11 @@ NOT_FOUND = f"""<!doctype html>
 <title>Pagina niet gevonden – Kwispelboek</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="stylesheet" href="/assets/site.css?v=2">
 </head>
 <body>
 <main class="legal" style="text-align:center;padding-top:96px">
-<img src="/assets/img/icon.webp" alt="" width="84" height="84" style="margin:0 auto 24px;border-radius:22px">
+<img src="/assets/img/kwispel-curious.svg" alt="" width="140" height="140" style="margin:0 auto 16px">
 <h1>Oeps, deze pagina is weggelopen</h1>
 <p class="meta">This page ran off. Let’s go back home.</p>
 <div class="actions" style="justify-content:center;margin-top:24px">
@@ -430,7 +463,7 @@ NOT_FOUND = f"""<!doctype html>
 
 MANIFEST = {
     "name": "Kwispelboek", "short_name": "Kwispelboek", "start_url": "/", "display": "browser",
-    "background_color": "#FAF6F1", "theme_color": "#C4562E",
+    "background_color": "#F2F6F9", "theme_color": "#2B7A9E",
     "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"},
               {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}],
 }
@@ -444,7 +477,7 @@ def sitemap():
         for loc in (nl, en):
             rows.append(f"""  <url>
     <loc>{DOMAIN}{loc}</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="{DOMAIN}{nl}"/>
     <xhtml:link rel="alternate" hreflang="en" href="{DOMAIN}{en}"/>
   </url>""")

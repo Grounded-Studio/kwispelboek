@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+        <text x="84" y="26" font-family="Nunito, Arial, sans-serif" font-weight="900" font-size="16" fill="#6B5BB5">z</text>
+        <text x="96" y="14" font-family="Nunito, Arial, sans-serif" font-weight="900" font-size="12" fill="#6B5BB5">z</text>
+        <ellipse cx="26" cy="60" rx="14" ry="26" fill="#C98A2E" transform="rotate(8 26 60)"></ellipse>
+        <ellipse cx="94" cy="60" rx="14" ry="26" fill="#C98A2E" transform="rotate(-8 94 60)"></ellipse>
+        <circle cx="60" cy="66" r="40" fill="#FFD98A"></circle>
+        <ellipse cx="60" cy="84" rx="24" ry="17" fill="#FFF3D6"></ellipse>
+        <circle cx="36" cy="78" r="6" fill="#F7A8B0" opacity="0.6"></circle><circle cx="84" cy="78" r="6" fill="#F7A8B0" opacity="0.6"></circle>
+        <path d="M40 62q6 5 12 0M68 62q6 5 12 0" fill="none" stroke="#1C2B36" stroke-width="3.5" stroke-linecap="round"></path>
+        <ellipse cx="60" cy="75" rx="8" ry="5.5" fill="#1C2B36"></ellipse>
+        <path d="M54 87q6 4 12 0" fill="none" stroke="#1C2B36" stroke-width="3" stroke-linecap="round"></path>
+      </svg>
