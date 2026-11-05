@@ -6,6 +6,10 @@ Jekyll (GitHub Pages) skips folders starting with "_", so this script is not pub
 from html import escape
 from pathlib import Path
 import json
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 
 SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
@@ -24,7 +28,7 @@ T = {
   "name": "Kwispelboek", "other": "en", "path": "/", "privacy": "/privacy/",
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
   "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Binnenkort voor Android.",
-  "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen")],
+  "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/blog/", "Blog")],
   "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
   "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
   "soon_small": "BINNENKORT OP", "soon": "Google Play",
@@ -105,7 +109,7 @@ T = {
   "name": "Wagbook", "other": "nl", "path": "/en/", "privacy": "/en/privacy/",
   "title": "Wagbook – Pet health log for dogs, cats & more",
   "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Coming soon to Android.",
-  "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ")],
+  "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/blog/", "Blog")],
   "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
   "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account: everything stays on your phone.",
   "soon_small": "COMING SOON TO", "soon": "Google Play",
@@ -252,7 +256,7 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/nunito-black.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunito-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{T[lang]['name']}">
 <meta property="og:locale" content="{'nl_NL' if lang == 'nl' else 'en_US'}">
@@ -286,12 +290,25 @@ def header(lang, path_here, path_other, nav=True):
 """
 
 
+def crumbs(lang, trail):
+    """trail: [(name, path), ...] from home to the current page. Returns (html, json-ld script)."""
+    items = []
+    for i, (name, path) in enumerate(trail):
+        last = i == len(trail) - 1
+        items.append(f'<li><span aria-current="page">{escape(name)}</span></li>' if last
+                     else f'<li><a href="{path}">{escape(name)}</a></li>')
+    html = f'<nav class="crumbs" aria-label="{"Kruimelpad" if lang == "nl" else "Breadcrumb"}"><ol>{"".join(items)}</ol></nav>'
+    ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": name, "item": DOMAIN + path} for i, (name, path) in enumerate(trail)]}
+    return html, f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
+
+
 def footer(lang):
     t = T[lang]
     return f"""<footer>
   <div class="wrap">
     <span>© 2026 {t['name']} · {t['foot_by']} <a href="https://grounded-studio.app/">Grounded Studio</a></span>
-    <nav aria-label="Footer"><a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
+    <nav aria-label="Footer"><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
   </div>
 </footer>
 <script>
@@ -324,8 +341,12 @@ def home(lang):
     }
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"]]}
+    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": t["name"], "url": DOMAIN + t["path"],
+               "inLanguage": lang, "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}
     extra = (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
-             f'<script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>\n')
+             f'<script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>\n'
+             f'<script type="application/ld+json">{json.dumps(site_ld, ensure_ascii=False)}</script>\n'
+             + crumbs(lang, [(t["name"], t["path"])])[1])
     if lang == "nl":
         # First visit with a non-Dutch browser: offer English once (no forced redirect).
         extra += ("<script>try{if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
@@ -431,14 +452,123 @@ def privacy(lang):
     t = T[lang]
     other = T[t["other"]]
     body = "".join(f"<h2>{escape(h)}</h2>" + "".join(f"<p>{x}</p>" for x in paras) for h, paras in p["sections"])
-    return head(lang, p["title"], p["desc"], t["privacy"], other["privacy"], lang) + header(lang, t["privacy"], other["privacy"], nav=False) + f"""<main id="main" class="legal">
-<p><a href="{t['path']}">{p['back']}</a></p>
+    c_html, c_ld = crumbs(lang, [(t["name"], t["path"]), (p["h1"], t["privacy"])])
+    return head(lang, p["title"], p["desc"], t["privacy"], other["privacy"], lang, c_ld) + header(lang, t["privacy"], other["privacy"], nav=False) + f"""<main id="main" class="legal">
+{c_html}
 <h1 style="margin-top:18px">{p['h1']}</h1>
 <p class="meta">{p['meta']}</p>
 <p class="summary">{p['summary']}</p>
 {body}
 </main>
 """ + footer(lang)
+
+
+def render_body(blocks):
+    out = []
+    for kind, val in blocks:
+        if kind == "h2":
+            out.append(f"<h2>{escape(val)}</h2>")
+        elif kind == "p":
+            out.append(f"<p>{val}</p>")
+        elif kind == "ul":
+            out.append("<ul>" + "".join(f"<li>{x}</li>" for x in val) + "</ul>")
+        elif kind == "tip":
+            out.append(f'<aside class="tip"><span aria-hidden="true">💡</span><p>{val}</p></aside>')
+    return "\n".join(out)
+
+
+def blog_index(lang):
+    t, b = T[lang], BLOG_T[lang]
+    other = T[t["other"]]
+    ob = BLOG_T[t["other"]]
+    c_html, c_ld = crumbs(lang, [(t["name"], t["path"]), (b["h1"], b["path"])])
+    items = [{"@type": "ListItem", "position": i + 1, "url": f'{DOMAIN}{b["path"]}{a[lang]["slug"]}/', "name": a[lang]["title"]}
+             for i, a in enumerate(ARTICLES)]
+    list_ld = {"@context": "https://schema.org", "@type": "Blog", "name": f'{t["name"]} {b["h1"]}', "url": DOMAIN + b["path"],
+               "inLanguage": lang, "publisher": {"@type": "Organization", "name": "Grounded Studio"},
+               "blogPost": [{"@type": "BlogPosting", "headline": a[lang]["title"], "url": f'{DOMAIN}{b["path"]}{a[lang]["slug"]}/',
+                             "datePublished": BLOG_DATE} for a in ARTICLES]}
+    extra = c_ld + f'<script type="application/ld+json">{json.dumps(list_ld, ensure_ascii=False)}</script>\n'
+    del items
+    cards = "".join(
+        f'<a class="post-card" href="{b["path"]}{a[lang]["slug"]}/"><span class="post-ico" aria-hidden="true">{a["emoji"]}</span>'
+        f'<h2>{escape(a[lang]["title"])}</h2><p>{escape(a[lang]["desc"])}</p>'
+        f'<span class="post-meta">{b["read"].format(n=a[lang]["read"])} · {b["more"]} →</span></a>' for a in ARTICLES)
+    also = ""
+    if b["also_links"]:
+        also = (f'<h2 class="also">{escape(b["also"])}</h2><ul class="also-list">'
+                + "".join(f'<li><a href="{u}">{escape(n)}</a></li>' for u, n in b["also_links"]) + "</ul>")
+    return head(lang, b["title"], b["desc"], b["path"], ob["path"], lang, extra) + header(lang, b["path"], ob["path"], nav=False) + f"""<main id="main" class="blog">
+<div class="wrap">
+{c_html}
+<h1>{b['h1']}</h1>
+<p class="lead" style="margin-top:12px">{escape(b['lead'])}</p>
+<div class="post-grid">{cards}</div>
+{also}
+</div>
+</main>
+""" + footer(lang)
+
+
+def article(lang, a):
+    t, b = T[lang], BLOG_T[lang]
+    o = t["other"]
+    ob = BLOG_T[o]
+    art = a[lang]
+    path = f'{b["path"]}{art["slug"]}/'
+    other_path = f'{ob["path"]}{a[o]["slug"]}/'
+    c_html, c_ld = crumbs(lang, [(t["name"], t["path"]), (b["h1"], b["path"]), (art["title"], path)])
+    art_ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": art["title"], "description": art["desc"],
+              "inLanguage": lang, "datePublished": BLOG_DATE, "dateModified": BLOG_DATE,
+              "mainEntityOfPage": DOMAIN + path, "url": DOMAIN + path, "image": f"{DOMAIN}/assets/img/og-{lang}.jpg",
+              "author": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
+              "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/",
+                            "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/icon-512.png"}},
+              "about": {"@type": "MobileApplication", "name": t["name"], "url": DOMAIN + t["path"]}}
+    extra = (c_ld + f'<script type="application/ld+json">{json.dumps(art_ld, ensure_ascii=False)}</script>\n'
+             + '<meta property="article:published_time" content="' + BLOG_DATE + '">\n')
+    related = "".join(f'<li><a href="{b["path"]}{x[lang]["slug"]}/">{x["emoji"]} {escape(x[lang]["title"])}</a></li>'
+                      for x in ARTICLES if x is not a)
+    title = f'{art["title"]} | {t["name"]}'
+    return head(lang, title, art["desc"], path, other_path, lang, extra).replace(
+        '<meta property="og:type" content="website">', '<meta property="og:type" content="article">') + header(lang, path, other_path, nav=False) + f"""<main id="main" class="legal article">
+{c_html}
+<p class="post-emoji" aria-hidden="true">{a['emoji']}</p>
+<h1>{escape(art['title'])}</h1>
+<p class="meta">{b['published']} <time datetime="{BLOG_DATE}">{b['date']}</time> · {b['read'].format(n=art['read'])} · <a href="{other_path}" hreflang="{o}" lang="{o}">{b['other_lang']}</a></p>
+<p class="summary">{escape(art['desc'])}</p>
+{render_body(art['body'])}
+<div class="post-cta">
+  <img src="/assets/img/kwispel-happy.svg" alt="" width="96" height="96" loading="lazy">
+  <div><h2>{escape(b['cta_title'])}</h2><p>{escape(b['cta_text'])}</p>
+  <a class="btn btn-primary" href="{t['path']}">{escape(b['cta_btn'])}</a></div>
+</div>
+<h2>{escape(b['related'])}</h2>
+<ul class="related">{related}</ul>
+</main>
+""" + footer(lang)
+
+
+def llms_txt():
+    lines = ["# Kwispelboek (Wagbook)", "",
+             "> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of "
+             "pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, "
+             "travel checklists and a missing-pet poster, with reminders. No account: all data stays on the phone. "
+             "Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. "
+             "Coming soon to Google Play.", "",
+             "## Main pages",
+             f"- [Kwispelboek (Dutch)]({DOMAIN}/): features, screenshots, pricing and FAQ",
+             f"- [Wagbook (English)]({DOMAIN}/en/): features, screenshots, pricing and FAQ",
+             f"- [Privacy policy (Dutch)]({DOMAIN}/privacy/)",
+             f"- [Privacy policy (English)]({DOMAIN}/en/privacy/)", "",
+             "## Blog (Dutch)"]
+    lines += [f'- [{a["nl"]["title"]}]({DOMAIN}/blog/{a["nl"]["slug"]}/): {a["nl"]["desc"]}' for a in ARTICLES]
+    lines += ["", "## Blog (English)"]
+    lines += [f'- [{a["en"]["title"]}]({DOMAIN}/en/blog/{a["en"]["slug"]}/): {a["en"]["desc"]}' for a in ARTICLES]
+    lines += ["", "## Optional",
+              "- [Grounded Studio](https://grounded-studio.app/): the studio behind the app",
+              "- Contact: contact@grounded-studio.app", ""]
+    return "\n".join(lines)
 
 
 NOT_FOUND = f"""<!doctype html>
@@ -449,7 +579,7 @@ NOT_FOUND = f"""<!doctype html>
 <title>Pagina niet gevonden – Kwispelboek</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=3">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -472,7 +602,8 @@ MANIFEST = {
               {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}],
 }
 
-SITEMAP_URLS = [("/", "/en/"), ("/privacy/", "/en/privacy/")]
+SITEMAP_URLS = [("/", "/en/"), ("/privacy/", "/en/privacy/"), ("/blog/", "/en/blog/")] + [
+    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/") for a in ARTICLES]
 
 
 def sitemap():
@@ -499,6 +630,12 @@ write("index.html", home("nl"))
 write("en/index.html", home("en"))
 write("privacy/index.html", privacy("nl"))
 write("en/privacy/index.html", privacy("en"))
+write("blog/index.html", blog_index("nl"))
+write("en/blog/index.html", blog_index("en"))
+for a in ARTICLES:
+    write(f"blog/{a['nl']['slug']}/index.html", article("nl", a))
+    write(f"en/blog/{a['en']['slug']}/index.html", article("en", a))
+write("llms.txt", llms_txt())
 write("404.html", NOT_FOUND)
 write("site.webmanifest", json.dumps(MANIFEST, indent=2))
 write("sitemap.xml", sitemap())

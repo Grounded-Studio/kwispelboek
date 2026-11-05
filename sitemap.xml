@@ -24,4 +24,76 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/privacy/"/>
   </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/op-reis-met-hond-of-kat/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/op-reis-met-hond-of-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/travelling-with-your-dog-or-cat/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/travelling-with-your-dog-or-cat/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/op-reis-met-hond-of-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/travelling-with-your-dog-or-cat/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/fleas-and-ticks-how-often/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/fleas-and-ticks-how-often/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/fleas-and-ticks-how-often/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/giving-your-pet-medication/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/giving-your-pet-medication/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/giving-your-pet-medication/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/tracking-your-pets-weight/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/tracking-your-pets-weight/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/tracking-your-pets-weight/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/what-to-keep-for-the-vet/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/en/blog/what-to-keep-for-the-vet/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kwispelboek.app/en/blog/what-to-keep-for-the-vet/"/>
+  </url>
 </urlset>

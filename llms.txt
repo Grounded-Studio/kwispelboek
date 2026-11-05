@@ -1,0 +1,27 @@
+# Kwispelboek (Wagbook)
+
+> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, travel checklists and a missing-pet poster, with reminders. No account: all data stays on the phone. Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. Coming soon to Google Play.
+
+## Main pages
+- [Kwispelboek (Dutch)](https://kwispelboek.app/): features, screenshots, pricing and FAQ
+- [Wagbook (English)](https://kwispelboek.app/en/): features, screenshots, pricing and FAQ
+- [Privacy policy (Dutch)](https://kwispelboek.app/privacy/)
+- [Privacy policy (English)](https://kwispelboek.app/en/privacy/)
+
+## Blog (Dutch)
+- [Op reis met je hond of kat: wat moet er in orde zijn?](https://kwispelboek.app/blog/op-reis-met-hond-of-kat/): Chip, dierenpaspoort, rabiësvaccinatie en de 21-dagenregel: zo ga je goed voorbereid met je hond of kat op vakantie in Europa.
+- [Vlooien en teken: hoe vaak moet je je hond of kat behandelen?](https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/): Hoe vaak je je huisdier behandelt tegen vlooien en teken, waarom het ook in de winter telt, en waarom je hondenmiddel nooit bij een kat gebruikt.
+- [Medicijnen geven aan je huisdier: zo vergeet je geen dosis](https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/): Praktische tips om een medicijnkuur voor je hond, kat of konijn vol te houden: vaste tijden, een tablet ‘verstoppen’ en wat je doet als je een dosis vergeet.
+- [Het gewicht van je huisdier bijhouden: waarom en hoe vaak?](https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/): Waarom regelmatig wegen bij honden, katten, konijnen en vogels zo nuttig is, hoe je het thuis doet en wanneer een verandering reden is om naar de dierenarts te gaan.
+- [Wat moet je bijhouden voor de dierenarts? Een handige checklist](https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/): Welke gegevens over je huisdier handig zijn bij de dierenarts, bij een nieuwe praktijk, de oppas of een noodgeval. Met een checklist om meteen te gebruiken.
+
+## Blog (English)
+- [Travelling with your dog or cat: what needs to be in order?](https://kwispelboek.app/en/blog/travelling-with-your-dog-or-cat/): Microchip, pet passport, rabies vaccination and the 21-day rule: how to prepare for a holiday in Europe with your dog or cat.
+- [Fleas and ticks: how often should you treat your dog or cat?](https://kwispelboek.app/en/blog/fleas-and-ticks-how-often/): How often to treat your pet against fleas and ticks, why winter counts too, and why you should never use a dog product on a cat.
+- [Giving your pet medication: never miss a dose](https://kwispelboek.app/en/blog/giving-your-pet-medication/): Practical tips to keep up a course of medication for your dog, cat or rabbit: fixed times, hiding a tablet and what to do if you forget a dose.
+- [Tracking your pet’s weight: why and how often?](https://kwispelboek.app/en/blog/tracking-your-pets-weight/): Why regular weighing is so useful for dogs, cats, rabbits and birds, how to do it at home and when a change is a reason to see your vet.
+- [What should you keep track of for the vet? A handy checklist](https://kwispelboek.app/en/blog/what-to-keep-for-the-vet/): Which details about your pet are useful at the vet, at a new practice, for a pet sitter or in an emergency. With a checklist you can use right away.
+
+## Optional
+- [Grounded Studio](https://grounded-studio.app/): the studio behind the app
+- Contact: contact@grounded-studio.app

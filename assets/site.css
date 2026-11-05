@@ -185,5 +185,40 @@ footer a:hover{color:var(--brand)}
 .legal ul{padding-left:20px}
 .legal p + p{margin-top:12px}
 
+/* breadcrumbs */
+.crumbs{margin:0 0 18px;font-size:.9rem}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.crumbs li{display:flex;align-items:center;gap:6px;color:var(--muted);font-weight:700}
+.crumbs li + li::before{content:"›";color:var(--muted);opacity:.7}
+.crumbs a{color:var(--brand);text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.crumbs [aria-current]{color:var(--ink);max-width:46ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* blog */
+.blog{padding:40px 0 24px}
+.post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+.post-card{display:flex;flex-direction:column;gap:8px;background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .2s}
+.post-card:hover{transform:translateY(-3px) rotate(-.4deg)}
+.post-card h2{font-size:1.25rem;font-weight:900}
+.post-card p{color:var(--muted);font-size:.96rem}
+.post-ico{width:52px;height:52px;border-radius:18px;background:var(--brand-soft);display:grid;place-items:center;font-size:1.5rem;transform:rotate(-5deg)}
+.post-meta{margin-top:auto;padding-top:6px;color:var(--brand);font-weight:800;font-size:.9rem}
+.also{font-size:1.3rem;margin:44px 0 12px}
+.also-list{margin:0;padding-left:20px;display:grid;gap:6px}
+@media (max-width:720px){.post-grid{grid-template-columns:1fr}}
+.article .post-emoji{font-size:2.6rem;margin:4px 0 6px}
+.article h1{font-size:clamp(1.9rem,5vw,2.6rem)}
+.article .meta a{color:var(--brand)}
+.article ul{display:grid;gap:8px}
+.tip{display:flex;gap:12px;align-items:flex-start;background:var(--sunny-soft);border-radius:20px;padding:16px 20px;margin:22px 0}
+.tip p{color:var(--ink)!important;font-weight:700!important;margin:0!important}
+.post-cta{display:flex;gap:18px;align-items:center;background:var(--brand-soft);border-radius:var(--radius);padding:24px;margin:40px 0 10px}
+.post-cta img{width:96px;height:96px;flex:none}
+.post-cta h2{margin:0 0 6px!important;font-size:1.25rem}
+.post-cta p{margin:0 0 14px}
+@media (max-width:560px){.post-cta{flex-direction:column;text-align:center}}
+.related{padding-left:20px}
+.related a{font-weight:800;text-decoration:none}
+
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.card,.faq summary::after{transition:none}.kw-happy img{animation:none}}
 @media (min-width:1000px){.shots{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:6px 0 24px}.shots figure{flex:none}}
