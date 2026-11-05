@@ -9,7 +9,7 @@ import json
 
 SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
-UPDATED = {"nl": "4 november 2026", "en": "4 November 2026"}
+UPDATED = {"nl": "5 november 2026", "en": "5 November 2026"}
 MAIL = "contact@grounded-studio.app"
 
 PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>'
@@ -190,7 +190,7 @@ PRIVACY = {
   "desc": "Privacybeleid van Kwispelboek, het huisdier-logboek van Grounded Studio. Geen account, geen advertenties, geen tracking: je gegevens blijven op je telefoon.",
   "h1": "Privacybeleid",
   "meta": f"Laatst bijgewerkt: {UPDATED['nl']} · Grounded Studio, Nederland",
-  "summary": "Kort gezegd: alles wat je invoert blijft op je eigen telefoon. Wij hebben geen account, geen server en geen tracking.",
+  "summary": "Kort gezegd: alles wat je invoert blijft op je eigen telefoon. De app heeft geen account, geen server en geen tracking.",
   "sections": [
    ("Wie zijn wij", ["Kwispelboek (in het Engels: Wagbook) is een app van Grounded Studio uit Nederland. Voor vragen over privacy kun je mailen naar <a href=\"mailto:%s\">%s</a>." % (MAIL, MAIL)]),
    ("Opgeslagen op je telefoon", ["Je hebt geen account nodig. Alles wat je invoert, zoals dieren, vaccinaties, medicijnen, dierenartsbezoeken, gewicht, reizen, foto’s en je eigen naam en telefoonnummer, wordt alleen op deze telefoon opgeslagen. Wij hebben geen server die het ontvangt en kunnen er niet bij."]),
@@ -200,6 +200,7 @@ PRIVACY = {
    ("Scannen met AI (optioneel, PRO)", ["Alleen als je zelf kiest om een dierenpaspoort, rekening of medicijnetiket te scannen, wordt die ene foto via een beveiligde verbinding naar Google (Gemini API) gestuurd om de tekst te lezen. Wij bewaren de foto niet. Je controleert het resultaat altijd voordat er iets wordt opgeslagen. Voordat je voor het eerst scant, vraagt de app je toestemming."]),
    ("Aankopen", ["Kwispelboek PRO koop je via Google Play. Google regelt de betaling; de app krijgt alleen te zien of PRO actief is. Wij ontvangen geen betaalgegevens."]),
    ("Toestemmingen", ["De app vraagt alleen wat nodig is: toestemming voor meldingen (herinneringen) en internet (scannen met AI en aankopen). Foto’s maak of kies je via de standaardcamera en fotokiezer van Android; de app krijgt alleen de foto die jij kiest."]),
+   ("Deze website", ["We tellen bezoeken aan kwispelboek.app met Cloudflare Web Analytics, zonder cookies: welke pagina is bekeken, van welke site je kwam, browser, type apparaat, land en hoe snel de pagina laadde. Cloudflare gebruikt geen cookies of fingerprinting en maakt geen profiel van je; wij zien alleen totalen. Dit gaat over de website, niet over de app."]),
    ("Je gegevens verwijderen", ["Via Instellingen → Alle gegevens verwijderen wis je alles van deze telefoon. De app verwijderen doet hetzelfde. Omdat wij geen gegevens van je hebben, hoef je ons daarvoor niets te vragen."]),
    ("Kinderen", ["Kwispelboek is niet speciaal voor kinderen gemaakt en verzamelt van niemand persoonsgegevens."]),
    ("Wijzigingen", ["Als dit beleid verandert, passen we de datum bovenaan aan. Bij belangrijke wijzigingen melden we dat ook in de app."]),
@@ -211,7 +212,7 @@ PRIVACY = {
   "desc": "Privacy policy of Wagbook (Kwispelboek), the pet health log by Grounded Studio. No account, no ads, no tracking: your data stays on your phone.",
   "h1": "Privacy policy",
   "meta": f"Last updated: {UPDATED['en']} · Grounded Studio, the Netherlands",
-  "summary": "In short: everything you enter stays on your own phone. There is no account, no server and no tracking.",
+  "summary": "In short: everything you enter stays on your own phone. The app has no account, no server and no tracking.",
   "sections": [
    ("Who we are", ["Wagbook (Kwispelboek in Dutch) is an app by Grounded Studio from the Netherlands. For privacy questions, email <a href=\"mailto:%s\">%s</a>." % (MAIL, MAIL)]),
    ("Stored on your phone", ["You don’t need an account. Everything you enter, such as pets, vaccinations, medication, vet visits, weights, trips, photos and your own name and phone number, is stored only on this phone. We have no server that receives it and we cannot access it."]),
@@ -221,6 +222,7 @@ PRIVACY = {
    ("Scanning with AI (optional, PRO)", ["Only when you choose to scan a pet passport, invoice or medicine label, that one photo is sent over a secure connection to Google (Gemini API) to read the text. We do not store the photo. You always check the result before anything is saved. The app asks for your consent before your first scan."]),
    ("Purchases", ["Wagbook PRO is bought through Google Play. Google handles the payment; the app only learns whether PRO is active. We receive no payment details."]),
    ("Permissions", ["The app only asks for what it needs: permission for notifications (reminders) and internet (AI scanning and purchases). You take or pick photos through Android’s standard camera and photo picker; the app only receives the photo you choose."]),
+   ("This website", ["We count visits to kwispelboek.app with Cloudflare Web Analytics, without cookies: which page was viewed, the site you came from, browser, device type, country and how fast the page loaded. Cloudflare does not use cookies or fingerprinting and does not build a profile of you; we only see totals. This is about the website, not the app."]),
    ("Deleting your data", ["Settings → Delete all data removes everything from this phone. Uninstalling the app does the same. Because we hold no data about you, there is nothing you need to ask us."]),
    ("Children", ["Wagbook is not made specifically for children and collects no personal data from anyone."]),
    ("Changes", ["If this policy changes, we update the date at the top. Important changes are also announced in the app."]),
@@ -261,7 +263,8 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-{extra}</head>
+{extra}<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
+</head>
 """
 
 
@@ -447,6 +450,7 @@ NOT_FOUND = f"""<!doctype html>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/site.css?v=2">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 <main class="legal" style="text-align:center;padding-top:96px">
