@@ -48,10 +48,11 @@ T = {
   "features": [
    ("☀️", "", "Vandaag in één oogopslag", "Een voortgangsring, ‘Nu doen’ op volgorde van belang, wat er later vandaag komt en een balk met de hele week. Voor al je dieren samen.", False),
    ("🐾", "amber", "Afvinken is een feestje", "Tik op ✓ en er verschijnt een pootstempel. Alles gedaan? Dan komen er confetti en een blije Kwispel, en houd je je reeks bij.", False),
-   ("➕", "", "Alles noteren met één knop", "De grote gele + in het midden: vaccinatie, medicijn, gewicht, dierenartsbezoek of paspoort scannen. Kies wat, kies voor wie, klaar.", False),
+   ("➕", "", "Alles noteren met één knop", "De grote gele + in het midden: vaccinatie, medicijn, gewicht, dierenartsbezoek, dagboek, maandfoto of paspoort scannen. Kies wat, kies voor wie, klaar.", False),
    ("🔔", "", "Herinneringen op tijd", "Vaccinaties, ontworming en vlooien- en tekenmiddel met herhaalschema. Een melding vooraf én op de dag zelf.", False),
    ("📅", "sage", "Agenda per maand", "Gekleurde stipjes per dier laten zien wat er wanneer komt, met verjaardagen en adoptiedagen erbij.", False),
    ("🎨", "amber", "Elk dier een eigen kleur", "Kies uit acht kleuren. Die kleur komt overal terug: op de kaart, in de agenda en bij de taken.", False),
+   ("🖍️", "sage", "Jouw kleuren", "Kies uit vijf kleurthema’s voor de hele app, van oceaanblauw tot koraal.", False),
    ("💊", "sage", "Medicijnen & kuren", "Dosis met − en +, tijden per dag, doorlopend of als kuur. Je ziet in blokjes hoe ver de kuur is.", False),
    ("🩺", "sage", "Dierenarts & kosten", "Bezoeken met reden, notities, foto’s en kosten, met het totaal van dit jaar. Je dierenarts bellen of de route openen in één tik.", False),
    ("⚖️", "amber", "Gewichtsgrafiek", "Weeg regelmatig en zie veranderingen op tijd. In kilo’s, of in grammen voor vogels.", False),
@@ -60,10 +61,15 @@ T = {
    ("📱", "sage", "Widgets op je beginscherm", "Een groot en een klein widget met je voortgang, je dieren en wat het eerst moet. Zonder de app te openen.", False),
    ("✈️", "", "Reischecklist", "Op vakantie met je dier? Zie in één oogopslag of chip, paspoort en rabiësvaccinatie op tijd in orde zijn.", False),
    ("📣", "", "Vermist-poster", "Is je dier zoek? Maak in een minuut een poster met foto, kenmerken en je telefoonnummer om te printen of te delen.", False),
+   ("📝", "sage", "Dagboek", "Spuugde, mank, ander voer? Schrijf het op met datum en eventueel een foto. Handig als de dierenarts vraagt sinds wanneer, en de laatste notities staan ook in de PDF.", False),
+   ("📸", "amber", "Elke maand een foto", "Eén foto per maand in een album van twaalf vakjes. Aan het eind van het jaar deel je een collage van hoe je dier groeide.", False),
+   ("🏆", "", "Jaaroverzicht", "Hoe vaak behandeld, hoeveel bezoeken en kosten, gewicht van begin tot eind: het jaar van je dier op één deelbaar kaartje.", False),
+   ("🚑", "", "Eerste hulp", "Direct je dierenarts of spoedkliniek bellen, wat je moet doen bij een noodgeval en een lijst met wat giftig is per diersoort.", False),
    ("💾", "amber", "Back-up in één bestand", "Alle dieren, gegevens en foto’s in één bestand. Zet het in Google Drive en zet het terug op een nieuwe telefoon.", False),
    ("📄", "", "PDF voor de dierenarts", "Een overzichtelijk document met chipnummer, vaccinaties met batchnummers, medicijnen, gewicht en recente bezoeken.", True),
    ("🧑‍🍼", "", "Overzicht voor de oppas", "Voer, karakter, medicijnen en contactgegevens in één PDF voor de oppas of het pension.", True),
    ("📷", "", "Paspoort scannen", "Fotografeer de vaccinatiepagina en de datums en batchnummers worden ingevuld. Jij controleert altijd eerst.", True),
+   ("🏷️", "", "Vaccinatiesticker scannen", "Vink je een vaccinatie af? Fotografeer de sticker en het batchnummer wordt ingevuld.", True),
   ],
   "spots": [
    ("today", "Vandaag", "Open de app en je weet wat er moet gebeuren",
@@ -91,9 +97,9 @@ T = {
   "pro_eyebrow": "Prijzen", "pro_title": "Gratis beginnen, PRO als je meer wilt",
   "pro_lead": "Alle logboeken, herinneringen, de gewichtsgrafiek en back-ups zijn gratis. PRO neem je per maand of per jaar en zeg je op elk moment op via Google Play.",
   "free_title": "Gratis", "free_price": "Voor altijd, zonder advertenties",
-  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Agenda, widgets en feestkaartjes", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Back-ups en 1 foto per bezoek"],
+  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Agenda, widgets en feestkaartjes", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Dagboek, maandfoto’s en jaaroverzicht", "Eerste hulp met giftige stoffen per dier", "Back-ups en 1 foto per bezoek"],
   "pro_title2": "PRO", "pro_price": "€ 2,99 per maand of € 19,99 per jaar",
-  "pro_items": ["Onbeperkt aantal huisdieren", "PDF-overzicht voor de dierenarts", "Overzicht voor de oppas of het pension", "Reischecklist als PDF", "Paspoort, rekening of medicijnetiket scannen met AI", "Onbeperkt foto’s per bezoek"],
+  "pro_items": ["Onbeperkt aantal huisdieren", "PDF-overzicht voor de dierenarts", "Overzicht voor de oppas of het pension", "Reischecklist als PDF", "Paspoort, rekening, medicijnetiket of vaccinatiesticker scannen met AI", "Onbeperkt foto’s per bezoek"],
   "faq_eyebrow": "Vragen", "faq_title": "Veelgestelde vragen",
   "faq": [
    ("Is Kwispelboek gratis?", "Ja. Je kunt gratis tot 2 dieren bijhouden met alle logboeken, herinneringen, de gewichtsgrafiek, de reischecklist, de vermist-poster en back-ups. PRO voegt onbeperkt dieren en foto’s, de PDF-overzichten en scannen met AI toe."),
@@ -129,10 +135,11 @@ T = {
   "features": [
    ("☀️", "", "Today at a glance", "A progress ring, ‘To do now’ with the most important first, what’s coming later today and a strip with the whole week. For all your pets together.", False),
    ("🐾", "amber", "Ticking off is a treat", "Tap ✓ and a paw stamp appears. All done? Then there’s confetti and a happy Kwispel, and you keep your streak going.", False),
-   ("➕", "", "Log anything with one button", "The big yellow + in the middle: vaccination, medicine, weight, vet visit or passport scan. Choose what, choose for whom, done.", False),
+   ("➕", "", "Log anything with one button", "The big yellow + in the middle: vaccination, medicine, weight, vet visit, diary, monthly photo or passport scan. Choose what, choose for whom, done.", False),
    ("🔔", "", "Reminders on time", "Vaccinations, deworming and flea & tick treatments with repeat schedules. A reminder in advance and on the day itself.", False),
    ("📅", "sage", "Monthly calendar", "Coloured dots per pet show what’s coming when, with birthdays and adoption days included.", False),
    ("🎨", "amber", "A colour for every pet", "Choose from eight colours. It shows up everywhere: on the card, in the calendar and on the tasks.", False),
+   ("🖍️", "sage", "Your colours", "Choose from five colour themes for the whole app, from ocean blue to coral.", False),
    ("💊", "sage", "Medication & courses", "Dose with − and +, times of day, ongoing or as a course. Little blocks show how far along the course is.", False),
    ("🩺", "sage", "Vet & costs", "Visits with reason, notes, photos and costs, with this year’s total. Call your vet or get directions in one tap.", False),
    ("⚖️", "amber", "Weight chart", "Weigh regularly and spot changes early. In kilos, or in grams for birds.", False),
@@ -141,10 +148,15 @@ T = {
    ("📱", "sage", "Home screen widgets", "A large and a small widget with your progress, your pets and what comes first. Without opening the app.", False),
    ("✈️", "", "Travel checklist", "Going abroad with your pet? See at a glance whether microchip, passport and rabies vaccination are in order in time.", False),
    ("📣", "", "Missing poster", "Pet gone missing? Make a poster with photo, markings and your phone number in a minute, to print or share.", False),
+   ("📝", "sage", "Diary", "Threw up, limping, new food? Write it down with a date and a photo if you like. Handy when the vet asks since when, and recent notes are included in the PDF.", False),
+   ("📸", "amber", "A photo every month", "One photo a month in an album of twelve tiles. At the end of the year, share a collage of how your pet grew.", False),
+   ("🏆", "", "Year in review", "How often treated, how many visits and what they cost, weight from start to finish: your pet’s year on one card to share.", False),
+   ("🚑", "", "First aid", "Call your vet or emergency clinic straight away, what to do in an emergency and a list of what is toxic per species.", False),
    ("💾", "amber", "Backup in one file", "All pets, records and photos in one file. Keep it in Google Drive and restore it on a new phone.", False),
    ("📄", "", "PDF for the vet", "A clear overview with microchip number, vaccinations with batch numbers, medication, weight and recent visits.", True),
    ("🧑‍🍼", "", "Pet sitter overview", "Food, character, medication and contact details in one PDF for the sitter or boarding kennel.", True),
    ("📷", "", "Scan the pet passport", "Photograph the vaccination page and the dates and batch numbers are filled in. You always check first.", True),
+   ("🏷️", "", "Scan the vaccine sticker", "Ticking off a vaccination? Photograph the sticker and the batch number is filled in.", True),
   ],
   "spots": [
    ("today", "Today", "Open the app and you know what to do",
@@ -172,9 +184,9 @@ T = {
   "pro_eyebrow": "Pricing", "pro_title": "Free to start, PRO when you need more",
   "pro_lead": "All logs, reminders, the weight chart and backups are free. PRO is available monthly or yearly, and you can cancel anytime in Google Play.",
   "free_title": "Free", "free_price": "Forever, without ads",
-  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Calendar, widgets and party cards", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Backups and 1 photo per visit"],
+  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Calendar, widgets and party cards", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Diary, monthly photos and year in review", "First aid with toxic foods per pet", "Backups and 1 photo per visit"],
   "pro_title2": "PRO", "pro_price": "€2.99 a month or €19.99 a year",
-  "pro_items": ["Unlimited pets", "PDF overview for the vet", "Overview for the pet sitter or kennel", "Travel checklist as PDF", "Scan a passport, invoice or medicine label with AI", "Unlimited photos per visit"],
+  "pro_items": ["Unlimited pets", "PDF overview for the vet", "Overview for the pet sitter or kennel", "Travel checklist as PDF", "Scan a passport, invoice, medicine label or vaccine sticker with AI", "Unlimited photos per visit"],
   "faq_eyebrow": "FAQ", "faq_title": "Frequently asked questions",
   "faq": [
    ("Is Wagbook free?", "Yes. You can keep up to 2 pets for free with all logs, reminders, the weight chart, the travel checklist, the missing poster and backups. PRO adds unlimited pets and photos, the PDF overviews and AI scanning."),
@@ -559,7 +571,7 @@ def llms_txt():
     lines = ["# Kwispelboek (Wagbook)", "",
              "> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of "
              "pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, "
-             "travel checklists and a missing-pet poster, with reminders. No account: all data stays on the phone. "
+             "travel checklists, a missing-pet poster, a diary, monthly photo album, year in review and first aid, with reminders. No account: all data stays on the phone. "
              "Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. "
              "Coming soon to Google Play.", "",
              "## Main pages",

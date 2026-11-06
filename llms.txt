@@ -1,6 +1,6 @@
 # Kwispelboek (Wagbook)
 
-> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, travel checklists and a missing-pet poster, with reminders. No account: all data stays on the phone. Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. Coming soon to Google Play.
+> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, travel checklists, a missing-pet poster, a diary, monthly photo album, year in review and first aid, with reminders. No account: all data stays on the phone. Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. Coming soon to Google Play.
 
 ## Main pages
 - [Kwispelboek (Dutch)](https://kwispelboek.app/): features, screenshots, pricing and FAQ
