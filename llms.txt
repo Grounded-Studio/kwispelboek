@@ -4,9 +4,9 @@
 
 ## Main pages
 - [Kwispelboek (Dutch)](https://kwispelboek.app/): features, screenshots, pricing and FAQ
-- [Wagbook (English)](https://kwispelboek.app/en/): features, screenshots, pricing and FAQ
+- [Wagbook (English)](https://wagbook.app/): features, screenshots, pricing and FAQ
 - [Privacy policy (Dutch)](https://kwispelboek.app/privacy/)
-- [Privacy policy (English)](https://kwispelboek.app/en/privacy/)
+- [Privacy policy (English)](https://wagbook.app/privacy/)
 
 ## Blog (Dutch)
 - [Op reis met je hond of kat: wat moet er in orde zijn?](https://kwispelboek.app/blog/op-reis-met-hond-of-kat/): Chip, dierenpaspoort, rabiësvaccinatie en de 21-dagenregel: zo ga je goed voorbereid met je hond of kat op vakantie in Europa.
@@ -16,11 +16,11 @@
 - [Wat moet je bijhouden voor de dierenarts? Een handige checklist](https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/): Welke gegevens over je huisdier handig zijn bij de dierenarts, bij een nieuwe praktijk, de oppas of een noodgeval. Met een checklist om meteen te gebruiken.
 
 ## Blog (English)
-- [Travelling with your dog or cat: what needs to be in order?](https://kwispelboek.app/en/blog/travelling-with-your-dog-or-cat/): Microchip, pet passport, rabies vaccination and the 21-day rule: how to prepare for a holiday in Europe with your dog or cat.
-- [Fleas and ticks: how often should you treat your dog or cat?](https://kwispelboek.app/en/blog/fleas-and-ticks-how-often/): How often to treat your pet against fleas and ticks, why winter counts too, and why you should never use a dog product on a cat.
-- [Giving your pet medication: never miss a dose](https://kwispelboek.app/en/blog/giving-your-pet-medication/): Practical tips to keep up a course of medication for your dog, cat or rabbit: fixed times, hiding a tablet and what to do if you forget a dose.
-- [Tracking your pet’s weight: why and how often?](https://kwispelboek.app/en/blog/tracking-your-pets-weight/): Why regular weighing is so useful for dogs, cats, rabbits and birds, how to do it at home and when a change is a reason to see your vet.
-- [What should you keep track of for the vet? A handy checklist](https://kwispelboek.app/en/blog/what-to-keep-for-the-vet/): Which details about your pet are useful at the vet, at a new practice, for a pet sitter or in an emergency. With a checklist you can use right away.
+- [Travelling with your dog or cat: what needs to be in order?](https://wagbook.app/blog/travelling-with-your-dog-or-cat/): Microchip, pet passport, rabies vaccination and the 21-day rule: how to prepare for a holiday in Europe with your dog or cat.
+- [Fleas and ticks: how often should you treat your dog or cat?](https://wagbook.app/blog/fleas-and-ticks-how-often/): How often to treat your pet against fleas and ticks, why winter counts too, and why you should never use a dog product on a cat.
+- [Giving your pet medication: never miss a dose](https://wagbook.app/blog/giving-your-pet-medication/): Practical tips to keep up a course of medication for your dog, cat or rabbit: fixed times, hiding a tablet and what to do if you forget a dose.
+- [Tracking your pet’s weight: why and how often?](https://wagbook.app/blog/tracking-your-pets-weight/): Why regular weighing is so useful for dogs, cats, rabbits and birds, how to do it at home and when a change is a reason to see your vet.
+- [What should you keep track of for the vet? A handy checklist](https://wagbook.app/blog/what-to-keep-for-the-vet/): Which details about your pet are useful at the vet, at a new practice, for a pet sitter or in an emergency. With a checklist you can use right away.
 
 ## Optional
 - [Grounded Studio](https://grounded-studio.app/): the studio behind the app

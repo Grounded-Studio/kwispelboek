@@ -1,4 +1,6 @@
-"""Generates the static Kwispelboek / Wagbook site (NL at /, EN at /en/).
+"""Generates the static Kwispelboek site (NL, kwispelboek.app) and the Wagbook site (EN, wagbook.app).
+
+English pages are written to ../wagbook-site (its own repo); kwispelboek.app/en/... only redirects there.
 
 Run:  python -I _build/build.py
 Jekyll (GitHub Pages) skips folders starting with "_", so this script is not published.
@@ -6,6 +8,8 @@ Jekyll (GitHub Pages) skips folders starting with "_", so this script is not pub
 from html import escape
 from pathlib import Path
 import json
+import re
+import shutil
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -13,6 +17,8 @@ from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 
 SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
+EN_DOMAIN = "https://wagbook.app"
+EN_SITE = SITE.parent / "wagbook-site"
 UPDATED = {"nl": "5 november 2026", "en": "5 November 2026"}
 MAIL = "contact@grounded-studio.app"
 
@@ -226,7 +232,7 @@ PRIVACY = {
    ("Scanning with AI (optional, PRO)", ["Only when you choose to scan a pet passport, invoice or medicine label, that one photo is sent over a secure connection to Google (Gemini API) to read the text. We do not store the photo. You always check the result before anything is saved. The app asks for your consent before your first scan."]),
    ("Purchases", ["Wagbook PRO is bought through Google Play. Google handles the payment; the app only learns whether PRO is active. We receive no payment details."]),
    ("Permissions", ["The app only asks for what it needs: permission for notifications (reminders) and internet (AI scanning and purchases). You take or pick photos through Android’s standard camera and photo picker; the app only receives the photo you choose."]),
-   ("This website", ["We count visits to kwispelboek.app with Cloudflare Web Analytics, without cookies: which page was viewed, the site you came from, browser, device type, country and how fast the page loaded. Cloudflare does not use cookies or fingerprinting and does not build a profile of you; we only see totals. This is about the website, not the app."]),
+   ("This website", ["We count visits to wagbook.app and kwispelboek.app with Cloudflare Web Analytics, without cookies: which page was viewed, the site you came from, browser, device type, country and how fast the page loaded. Cloudflare does not use cookies or fingerprinting and does not build a profile of you; we only see totals. This is about the website, not the app."]),
    ("Deleting your data", ["Settings → Delete all data removes everything from this phone. Uninstalling the app does the same. Because we hold no data about you, there is nothing you need to ask us."]),
    ("Children", ["Wagbook is not made specifically for children and collects no personal data from anyone."]),
    ("Changes", ["If this policy changes, we update the date at the top. Important changes are also announced in the app."]),
@@ -349,7 +355,7 @@ def home(lang):
              + crumbs(lang, [(t["name"], t["path"])])[1])
     if lang == "nl":
         # First visit with a non-Dutch browser: offer English once (no forced redirect).
-        extra += ("<script>try{if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
+        extra += ("<script>try{if(/[?&]nl\\b/.test(location.search))localStorage.setItem('kb-lang','nl');if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
                   "&&!/bot|crawl|spider/i.test(navigator.userAgent)){localStorage.setItem('kb-lang','en');location.replace('/en/')}}catch(e){}</script>\n")
 
     feats = "".join(
@@ -606,39 +612,127 @@ SITEMAP_URLS = [("/", "/en/"), ("/privacy/", "/en/privacy/"), ("/blog/", "/en/bl
     (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/") for a in ARTICLES]
 
 
-def sitemap():
+def sitemap(lang):
     rows = []
     for nl, en in SITEMAP_URLS:
-        for loc in (nl, en):
-            rows.append(f"""  <url>
-    <loc>{DOMAIN}{loc}</loc>
+        nl_url, en_url = DOMAIN + nl, EN_DOMAIN + en[3:]
+        rows.append(f"""  <url>
+    <loc>{nl_url if lang == "nl" else en_url}</loc>
     <lastmod>2026-11-05</lastmod>
-    <xhtml:link rel="alternate" hreflang="nl" href="{DOMAIN}{nl}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="{DOMAIN}{en}"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="{nl_url}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>
   </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(rows) + "\n</urlset>\n")
 
 
-def write(rel, text):
-    f = SITE / rel
+STATIC = ("/assets/", "/favicon", "/icon-", "/apple-touch-icon", "/site.webmanifest")
+
+
+def nl_links(text):
+    """Links from the Dutch site to English pages go to wagbook.app."""
+    text = text.replace(DOMAIN + "/en/", EN_DOMAIN + "/")
+    text = text.replace('href="/en/', f'href="{EN_DOMAIN}/')
+    return text.replace("location.replace('/en/')", f"location.replace('{EN_DOMAIN}/')")
+
+
+def en_links(text):
+    """An English page as served from wagbook.app: /en/... becomes /..., Dutch pages become absolute links."""
+    def fix(m):
+        attr, path = m.group(1), m.group(2)
+        if path.startswith("/en/"):
+            return f'{attr}="{path[3:]}"'
+        if path.startswith(STATIC):
+            return m.group(0)
+        return f'{attr}="{DOMAIN}{"/?nl" if path == "/" else path}"'
+    text = re.sub(r'(href|src)="(/[^"]*)"', fix, text)
+    text = text.replace(DOMAIN + "/en/", EN_DOMAIN + "/")
+    for s in ("/assets/", "/icon-512.png"):
+        text = text.replace(DOMAIN + s, EN_DOMAIN + s)
+    return text
+
+
+def redirect_stub(target):
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wagbook</title>
+<link rel="canonical" href="{target}">
+<meta http-equiv="refresh" content="0; url={target}">
+<script>location.replace("{target}"+location.hash)</script>
+</head>
+<body><a href="{target}">{target}</a></body>
+</html>
+"""
+
+
+def out(f, text):
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(text, encoding="utf-8", newline="\n")
 
 
+def write(rel, text):
+    out(SITE / rel, nl_links(text))
+
+
+def write_en(rel, text):
+    """rel without the en/ prefix, e.g. "privacy/index.html"."""
+    out(EN_SITE / rel, en_links(text))
+    out(SITE / "en" / rel, redirect_stub(EN_DOMAIN + "/" + rel.removesuffix("index.html")))
+
+
+NOT_FOUND_EN = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found – Wagbook</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/assets/site.css?v=3">
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<main class="legal" style="text-align:center;padding-top:96px">
+<img src="/assets/img/kwispel-curious.svg" alt="" width="140" height="140" style="margin:0 auto 16px">
+<h1>Oops, this page ran off</h1>
+<p class="meta">Let’s go back home.</p>
+<div class="actions" style="justify-content:center;margin-top:24px">
+<a class="btn btn-primary" href="/">Go to Wagbook</a><a class="btn btn-ghost" href="{DOMAIN}/?nl">Nederlands</a>
+</div>
+</main>
+</body>
+</html>
+"""
+
+# Old English pages and their redirects are rebuilt from scratch.
+shutil.rmtree(SITE / "en", ignore_errors=True)
+for d in ("assets", "blog", "privacy"):
+    shutil.rmtree(EN_SITE / d, ignore_errors=True)
+shutil.copytree(SITE / "assets", EN_SITE / "assets")
+for f in ("favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png"):
+    shutil.copy2(SITE / f, EN_SITE / f)
+
 write("index.html", home("nl"))
-write("en/index.html", home("en"))
+write_en("index.html", home("en"))
 write("privacy/index.html", privacy("nl"))
-write("en/privacy/index.html", privacy("en"))
+write_en("privacy/index.html", privacy("en"))
 write("blog/index.html", blog_index("nl"))
-write("en/blog/index.html", blog_index("en"))
+write_en("blog/index.html", blog_index("en"))
 for a in ARTICLES:
     write(f"blog/{a['nl']['slug']}/index.html", article("nl", a))
-    write(f"en/blog/{a['en']['slug']}/index.html", article("en", a))
+    write_en(f"blog/{a['en']['slug']}/index.html", article("en", a))
 write("llms.txt", llms_txt())
+out(EN_SITE / "llms.txt", nl_links(llms_txt()))
 write("404.html", NOT_FOUND)
+out(EN_SITE / "404.html", NOT_FOUND_EN)
 write("site.webmanifest", json.dumps(MANIFEST, indent=2))
-write("sitemap.xml", sitemap())
+out(EN_SITE / "site.webmanifest", json.dumps({**MANIFEST, "name": "Wagbook", "short_name": "Wagbook"}, indent=2))
+write("sitemap.xml", sitemap("nl"))
+out(EN_SITE / "sitemap.xml", sitemap("en"))
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+out(EN_SITE / "robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {EN_DOMAIN}/sitemap.xml\n")
 write("CNAME", "kwispelboek.app\n")
+out(EN_SITE / "CNAME", "wagbook.app\n")
 print("built")
