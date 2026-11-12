@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kwispelboek.app/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/"/>
   </url>
@@ -14,9 +14,27 @@
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/vuurwerkangst-hond-kat/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/vuurwerkangst-hond-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/fear-of-fireworks-dog-cat/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/hond-hitte-oververhitting/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/hond-hitte-oververhitting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/dogs-and-heat-overheating/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/afscheid-nemen-van-je-huisdier/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/afscheid-nemen-van-je-huisdier/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/saying-goodbye-to-your-pet/"/>
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/op-reis-met-hond-of-kat/</loc>

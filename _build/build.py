@@ -15,6 +15,22 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 
+MONTHS = {"nl": ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
+          "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
+
+
+def art_date(a):
+    return a.get("date", BLOG_DATE)
+
+
+def nice_date(iso, lang):
+    y, m, d = map(int, iso.split("-"))
+    return f"{d} {MONTHS[lang][m - 1]} {y}"
+
+
+def site_lastmod():
+    return max([BLOG_DATE] + [art_date(a) for a in ARTICLES])
+
 SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
 EN_DOMAIN = "https://wagbook.app"
@@ -22,6 +38,7 @@ EN_SITE = SITE.parent / "wagbook-site"
 UPDATED = {"nl": "5 november 2026", "en": "5 November 2026"}
 MAIL = "contact@grounded-studio.app"
 
+PLAY_URL = "https://play.google.com/store/apps/details?id=groundedstudio.kwispelboek.app"
 PLAY_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.75c.36.2.78.22 1.15.07l12.5-11.5L13.67 9 3.18 23.75Z" fill="#EA4335"/>'
             '<path d="M20.82 10.26a1.5 1.5 0 0 0 0-2.52l-3.17-1.84-3.64 3.35 3.64 3.35 3.17-1.34Z" fill="#FBBC04"/>'
             '<path d="M3.18.25 13.67 9l3.16-2.9L4.33.18C3.96.03 3.54.05 3.18.25Z" fill="#4285F4"/>'
@@ -33,12 +50,12 @@ T = {
  "nl": {
   "name": "Kwispelboek", "other": "en", "path": "/", "privacy": "/privacy/",
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
-  "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Binnenkort voor Android.",
+  "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Gratis in Google Play voor Android.",
   "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/blog/", "Blog")],
   "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
   "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
-  "soon_small": "BINNENKORT OP", "soon": "Google Play",
-  "notify": "Hou me op de hoogte", "notify_subject": "Laat me weten wanneer Kwispelboek uitkomt",
+  "soon_small": "ONTDEK HET OP", "soon": "Google Play", "hl": "nl", "see_features": "Bekijk de functies",
+  "notify": "Vraag of idee? Mail ons", "notify_subject": "Vraag over Kwispelboek",
   "badges": ["Gratis te gebruiken", "Geen account", "Geen advertenties"],
   "alt_today": "Kwispelboek: het Vandaag-scherm met voortgangsring, je dieren en wat er nu moet gebeuren",
   "alt_profile": "Kwispelboek: profiel van een hond met de tabbladen Zorg, Gezondheid en Paspoort",
@@ -65,6 +82,9 @@ T = {
    ("📸", "amber", "Elke maand een foto", "Eén foto per maand in een album van twaalf vakjes. Aan het eind van het jaar deel je een collage van hoe je dier groeide.", False),
    ("🏆", "", "Jaaroverzicht", "Hoe vaak behandeld, hoeveel bezoeken en kosten, gewicht van begin tot eind: het jaar van je dier op één deelbaar kaartje.", False),
    ("🚑", "", "Eerste hulp", "Direct je dierenarts of spoedkliniek bellen, wat je moet doen bij een noodgeval en een lijst met wat giftig is per diersoort.", False),
+   ("🕰️", "amber", "Op deze dag", "Wat deed je maatje een jaar geleden? Op Vandaag verschijnt vanzelf een maandfoto, dagboeknotitie of bezoek van dezelfde dag in een eerder jaar.", False),
+   ("🎆", "", "Seizoenstips van Kwispel", "Op tijd tips voor vuurwerk rond de jaarwisseling, teken in het voorjaar en hitte in de zomer. Met één melding aan het begin van elk seizoen.", False),
+   ("🌈", "sage", "In herinnering", "Is je dier overleden? Zet het in herinnering: de meldingen stoppen, en er komt een rustige pagina met je eigen woorden, foto’s en dagboek.", False),
    ("💾", "amber", "Back-up in één bestand", "Alle dieren, gegevens en foto’s in één bestand. Zet het in Google Drive en zet het terug op een nieuwe telefoon.", False),
    ("📄", "", "PDF voor de dierenarts", "Een overzichtelijk document met chipnummer, vaccinaties met batchnummers, medicijnen, gewicht en recente bezoeken.", True),
    ("🧑‍🍼", "", "Overzicht voor de oppas", "Voer, karakter, medicijnen en contactgegevens in één PDF voor de oppas of het pension.", True),
@@ -97,7 +117,7 @@ T = {
   "pro_eyebrow": "Prijzen", "pro_title": "Gratis beginnen, PRO als je meer wilt",
   "pro_lead": "Alle logboeken, herinneringen, de gewichtsgrafiek en back-ups zijn gratis. PRO neem je per maand of per jaar en zeg je op elk moment op via Google Play.",
   "free_title": "Gratis", "free_price": "Voor altijd, zonder advertenties",
-  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Agenda, widgets en feestkaartjes", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Dagboek, maandfoto’s en jaaroverzicht", "Eerste hulp met giftige stoffen per dier", "Back-ups en 1 foto per bezoek"],
+  "free_items": ["Tot 2 huisdieren", "Alle herinneringen en medicijnschema’s", "Agenda, widgets en feestkaartjes", "Dierenartsbezoeken, gewicht en tijdlijn", "Reischecklist en vermist-poster", "Dagboek, maandfoto’s en jaaroverzicht", "Eerste hulp met giftige stoffen per dier", "Op deze dag, seizoenstips en herinneringspagina", "Back-ups en 1 foto per bezoek"],
   "pro_title2": "PRO", "pro_price": "€ 2,99 per maand of € 19,99 per jaar",
   "pro_items": ["Onbeperkt aantal huisdieren", "PDF-overzicht voor de dierenarts", "Overzicht voor de oppas of het pension", "Reischecklist als PDF", "Paspoort, rekening, medicijnetiket of vaccinatiesticker scannen met AI", "Onbeperkt foto’s per bezoek"],
   "faq_eyebrow": "Vragen", "faq_title": "Veelgestelde vragen",
@@ -108,11 +128,12 @@ T = {
    ("Hoe werken de herinneringen?", "Per vaccinatie of behandeling kies je hoe ver vooraf je een melding wilt, plus een melding op de dag zelf op het tijdstip dat je instelt. Medicijnen herinneren je op elk tijdstip, met de knoppen ‘Gegeven’ en ‘Later’."),
    ("Is het alleen voor honden?", "Nee. Kwispelboek is er voor honden, katten, konijnen, vogels en andere huisdieren. Suggesties voor vaccinaties passen zich aan per diersoort, en vogels weeg je in grammen."),
    ("Wat gebeurt er met mijn foto bij scannen met AI?", "Alleen als je zelf kiest om te scannen, wordt die ene foto naar Google (Gemini) gestuurd om de tekst te lezen. Wij bewaren hem niet. Je controleert het resultaat altijd voordat er iets wordt opgeslagen."),
+   ("Wat kan ik doen als mijn dier overleden is?", "Zet je dier in herinnering via het menu op het profiel. De zorgtaken en meldingen stoppen, en je dier krijgt een eigen herinneringspagina met je eigen woorden, maandfoto’s en dagboek. Niets wordt gewist, en een dier in herinnering telt niet mee voor de 2 gratis dieren."),
    ("Geeft Kwispelboek medisch advies?", "Nee. Kwispelboek helpt je bijhouden en onthouden. Voorgestelde schema’s zijn gangbare standaarden; volg altijd het advies van je eigen dierenarts."),
-   ("Wanneer komt Kwispelboek uit?", "Kwispelboek komt binnenkort in Google Play voor Android. In het Engels heet de app Wagbook. Een iPhone-versie staat nog niet gepland."),
+   ("Waar kan ik Kwispelboek downloaden?", "Kwispelboek staat gratis in Google Play voor Android. In het Engels heet de app Wagbook. Een iPhone-versie staat nog niet gepland."),
   ],
-  "cta_title": "Binnenkort in Google Play",
-  "cta_text": "Kwispelboek zit in de laatste testfase. Wil je weten wanneer de app uitkomt? Stuur ons een berichtje.",
+  "cta_title": "Nu gratis in Google Play",
+  "cta_text": "Download Kwispelboek en zet je eerste dier erin. Gratis, zonder account en zonder advertenties. Heb je een vraag of een idee? Mail ons gerust.",
   "foot_by": "Gemaakt door", "foot_privacy": "Privacy", "foot_contact": "Contact",
   "skip": "Naar de inhoud",
   "switch_label": "Taal",
@@ -120,12 +141,12 @@ T = {
  "en": {
   "name": "Wagbook", "other": "nl", "path": "/en/", "privacy": "/en/privacy/",
   "title": "Wagbook – Pet health log for dogs, cats & more",
-  "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Coming soon to Android.",
+  "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Free on Google Play for Android.",
   "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/blog/", "Blog")],
   "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
   "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account: everything stays on your phone.",
-  "soon_small": "COMING SOON TO", "soon": "Google Play",
-  "notify": "Let me know", "notify_subject": "Let me know when Wagbook launches",
+  "soon_small": "GET IT ON", "soon": "Google Play", "hl": "en", "see_features": "See the features",
+  "notify": "Question or idea? Mail us", "notify_subject": "Question about Wagbook",
   "badges": ["Free to use", "No account", "No ads"],
   "alt_today": "Wagbook: the Today screen with progress ring, your pets and what to do now",
   "alt_profile": "Wagbook: a dog's profile with the tabs Care, Health and Passport",
@@ -152,6 +173,9 @@ T = {
    ("📸", "amber", "A photo every month", "One photo a month in an album of twelve tiles. At the end of the year, share a collage of how your pet grew.", False),
    ("🏆", "", "Year in review", "How often treated, how many visits and what they cost, weight from start to finish: your pet’s year on one card to share.", False),
    ("🚑", "", "First aid", "Call your vet or emergency clinic straight away, what to do in an emergency and a list of what is toxic per species.", False),
+   ("🕰️", "amber", "On this day", "What was your buddy up to a year ago? A monthly photo, diary note or vet visit from the same day in an earlier year appears on Today.", False),
+   ("🎆", "", "Seasonal tips from Kwispel", "Timely tips for fireworks around New Year, ticks in spring and heat in summer. With one reminder at the start of each season.", False),
+   ("🌈", "sage", "In loving memory", "Has your pet passed away? Keep them in memory: reminders stop, and they get a calm page with your own words, photos and diary.", False),
    ("💾", "amber", "Backup in one file", "All pets, records and photos in one file. Keep it in Google Drive and restore it on a new phone.", False),
    ("📄", "", "PDF for the vet", "A clear overview with microchip number, vaccinations with batch numbers, medication, weight and recent visits.", True),
    ("🧑‍🍼", "", "Pet sitter overview", "Food, character, medication and contact details in one PDF for the sitter or boarding kennel.", True),
@@ -184,7 +208,7 @@ T = {
   "pro_eyebrow": "Pricing", "pro_title": "Free to start, PRO when you need more",
   "pro_lead": "All logs, reminders, the weight chart and backups are free. PRO is available monthly or yearly, and you can cancel anytime in Google Play.",
   "free_title": "Free", "free_price": "Forever, without ads",
-  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Calendar, widgets and party cards", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Diary, monthly photos and year in review", "First aid with toxic foods per pet", "Backups and 1 photo per visit"],
+  "free_items": ["Up to 2 pets", "All reminders and medication schedules", "Calendar, widgets and party cards", "Vet visits, weight and timeline", "Travel checklist and missing poster", "Diary, monthly photos and year in review", "First aid with toxic foods per pet", "On this day, seasonal tips and memorial page", "Backups and 1 photo per visit"],
   "pro_title2": "PRO", "pro_price": "€2.99 a month or €19.99 a year",
   "pro_items": ["Unlimited pets", "PDF overview for the vet", "Overview for the pet sitter or kennel", "Travel checklist as PDF", "Scan a passport, invoice, medicine label or vaccine sticker with AI", "Unlimited photos per visit"],
   "faq_eyebrow": "FAQ", "faq_title": "Frequently asked questions",
@@ -195,11 +219,12 @@ T = {
    ("How do the reminders work?", "For each vaccination or treatment you choose how far in advance you want a reminder, plus one on the day itself at the time you set. Medication reminds you at every time of day, with ‘Given’ and ‘Later’ buttons."),
    ("Is it only for dogs?", "No. Wagbook is for dogs, cats, rabbits, birds and other pets. Vaccination suggestions adapt to the species, and birds are weighed in grams."),
    ("What happens to my photo when I scan with AI?", "Only when you choose to scan, that one photo is sent to Google (Gemini) to read the text. We do not store it. You always check the result before anything is saved."),
+   ("What can I do when my pet has passed away?", "Keep your pet in memory from the menu on their profile. Care tasks and reminders stop, and your pet gets a memorial page of their own with your words, monthly photos and diary. Nothing is deleted, and a pet in memory doesn’t count towards the 2 free pets."),
    ("Does Wagbook give medical advice?", "No. Wagbook helps you keep track and remember. Suggested schedules are common defaults; always follow the advice of your own vet."),
-   ("When is Wagbook available?", "Wagbook is coming soon to Google Play for Android. In Dutch the app is called Kwispelboek. An iPhone version is not planned yet."),
+   ("Where can I download Wagbook?", "Wagbook is free on Google Play for Android. In Dutch the app is called Kwispelboek. An iPhone version is not planned yet."),
   ],
-  "cta_title": "Coming soon to Google Play",
-  "cta_text": "Wagbook is in its final testing phase. Want to know when it launches? Send us a message.",
+  "cta_title": "Free on Google Play now",
+  "cta_text": "Download Wagbook and add your first pet. Free, no account and no ads. Got a question or an idea? Feel free to mail us.",
   "foot_by": "Made by", "foot_privacy": "Privacy", "foot_contact": "Contact",
   "skip": "Skip to content",
   "switch_label": "Language",
@@ -274,7 +299,7 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/nunito-black.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunito-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=3">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{T[lang]['name']}">
 <meta property="og:locale" content="{'nl_NL' if lang == 'nl' else 'en_US'}">
@@ -348,13 +373,15 @@ def home(lang):
     other = T[t["other"]]
     ids = {"nl": ("functies", "schermen"), "en": ("features", "screens")}[lang]
     subject = escape(t["notify_subject"]).replace(" ", "%20")
-    soon = f'<span class="soon">{PLAY_SVG}<span><small>{t["soon_small"]}</small><b>{t["soon"]}</b></span></span>'
-    notify = f'<a class="btn btn-ghost" href="mailto:{MAIL}?subject={subject}">{MAIL_SVG}{t["notify"]}</a>'
+    soon = (f'<a class="soon" href="{PLAY_URL}&amp;hl={t["hl"]}" rel="noopener">{PLAY_SVG}'
+            f'<span><small>{t["soon_small"]}</small><b>{t["soon"]}</b></span></a>')
+    notify = f'<a class="btn btn-ghost" href="#{ids[0]}">{t["see_features"]}</a>'
     ld = {
         "@context": "https://schema.org", "@type": "MobileApplication", "name": t["name"],
         "alternateName": other["name"], "operatingSystem": "Android", "applicationCategory": "LifestyleApplication",
         "description": t["desc"], "url": DOMAIN + t["path"], "image": f"{DOMAIN}/assets/img/og-{lang}.jpg",
         "inLanguage": ["nl", "en"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+        "installUrl": PLAY_URL, "downloadUrl": PLAY_URL,
         "author": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
     }
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -505,7 +532,7 @@ def blog_index(lang):
     list_ld = {"@context": "https://schema.org", "@type": "Blog", "name": f'{t["name"]} {b["h1"]}', "url": DOMAIN + b["path"],
                "inLanguage": lang, "publisher": {"@type": "Organization", "name": "Grounded Studio"},
                "blogPost": [{"@type": "BlogPosting", "headline": a[lang]["title"], "url": f'{DOMAIN}{b["path"]}{a[lang]["slug"]}/',
-                             "datePublished": BLOG_DATE} for a in ARTICLES]}
+                             "datePublished": art_date(a)} for a in ARTICLES]}
     extra = c_ld + f'<script type="application/ld+json">{json.dumps(list_ld, ensure_ascii=False)}</script>\n'
     del items
     cards = "".join(
@@ -537,14 +564,14 @@ def article(lang, a):
     other_path = f'{ob["path"]}{a[o]["slug"]}/'
     c_html, c_ld = crumbs(lang, [(t["name"], t["path"]), (b["h1"], b["path"]), (art["title"], path)])
     art_ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": art["title"], "description": art["desc"],
-              "inLanguage": lang, "datePublished": BLOG_DATE, "dateModified": BLOG_DATE,
+              "inLanguage": lang, "datePublished": art_date(a), "dateModified": art_date(a),
               "mainEntityOfPage": DOMAIN + path, "url": DOMAIN + path, "image": f"{DOMAIN}/assets/img/og-{lang}.jpg",
               "author": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
               "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/",
                             "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/icon-512.png"}},
               "about": {"@type": "MobileApplication", "name": t["name"], "url": DOMAIN + t["path"]}}
     extra = (c_ld + f'<script type="application/ld+json">{json.dumps(art_ld, ensure_ascii=False)}</script>\n'
-             + '<meta property="article:published_time" content="' + BLOG_DATE + '">\n')
+             + '<meta property="article:published_time" content="' + art_date(a) + '">\n')
     related = "".join(f'<li><a href="{b["path"]}{x[lang]["slug"]}/">{x["emoji"]} {escape(x[lang]["title"])}</a></li>'
                       for x in ARTICLES if x is not a)
     title = f'{art["title"]} | {t["name"]}'
@@ -553,13 +580,13 @@ def article(lang, a):
 {c_html}
 <p class="post-emoji" aria-hidden="true">{a['emoji']}</p>
 <h1>{escape(art['title'])}</h1>
-<p class="meta">{b['published']} <time datetime="{BLOG_DATE}">{b['date']}</time> · {b['read'].format(n=art['read'])} · <a href="{other_path}" hreflang="{o}" lang="{o}">{b['other_lang']}</a></p>
+<p class="meta">{b['published']} <time datetime="{art_date(a)}">{nice_date(art_date(a), lang)}</time> · {b['read'].format(n=art['read'])} · <a href="{other_path}" hreflang="{o}" lang="{o}">{b['other_lang']}</a></p>
 <p class="summary">{escape(art['desc'])}</p>
 {render_body(art['body'])}
 <div class="post-cta">
   <img src="/assets/img/kwispel-happy.svg" alt="" width="96" height="96" loading="lazy">
   <div><h2>{escape(b['cta_title'])}</h2><p>{escape(b['cta_text'])}</p>
-  <a class="btn btn-primary" href="{t['path']}">{escape(b['cta_btn'])}</a></div>
+  <a class="btn btn-primary" href="{PLAY_URL}&amp;hl={t['hl']}" rel="noopener">{escape(b['cta_btn'])}</a></div>
 </div>
 <h2>{escape(b['related'])}</h2>
 <ul class="related">{related}</ul>
@@ -571,9 +598,9 @@ def llms_txt():
     lines = ["# Kwispelboek (Wagbook)", "",
              "> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of "
              "pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, "
-             "travel checklists, a missing-pet poster, a diary, monthly photo album, year in review and first aid, with reminders. No account: all data stays on the phone. "
+             "travel checklists, a missing-pet poster, a diary, monthly photo album, year in review, first aid, 'on this day' memories, seasonal tips (fireworks, ticks, heat) and a memorial page for pets that passed away, with reminders. No account: all data stays on the phone. "
              "Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. "
-             "Coming soon to Google Play.", "",
+             "Available on Google Play: " + PLAY_URL + "", "",
              "## Main pages",
              f"- [Kwispelboek (Dutch)]({DOMAIN}/): features, screenshots, pricing and FAQ",
              f"- [Wagbook (English)]({DOMAIN}/en/): features, screenshots, pricing and FAQ",
@@ -597,7 +624,7 @@ NOT_FOUND = f"""<!doctype html>
 <title>Pagina niet gevonden – Kwispelboek</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=3">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -620,17 +647,17 @@ MANIFEST = {
               {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}],
 }
 
-SITEMAP_URLS = [("/", "/en/"), ("/privacy/", "/en/privacy/"), ("/blog/", "/en/blog/")] + [
-    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/") for a in ARTICLES]
+SITEMAP_URLS = [("/", "/en/", site_lastmod()), ("/privacy/", "/en/privacy/", BLOG_DATE), ("/blog/", "/en/blog/", site_lastmod())] + [
+    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES]
 
 
 def sitemap(lang):
     rows = []
-    for nl, en in SITEMAP_URLS:
+    for nl, en, mod in SITEMAP_URLS:
         nl_url, en_url = DOMAIN + nl, EN_DOMAIN + en[3:]
         rows.append(f"""  <url>
     <loc>{nl_url if lang == "nl" else en_url}</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>{mod}</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="{nl_url}"/>
     <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>
   </url>""")
@@ -702,7 +729,7 @@ NOT_FOUND_EN = f"""<!doctype html>
 <title>Page not found – Wagbook</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=3">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
