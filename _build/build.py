@@ -14,6 +14,9 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
+import extra  # noqa: E402
+
+CSS_V = "6"
 
 MONTHS = {"nl": ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
           "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
@@ -51,7 +54,7 @@ T = {
   "name": "Kwispelboek", "other": "en", "path": "/", "privacy": "/privacy/",
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
   "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Gratis in Google Play voor Android.",
-  "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/blog/", "Blog")],
+  "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/hulpmiddelen/", "Hulpmiddelen"), ("/blog/", "Blog")],
   "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
   "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
   "soon_small": "ONTDEK HET OP", "soon": "Google Play", "hl": "nl", "see_features": "Bekijk de functies",
@@ -142,7 +145,7 @@ T = {
   "name": "Wagbook", "other": "nl", "path": "/en/", "privacy": "/en/privacy/",
   "title": "Wagbook – Pet health log for dogs, cats & more",
   "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Free on Google Play for Android.",
-  "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/blog/", "Blog")],
+  "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/tools/", "Tools"), ("/en/blog/", "Blog")],
   "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
   "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account: everything stays on your phone.",
   "soon_small": "GET IT ON", "soon": "Google Play", "hl": "en", "see_features": "See the features",
@@ -299,7 +302,7 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/nunito-black.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/nunito-semibold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{T[lang]['name']}">
 <meta property="og:locale" content="{'nl_NL' if lang == 'nl' else 'en_US'}">
@@ -351,7 +354,7 @@ def footer(lang):
     return f"""<footer>
   <div class="wrap">
     <span>© 2026 {t['name']} · {t['foot_by']} <a href="https://grounded-studio.app/">Grounded Studio</a></span>
-    <nav aria-label="Footer"><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
+    <nav aria-label="Footer"><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{extra.TX[lang]['tools_path']}">{extra.TX[lang]['tools']}</a><a href="{extra.TX[lang]['species_path']}">{extra.TX[lang]['species']}</a><a href="{extra.TX[lang]['lists_path']}">{extra.TX[lang]['lists']}</a>{'<a href="/video/">Video</a>' if lang == 'nl' else ''}<a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
   </div>
 </footer>
 <script>
@@ -522,6 +525,17 @@ def render_body(blocks):
     return "\n".join(out)
 
 
+def seasons_html(lang):
+    """The seasonal series: four columns with the articles of each season."""
+    b = BLOG_T[lang]
+    cols = []
+    for key, label in b["seasons"].items():
+        items = "".join(f'<li><a href="{b['path']}{a[lang]['slug']}/">{escape(a[lang]['title'])}</a></li>'
+                        for a in ARTICLES if a.get("season") == key)
+        cols.append(f'<div class="season"><h3>{label}</h3><ul>{items}</ul></div>')
+    return f'<h2 class="also">{escape(b["seasons_title"])}</h2><div class="seasons">{"".join(cols)}</div>'
+
+
 def blog_index(lang):
     t, b = T[lang], BLOG_T[lang]
     other = T[t["other"]]
@@ -548,6 +562,7 @@ def blog_index(lang):
 {c_html}
 <h1>{b['h1']}</h1>
 <p class="lead" style="margin-top:12px">{escape(b['lead'])}</p>
+{seasons_html(lang)}
 <div class="post-grid">{cards}</div>
 {also}
 </div>
@@ -610,6 +625,9 @@ def llms_txt():
     lines += [f'- [{a["nl"]["title"]}]({DOMAIN}/blog/{a["nl"]["slug"]}/): {a["nl"]["desc"]}' for a in ARTICLES]
     lines += ["", "## Blog (English)"]
     lines += [f'- [{a["en"]["title"]}]({DOMAIN}/en/blog/{a["en"]["slug"]}/): {a["en"]["desc"]}' for a in ARTICLES]
+    lines += ["", "## Tools, species pages and checklists (Dutch)"] + extra.llms_lines("nl", DOMAIN)
+    lines += ["", "## Video (Dutch)", f"- [{extra.VIDEO['h1']}]({DOMAIN}{extra.VIDEO['path']}): {extra.VIDEO['desc']}"]
+    lines += ["", "## Tools, species pages and checklists (English)"] + extra.llms_lines("en", EN_DOMAIN)
     lines += ["", "## Optional",
               "- [Grounded Studio](https://grounded-studio.app/): the studio behind the app",
               "- Contact: contact@grounded-studio.app", ""]
@@ -624,7 +642,7 @@ NOT_FOUND = f"""<!doctype html>
 <title>Pagina niet gevonden – Kwispelboek</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -648,7 +666,7 @@ MANIFEST = {
 }
 
 SITEMAP_URLS = [("/", "/en/", site_lastmod()), ("/privacy/", "/en/privacy/", BLOG_DATE), ("/blog/", "/en/blog/", site_lastmod())] + [
-    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES]
+    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES] + extra.pages()
 
 
 def sitemap(lang):
@@ -662,7 +680,9 @@ def sitemap(lang):
     <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>
   </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
-            'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(rows) + "\n</urlset>\n")
+            'xmlns:xhtml="http://www.w3.org/1999/xhtml"'
+            + (' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"' if lang == "nl" else "") + '>\n'
+            + "\n".join(rows + ([extra.video_sitemap_row(sys.modules[__name__])] if lang == "nl" else [])) + "\n</urlset>\n")
 
 
 STATIC = ("/assets/", "/favicon", "/icon-", "/apple-touch-icon", "/site.webmanifest")
@@ -729,7 +749,7 @@ NOT_FOUND_EN = f"""<!doctype html>
 <title>Page not found – Wagbook</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "fd857a6afd0c4ecdbaa74eafc299b943"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -747,7 +767,7 @@ NOT_FOUND_EN = f"""<!doctype html>
 
 # Old English pages and their redirects are rebuilt from scratch.
 shutil.rmtree(SITE / "en", ignore_errors=True)
-for d in ("assets", "blog", "privacy"):
+for d in ("assets", "blog", "privacy", "tools", "for", "checklists", "_print"):
     shutil.rmtree(EN_SITE / d, ignore_errors=True)
 shutil.copytree(SITE / "assets", EN_SITE / "assets")
 for f in ("favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png"):
@@ -762,6 +782,7 @@ write_en("blog/index.html", blog_index("en"))
 for a in ARTICLES:
     write(f"blog/{a['nl']['slug']}/index.html", article("nl", a))
     write_en(f"blog/{a['en']['slug']}/index.html", article("en", a))
+extra.build(sys.modules[__name__])
 write("llms.txt", llms_txt())
 out(EN_SITE / "llms.txt", nl_links(llms_txt()))
 write("404.html", NOT_FOUND)
@@ -774,4 +795,6 @@ write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n
 out(EN_SITE / "robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {EN_DOMAIN}/sitemap.xml\n")
 write("CNAME", "kwispelboek.app\n")
 out(EN_SITE / "CNAME", "wagbook.app\n")
+import pdfs  # noqa: E402
+pdfs.make(SITE, EN_SITE, extra)
 print("built")

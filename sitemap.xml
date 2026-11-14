@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://kwispelboek.app/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/"/>
   </url>
@@ -14,9 +14,33 @@
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/grasaren-hond/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/grasaren-hond/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/grass-awns-dogs/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/blauwalg-hond/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/blauwalg-hond/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/blue-green-algae-dogs/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/herfstgevaren-hond/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/herfstgevaren-hond/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/autumn-dangers-dogs/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/winter-huisdier-strooizout-kerst/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/winter-huisdier-strooizout-kerst/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/winter-pets-road-salt-christmas/"/>
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/vuurwerkangst-hond-kat/</loc>
@@ -65,5 +89,90 @@
     <lastmod>2026-11-05</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/what-to-keep-for-the-vet/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/hulpmiddelen/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/hulpmiddelen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/tools/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/voor/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/voor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/for/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/checklists/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/checklists/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/checklists/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/hulpmiddelen/leeftijd-in-mensenjaren/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/hulpmiddelen/leeftijd-in-mensenjaren/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/tools/pet-age-in-human-years/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/hulpmiddelen/21-dagenregel/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/hulpmiddelen/21-dagenregel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/tools/21-day-rule/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/hulpmiddelen/voercalculator/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/hulpmiddelen/voercalculator/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/tools/food-calculator/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/voor/hond/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/voor/hond/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/for/dogs/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/voor/kat/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/voor/kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/for/cats/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/voor/konijn/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/voor/konijn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/for/rabbits/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/voor/vogel/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/voor/vogel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/for/birds/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/checklists/puppy-in-huis/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/checklists/puppy-in-huis/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/checklists/new-puppy/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/checklists/op-vakantie/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/checklists/op-vakantie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/checklists/holiday/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/video/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://kwispelboek.app/assets/img/video-nl.webp</video:thumbnail_loc>
+      <video:title>Kwispelboek – Nooit meer vergeten wanneer je huisdier ontwormd of gevaccineerd moet worden</video:title>
+      <video:description>Bekijk in anderhalve minuut hoe Kwispelboek je helpt herinneren aan ontworming, vaccinaties, medicijnen en gewicht van je hond, kat of konijn.</video:description>
+      <video:player_loc>https://www.youtube-nocookie.com/embed/1M8IMolNsa4</video:player_loc>
+      <video:duration>88</video:duration>
+      <video:publication_date>2026-11-09T08:00:28-08:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
 </urlset>

@@ -9,6 +9,10 @@
 - [Privacy policy (English)](https://wagbook.app/privacy/)
 
 ## Blog (Dutch)
+- [Grasaren bij je hond: klein, maar soms gevaarlijk](https://kwispelboek.app/blog/grasaren-hond/): In het voorjaar en de zomer kunnen grasaren in de oren, neus of tussen de tenen van je hond kruipen. Zo herken je het en zo voorkom je het.
+- [Blauwalg: wanneer mag je hond niet zwemmen?](https://kwispelboek.app/blog/blauwalg-hond/): Blauwalg kan voor honden heel gevaarlijk zijn. Zo herken je het water, zo zie je of het mis is en zo handel je snel.
+- [Herfstgevaren voor je hond: eikels, kastanjes, paddenstoelen en herfstmijt](https://kwispelboek.app/blog/herfstgevaren-hond/): De herfst is mooi om te wandelen, maar er liggen ook dingen die je hond beter niet kan eten. Wat is gevaarlijk en wat doe je als het misgaat?
+- [Winter met je huisdier: strooizout, antivries en kerst](https://kwispelboek.app/blog/winter-huisdier-strooizout-kerst/): Wat je in de winter in de gaten houdt voor je hond, kat of konijn: strooizout, antivries, kou en de gevaren rond kerst.
 - [Vuurwerkangst bij je hond of kat: zo kom je samen de jaarwisseling door](https://kwispelboek.app/blog/vuurwerkangst-hond-kat/): Veel honden en katten zijn bang voor vuurwerk. Wat je weken van tevoren al kunt doen, hoe je oud en nieuw rustig doorkomt en wat je beter niet doet.
 - [Je hond en de hitte: zo voorkom je oververhitting](https://kwispelboek.app/blog/hond-hitte-oververhitting/): Honden kunnen slecht tegen hitte. Wanneer het gevaarlijk wordt, welke honden extra risico lopen, hoe je een hitteberoerte herkent en wat je dan meteen doet.
 - [Afscheid nemen van je huisdier: verdriet, herinneringen en wat er geregeld moet worden](https://kwispelboek.app/blog/afscheid-nemen-van-je-huisdier/): Je huisdier verliezen doet pijn. Over rouw, over praten met kinderen, over wat er praktisch geregeld moet worden en over manieren om de herinnering te bewaren.
@@ -19,6 +23,10 @@
 - [Wat moet je bijhouden voor de dierenarts? Een handige checklist](https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/): Welke gegevens over je huisdier handig zijn bij de dierenarts, bij een nieuwe praktijk, de oppas of een noodgeval. Met een checklist om meteen te gebruiken.
 
 ## Blog (English)
+- [Grass awns and your dog: small, but sometimes dangerous](https://wagbook.app/blog/grass-awns-dogs/): In spring and summer, grass awns can work their way into your dog’s ears, nose or between the toes. How to recognise it and how to prevent it.
+- [Blue-green algae: when shouldn’t your dog swim?](https://wagbook.app/blog/blue-green-algae-dogs/): Blue-green algae can be very dangerous for dogs. How to recognise the water, how to see something’s wrong and how to act fast.
+- [Autumn dangers for your dog: acorns, conkers, mushrooms and harvest mites](https://wagbook.app/blog/autumn-dangers-dogs/): Autumn is lovely for walks, but some things on the ground are better left alone. What’s dangerous for your dog and what to do if things go wrong?
+- [Winter with your pet: road salt, antifreeze and Christmas](https://wagbook.app/blog/winter-pets-road-salt-christmas/): What to watch out for in winter for your dog, cat or rabbit: road salt, antifreeze, the cold and the dangers around Christmas.
 - [Fear of fireworks in dogs and cats: getting through New Year’s Eve together](https://wagbook.app/blog/fear-of-fireworks-dog-cat/): Many dogs and cats are afraid of fireworks. What you can do weeks in advance, how to get through New Year’s Eve calmly and what you’d better not do.
 - [Your dog and the heat: how to prevent overheating](https://wagbook.app/blog/dogs-and-heat-overheating/): Dogs don’t cope well with heat. When it gets dangerous, which dogs are most at risk, how to recognise heatstroke and what to do straight away.
 - [Saying goodbye to your pet: grief, memories and what needs arranging](https://wagbook.app/blog/saying-goodbye-to-your-pet/): Losing a pet hurts. About grief, talking to children, the practical things to arrange and ways to keep the memory alive.
@@ -27,6 +35,31 @@
 - [Giving your pet medication: never miss a dose](https://wagbook.app/blog/giving-your-pet-medication/): Practical tips to keep up a course of medication for your dog, cat or rabbit: fixed times, hiding a tablet and what to do if you forget a dose.
 - [Tracking your pet’s weight: why and how often?](https://wagbook.app/blog/tracking-your-pets-weight/): Why regular weighing is so useful for dogs, cats, rabbits and birds, how to do it at home and when a change is a reason to see your vet.
 - [What should you keep track of for the vet? A handy checklist](https://wagbook.app/blog/what-to-keep-for-the-vet/): Which details about your pet are useful at the vet, at a new practice, for a pet sitter or in an emergency. With a checklist you can use right away.
+
+## Tools, species pages and checklists (Dutch)
+- [Hoe oud is je hond of kat in mensenjaren?](https://kwispelboek.app/hulpmiddelen/leeftijd-in-mensenjaren/): Reken de leeftijd van je hond of kat om naar mensenjaren. Voor honden telt ook de grootte mee.
+- [Wanneer mag je op reis? De 21-dagenregel berekenen](https://kwispelboek.app/hulpmiddelen/21-dagenregel/): Bereken vanaf welke dag je hond, kat of fret binnen de EU de grens over mag na een eerste rabiësvaccinatie.
+- [Voercalculator: hoe lang doe je met een zak voer?](https://kwispelboek.app/hulpmiddelen/voercalculator/): Bereken hoeveel dagen een zak voer meegaat, wanneer hij op is en wat het voer per dag en per maand kost.
+- [Kwispelboek voor je hond: vaccinaties, ontworming en meer](https://kwispelboek.app/voor/hond/): Houd de zorg voor je hond bij: cocktail-enting, leptospirose, kennelhoest, rabiës, ontworming, vlooien en teken, gewicht en voer. Met herinneringen op tijd.
+- [Kwispelboek voor je kat: vaccinaties, ontworming en meer](https://kwispelboek.app/voor/kat/): Houd de zorg voor je kat bij: kattenziekte en niesziekte, FeLV, rabiës, ontworming, vlooien, gewicht en voer. Met herinneringen op tijd.
+- [Kwispelboek voor je konijn: vaccinatie, gewicht en meer](https://kwispelboek.app/voor/konijn/): Houd de zorg voor je konijn bij: de jaarlijkse vaccinatie tegen myxomatose en RHD, ontworming, gewicht, voer en dierenartsbezoeken.
+- [Kwispelboek voor je vogel: gewicht in grammen en meer](https://kwispelboek.app/voor/vogel/): Houd de zorg voor je parkiet, kanarie of papegaai bij: gewicht in grammen, dierenartsbezoeken, medicijnen, voer en een dagboek.
+- [Checklist: puppy in huis](https://kwispelboek.app/checklists/puppy-in-huis/): Een printbare checklist voor als er een puppy komt: spullen, de eerste dagen, de dierenarts en papieren.
+- [Checklist: op vakantie met je huisdier](https://kwispelboek.app/checklists/op-vakantie/): Een printbare checklist voor op vakantie met je hond of kat: papieren, inpakken, de reis en op je bestemming.
+
+## Video (Dutch)
+- [Zo werkt Kwispelboek](https://kwispelboek.app/video/): Bekijk in anderhalve minuut hoe Kwispelboek je helpt herinneren aan ontworming, vaccinaties, medicijnen en gewicht van je hond, kat of konijn.
+
+## Tools, species pages and checklists (English)
+- [How old is your dog or cat in human years?](https://wagbook.app/tools/pet-age-in-human-years/): Convert your dog’s or cat’s age into human years. For dogs, size matters too.
+- [When can you travel? Work out the 21-day rule](https://wagbook.app/tools/21-day-rule/): Work out from which day your dog, cat or ferret may cross a border within the EU after a first rabies vaccination.
+- [Food calculator: how long does a bag of food last?](https://wagbook.app/tools/food-calculator/): Work out how many days a bag of food lasts, when it runs out and what the food costs per day and per month.
+- [Wagbook for your dog: vaccinations, deworming and more](https://wagbook.app/for/dogs/): Keep track of your dog’s care: core vaccine, leptospirosis, kennel cough, rabies, deworming, fleas and ticks, weight and food. With reminders on time.
+- [Wagbook for your cat: vaccinations, deworming and more](https://wagbook.app/for/cats/): Keep track of your cat’s care: cat flu and panleukopenia, FeLV, rabies, deworming, fleas, weight and food. With reminders on time.
+- [Wagbook for your rabbit: vaccination, weight and more](https://wagbook.app/for/rabbits/): Keep track of your rabbit’s care: the yearly vaccination against myxomatosis and RHD, deworming, weight, food and vet visits.
+- [Wagbook for your bird: weight in grams and more](https://wagbook.app/for/birds/): Keep track of your budgie’s, canary’s or parrot’s care: weight in grams, vet visits, medication, food and a diary.
+- [Checklist: a new puppy at home](https://wagbook.app/checklists/new-puppy/): A printable checklist for when a puppy is coming: supplies, the first days, the vet and paperwork.
+- [Checklist: going on holiday with your pet](https://wagbook.app/checklists/holiday/): A printable checklist for a holiday with your dog or cat: paperwork, packing, the trip and at your destination.
 
 ## Optional
 - [Grounded Studio](https://grounded-studio.app/): the studio behind the app

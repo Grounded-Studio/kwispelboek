@@ -224,3 +224,57 @@ footer a:hover{color:var(--brand)}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.card,.faq summary::after{transition:none}.kw-happy img{animation:none}}
 @media (min-width:1000px){.shots{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:6px 0 24px}.shots figure{flex:none}}
+
+/* tools */
+.tool{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin:8px 0 26px;display:grid;gap:16px}
+.tool fieldset{border:0;margin:0;padding:0}
+.tool legend,.tool .field{font-weight:800;font-size:.95rem;color:var(--ink)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg legend{width:100%;margin-bottom:8px}
+.seg label{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:2px solid var(--line);border-radius:14px;cursor:pointer;font-weight:700;background:#fff}
+.seg label:has(input:checked){border-color:var(--brand);background:var(--brand-soft)}
+.seg input{accent-color:var(--brand)}
+.tool .field{display:grid;gap:6px}
+.tool input[type=number],.tool input[type=date]{font:inherit;font-weight:700;font-size:1.05rem;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);width:100%}
+.tool input:focus{outline:none;border-color:var(--brand)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.result:empty{display:none}
+.result{display:block;background:var(--sunny-soft);border-radius:18px;padding:16px 18px;font-weight:700;color:var(--ink)}
+.result b{display:block;font-size:2.2rem;font-weight:900;line-height:1.1;color:var(--brand-dark)}
+.result span{display:block;margin-top:4px;color:var(--muted);font-weight:700}
+.tool .hint{margin:0;color:var(--muted);font-size:.9rem}
+
+/* checklists */
+.checklist{list-style:none;padding:0;margin:0}
+.checklist li{padding:6px 0;border-bottom:1px dashed var(--line)}
+.checklist label{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.checklist input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--sage)}
+.checklist input:checked + span{color:var(--muted);text-decoration:line-through}
+.legal .checklist{padding-left:0}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--brand);font-weight:800;cursor:pointer;text-decoration:underline}
+.actions.no-print{margin:6px 0 10px}
+@media print{
+  .top,footer,.crumbs,.no-print,.skip{display:none !important}
+  body{background:#fff}
+  .legal{padding:0}
+  .checklist input{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* seasonal series on the blog index */
+.seasons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 34px}
+.season{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:16px 18px}
+.season h3{font-size:1.05rem;margin-bottom:8px}
+.season ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.season a{color:var(--ink);font-weight:700;font-size:.92rem;text-decoration:none}
+.season a:hover{color:var(--brand)}
+@media (max-width:900px){.seasons{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.seasons{grid-template-columns:1fr}}
+.video{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#000;margin:24px 0 10px;box-shadow:0 10px 30px rgba(20,40,60,.15)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-play{all:unset;cursor:pointer;display:block;position:absolute;inset:0}
+.video-play img{width:100%;height:100%;object-fit:cover;display:block}
+.video-btn{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--brand);box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .15s}
+.video-btn::after{content:"";position:absolute;left:33px;top:24px;border-style:solid;border-width:18px 0 18px 30px;border-color:transparent transparent transparent #fff}
+.video-play:hover .video-btn,.video-play:focus-visible .video-btn{transform:scale(1.08)}
+.video-play:focus-visible{outline:3px solid var(--accent,#FFB627);outline-offset:-3px}
