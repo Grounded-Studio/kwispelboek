@@ -53,7 +53,7 @@ T = {
  "nl": {
   "name": "Kwispelboek", "other": "en", "path": "/", "privacy": "/privacy/",
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
-  "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account. Gratis in Google Play voor Android.",
+  "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account, gratis voor Android.",
   "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/hulpmiddelen/", "Hulpmiddelen"), ("/blog/", "Blog")],
   "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
   "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
@@ -599,7 +599,7 @@ def article(lang, a):
              + '<meta property="article:published_time" content="' + art_date(a) + '">\n')
     related = "".join(f'<li><a href="{b["path"]}{x[lang]["slug"]}/">{x["emoji"]} {escape(x[lang]["title"])}</a></li>'
                       for x in ARTICLES if x is not a)
-    title = f'{art["title"]} | {t["name"]}'
+    title = f'{art.get("seo", art["title"])} | {t["name"]}'
     return head(lang, title, art["desc"], path, other_path, lang, extra).replace(
         '<meta property="og:type" content="website">', '<meta property="og:type" content="article">') + header(lang, path, other_path, nav=False) + f"""<main id="main" class="legal article">
 {c_html}

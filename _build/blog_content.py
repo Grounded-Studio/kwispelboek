@@ -181,6 +181,7 @@ ARTICLES = [
   "nl": {
    "slug": "herfstgevaren-hond",
    "title": "Herfstgevaren voor je hond: eikels, kastanjes, paddenstoelen en herfstmijt",
+   "seo": "Herfstgevaren voor je hond: eikels en paddenstoelen",  # shorter <title> (search engines show ~70 characters)
    "desc": "De herfst is mooi om te wandelen, maar er liggen ook dingen die je hond beter niet kan eten. Wat is gevaarlijk en wat doe je als het misgaat?",
    "read": 4,
    "body": [
@@ -204,6 +205,7 @@ ARTICLES = [
   "en": {
    "slug": "autumn-dangers-dogs",
    "title": "Autumn dangers for your dog: acorns, conkers, mushrooms and harvest mites",
+   "seo": "Autumn dangers for dogs: acorns, conkers and mushrooms",  # shorter <title> (search engines show ~70 characters)
    "desc": "Autumn is lovely for walks, but some things on the ground are better left alone. What’s dangerous for your dog and what to do if things go wrong?",
    "read": 4,
    "body": [
@@ -283,6 +285,7 @@ ARTICLES = [
   "nl": {
    "slug": "vuurwerkangst-hond-kat",
    "title": "Vuurwerkangst bij je hond of kat: zo kom je samen de jaarwisseling door",
+   "seo": "Vuurwerkangst bij je hond of kat: tips voor oud en nieuw",  # shorter <title> (search engines show ~70 characters)
    "desc": "Veel honden en katten zijn bang voor vuurwerk. Wat je weken van tevoren al kunt doen, hoe je oud en nieuw rustig doorkomt en wat je beter niet doet.",
    "read": 5,
    "body": [
@@ -308,6 +311,7 @@ ARTICLES = [
   "en": {
    "slug": "fear-of-fireworks-dog-cat",
    "title": "Fear of fireworks in dogs and cats: getting through New Year’s Eve together",
+   "seo": "Fear of fireworks in dogs and cats: New Year’s Eve tips",  # shorter <title> (search engines show ~70 characters)
    "desc": "Many dogs and cats are afraid of fireworks. What you can do weeks in advance, how to get through New Year’s Eve calmly and what you’d better not do.",
    "read": 5,
    "body": [
@@ -394,6 +398,7 @@ ARTICLES = [
   "nl": {
    "slug": "afscheid-nemen-van-je-huisdier",
    "title": "Afscheid nemen van je huisdier: verdriet, herinneringen en wat er geregeld moet worden",
+   "seo": "Afscheid nemen van je huisdier: wat nu?",  # shorter <title> (search engines show ~70 characters)
    "desc": "Je huisdier verliezen doet pijn. Over rouw, over praten met kinderen, over wat er praktisch geregeld moet worden en over manieren om de herinnering te bewaren.",
    "read": 5,
    "body": [
@@ -418,6 +423,7 @@ ARTICLES = [
   "en": {
    "slug": "saying-goodbye-to-your-pet",
    "title": "Saying goodbye to your pet: grief, memories and what needs arranging",
+   "seo": "Saying goodbye to your pet: grief and what to arrange",  # shorter <title> (search engines show ~70 characters)
    "desc": "Losing a pet hurts. About grief, talking to children, the practical things to arrange and ways to keep the memory alive.",
    "read": 5,
    "body": [
@@ -496,6 +502,7 @@ ARTICLES = [
   "nl": {
    "slug": "vlooien-en-teken-hoe-vaak-behandelen",
    "title": "Vlooien en teken: hoe vaak moet je je hond of kat behandelen?",
+   "seo": "Vlooien en teken: hoe vaak behandel je hond of kat?",  # shorter <title> (search engines show ~70 characters)
    "desc": "Hoe vaak je je huisdier behandelt tegen vlooien en teken, waarom het ook in de winter telt, en waarom je hondenmiddel nooit bij een kat gebruikt.",
    "read": 4,
    "body": [
@@ -546,6 +553,7 @@ ARTICLES = [
   "nl": {
    "slug": "medicijnen-geven-aan-je-huisdier",
    "title": "Medicijnen geven aan je huisdier: zo vergeet je geen dosis",
+   "seo": "Medicijnen geven aan je huisdier: vergeet geen dosis",  # shorter <title> (search engines show ~70 characters)
    "desc": "Praktische tips om een medicijnkuur voor je hond, kat of konijn vol te houden: vaste tijden, een tablet ‘verstoppen’ en wat je doet als je een dosis vergeet.",
    "read": 4,
    "body": [
@@ -596,7 +604,8 @@ ARTICLES = [
   "nl": {
    "slug": "gewicht-huisdier-bijhouden",
    "title": "Het gewicht van je huisdier bijhouden: waarom en hoe vaak?",
-   "desc": "Waarom regelmatig wegen bij honden, katten, konijnen en vogels zo nuttig is, hoe je het thuis doet en wanneer een verandering reden is om naar de dierenarts te gaan.",
+   "seo": "Gewicht van je huisdier bijhouden: waarom en hoe vaak?",  # shorter <title> (search engines show ~70 characters)
+   "desc": "Waarom regelmatig wegen bij hond, kat, konijn en vogel zo nuttig is, hoe je het thuis doet en wanneer een verandering reden is voor de dierenarts.",
    "read": 4,
    "body": [
     ("p", "Gewicht is een van de eenvoudigste dingen die je over de gezondheid van je dier kunt bijhouden, en een van de nuttigste. Veel ziektes laten zich eerst zien op de weegschaal, lang voordat je iets aan je dier merkt. En ook overgewicht sluipt er vaak ongemerkt in."),
@@ -642,6 +651,7 @@ ARTICLES = [
   "nl": {
    "slug": "wat-bijhouden-voor-de-dierenarts",
    "title": "Wat moet je bijhouden voor de dierenarts? Een handige checklist",
+   "seo": "Wat bijhouden voor de dierenarts? Een handige checklist",  # shorter <title> (search engines show ~70 characters)
    "desc": "Welke gegevens over je huisdier handig zijn bij de dierenarts, bij een nieuwe praktijk, de oppas of een noodgeval. Met een checklist om meteen te gebruiken.",
    "read": 4,
    "body": [
@@ -693,7 +703,7 @@ BLOG_T = {
   "path": "/blog/", "nav": "Blog", "home": "Home",
   "title": "Blog – tips over de zorg voor je huisdier | Kwispelboek",
   "h1": "Blog", "lead": "Praktische tips over vaccinaties, vlooien en teken, medicijnen, gewicht, vuurwerk, hitte en op reis gaan met je huisdier. En over afscheid nemen.",
-  "desc": "Praktische tips over de zorg voor je hond, kat, konijn of vogel: vuurwerkangst, hitte, op reis, vlooien en teken, medicijnen, gewicht, afscheid nemen en wat je bijhoudt voor de dierenarts.",
+  "desc": "Praktische tips voor je hond, kat, konijn of vogel: vuurwerk, hitte, op reis, vlooien en teken, medicijnen, gewicht en wat je bijhoudt voor de dierenarts.",
   "read": "{n} min lezen", "more": "Lees verder", "published": "Gepubliceerd op",
   "date": "5 november 2026",
   "also": "Meer lezen op Grounded Studio",
@@ -709,7 +719,7 @@ BLOG_T = {
   "path": "/en/blog/", "nav": "Blog", "home": "Home",
   "title": "Blog – tips on caring for your pet | Wagbook",
   "h1": "Blog", "lead": "Practical tips on vaccinations, fleas and ticks, medication, weight, fireworks, heat and travelling with your pet. And on saying goodbye.",
-  "desc": "Practical tips on caring for your dog, cat, rabbit or bird: fear of fireworks, heat, travelling, fleas and ticks, medication, weight, saying goodbye and what to keep track of for the vet.",
+  "desc": "Practical tips for your dog, cat, rabbit or bird: fireworks, heat, travel, fleas and ticks, medication, weight and what to keep track of for the vet.",
   "read": "{n} min read", "more": "Read more", "published": "Published on",
   "date": "5 November 2026",
   "also": "", "also_links": [],

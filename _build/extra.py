@@ -142,7 +142,7 @@ TOOL_UI = {
 SPECIES = [
  {
   "key": "dog", "emoji": "🐶",
-  "nl": {"slug": "hond", "name": "hond", "title": "Kwispelboek voor je hond: vaccinaties, ontworming en meer",
+  "nl": {"slug": "hond", "name": "hond", "title": "Kwispelboek voor je hond: vaccinaties en ontworming",
          "h1": "Kwispelboek voor je hond",
          "desc": "Houd de zorg voor je hond bij: cocktail-enting, leptospirose, kennelhoest, rabiës, ontworming, vlooien en teken, gewicht en voer. Met herinneringen op tijd.",
          "lead": "Van pup tot senior: alle vaccinaties, ontworming, vlooien- en tekenbehandelingen, medicijnen, gewicht en voer van je hond op één plek.",
