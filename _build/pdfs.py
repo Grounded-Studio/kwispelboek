@@ -20,6 +20,19 @@ def _serve(root):
     return srv
 
 
+def _keep_if_same(root, target):
+    """Chrome stamps every PDF with the time it was made. When nothing else changed, put the
+    committed file back, so an unchanged checklist is not seen as a change (sitemap, IndexNow)."""
+    import re
+    rel = target.relative_to(root).as_posix()
+    old = subprocess.run(["git", "-C", str(root), "show", f"HEAD:{rel}"], capture_output=True)
+    if old.returncode != 0:
+        return
+    stamp = re.compile(rb"/(CreationDate|ModDate) \(D:[^)]*\)")
+    if stamp.sub(b"", old.stdout) == stamp.sub(b"", target.read_bytes()):
+        target.write_bytes(old.stdout)
+
+
 def make(site, en_site, extra):
     if not Path(CHROME).exists():
         print("pdfs: Chrome not found, skipped")
@@ -35,6 +48,7 @@ def make(site, en_site, extra):
                 subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
                                 "--virtual-time-budget=4000", f"--print-to-pdf={target}", url],
                                check=True, capture_output=True)
+                _keep_if_same(root, target)
                 print("pdf", target.relative_to(root.parent))
         finally:
             srv.shutdown()

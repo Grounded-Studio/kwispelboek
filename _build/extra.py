@@ -632,7 +632,7 @@ def video_sitemap_row(b):
     v = VIDEO
     return f"""  <url>
     <loc>{b.DOMAIN}{v['path']}</loc>
-    <lastmod>{DATE}</lastmod>
+    <lastmod>{b.page_lastmod(b.SITE, 'video/index.html', DATE)}</lastmod>
     <video:video>
       <video:thumbnail_loc>{b.DOMAIN}{v['thumb']}</video:thumbnail_loc>
       <video:title>{escape(v['name'])}</video:title>

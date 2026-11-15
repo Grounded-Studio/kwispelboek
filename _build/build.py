@@ -679,10 +679,30 @@ SITEMAP_URLS = [("/", "/en/", site_lastmod()), ("/privacy/", "/en/privacy/", BLO
     (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES] + extra.pages()
 
 
+def page_lastmod(root, rel, fallback):
+    """lastmod for the sitemap: today when the freshly built page differs from
+    the committed one (or is new), otherwise the date of its last commit."""
+    import datetime
+    import subprocess
+    crlf, lf = bytes([13, 10]), bytes([10])
+    try:
+        now = (root / rel).read_bytes().replace(crlf, lf)
+        old = subprocess.run(["git", "-C", str(root), "show", f"HEAD:{rel}"], capture_output=True)
+        if old.returncode != 0 or old.stdout.replace(crlf, lf) != now:
+            return datetime.date.today().isoformat()
+        last = subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%cs", "--", rel],
+                              capture_output=True, text=True).stdout.strip()
+        return last or fallback
+    except OSError:
+        return fallback
+
+
 def sitemap(lang):
     rows = []
     for nl, en, mod in SITEMAP_URLS:
         nl_url, en_url = DOMAIN + nl, EN_DOMAIN + en[3:]
+        root, rel = (SITE, nl.lstrip("/")) if lang == "nl" else (EN_SITE, en[4:])
+        mod = page_lastmod(root, rel + "index.html", mod)
         rows.append(f"""  <url>
     <loc>{nl_url if lang == "nl" else en_url}</loc>
     <lastmod>{mod}</lastmod>
