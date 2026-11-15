@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://kwispelboek.app/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/"/>
   </url>
@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/blog/qr-code-halsband-hond-kat/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/qr-code-halsband-hond-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/qr-code-pet-collar-tag/"/>
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/grasaren-hond/</loc>
