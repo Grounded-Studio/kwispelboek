@@ -38,7 +38,7 @@ SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
 EN_DOMAIN = "https://wagbook.app"
 EN_SITE = SITE.parent / "wagbook-site"
-UPDATED = {"nl": "15 november 2026", "en": "15 November 2026"}
+UPDATED = {"nl": "17 november 2026", "en": "17 November 2026"}
 MAIL = "contact@grounded-studio.app"
 
 PLAY_URL = "https://play.google.com/store/apps/details?id=groundedstudio.kwispelboek.app"
@@ -56,13 +56,13 @@ T = {
   "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account, gratis voor Android.",
   "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/hulpmiddelen/", "Hulpmiddelen"), ("/blog/", "Blog")],
   "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
-  "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account: alles blijft op je telefoon.",
+  "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account nodig. Je gegevens staan op je telefoon; alleen als je samen bijhoudt of met AI scant, gaat er iets versleuteld via onze server.",
   "soon_small": "ONTDEK HET OP", "soon": "Google Play", "hl": "nl", "see_features": "Bekijk de functies",
   "notify": "Vraag of idee? Mail ons", "notify_subject": "Vraag over Kwispelboek",
   "badges": ["Gratis te gebruiken", "Geen account", "Geen advertenties"],
   "alt_today": "Kwispelboek: het Vandaag-scherm met voortgangsring, je dieren en wat er nu moet gebeuren",
   "alt_profile": "Kwispelboek: profiel van een hond met de tabbladen Zorg, Gezondheid en Paspoort",
-  "trust": [("🔒", "Je gegevens blijven op je telefoon"), ("🚫", "Geen advertenties of tracking"), ("🐾", "Hond, kat, konijn, vogel & meer"), ("💬", "Nederlands & Engels")],
+  "trust": [("🔒", "Geen account nodig"), ("🚫", "Geen advertenties of tracking"), ("🐾", "Hond, kat, konijn, vogel & meer"), ("💬", "Nederlands & Engels")],
   "feat_eyebrow": "Functies", "feat_title": "Alles voor de gezondheid van je dier, op één plek",
   "feat_lead": "Voor baasjes die rust willen: niets vergeten, alles bij de hand, en het mag best een beetje leuk zijn.",
   "features": [
@@ -95,8 +95,7 @@ T = {
    ("💾", "amber", "Back-up in één bestand", "Alle dieren, gegevens en foto’s in één bestand. Zet het in Google Drive en zet het terug op een nieuwe telefoon.", False),
    ("📄", "", "PDF voor de dierenarts", "Een overzichtelijk document met chipnummer, vaccinaties met batchnummers, medicijnen, gewicht en recente bezoeken.", True),
    ("🧑‍🍼", "", "Overzicht voor de oppas", "Voer, karakter, medicijnen en contactgegevens in één PDF voor de oppas of het pension.", True),
-   ("📷", "", "Paspoort scannen", "Fotografeer de vaccinatiepagina en de datums en batchnummers worden ingevuld. Jij controleert altijd eerst.", True),
-   ("🏷️", "", "Vaccinatiesticker scannen", "Vink je een vaccinatie af? Fotografeer de sticker en het batchnummer wordt ingevuld.", True),
+   ("📷", "", "Scannen met AI", "Fotografeer het paspoort, de vaccinatiesticker, een rekening van de dierenarts of een medicijnetiket, en de gegevens worden voor je ingevuld. Jij controleert altijd eerst.", True),
   ],
   "spots": [
    ("today", "Vandaag", "Open de app en je weet wat er moet gebeuren",
@@ -130,11 +129,11 @@ T = {
   "faq_eyebrow": "Vragen", "faq_title": "Veelgestelde vragen",
   "faq": [
    ("Is Kwispelboek gratis?", "Ja. Je kunt gratis tot 2 dieren bijhouden met alle logboeken, herinneringen, de gewichtsgrafiek, de reischecklist, de vermist-poster en back-ups. PRO voegt onbeperkt dieren en foto’s, de PDF-overzichten en scannen met AI toe."),
-   ("Heb ik een account nodig?", "Nee. Kwispelboek werkt zonder account en bewaart alles op je eigen telefoon. Wil je samen met je partner of huisgenoot bijhouden? Dan koppel je jullie telefoons met een code. Die gegevens gaan versleuteld via onze server, en alleen jullie telefoons kunnen ze lezen."),
+   ("Heb ik een account nodig?", "Nee. Kwispelboek werkt zonder account en bewaart je gegevens op je eigen telefoon. Wil je samen met je partner of huisgenoot bijhouden? Dan koppel je jullie telefoons met een code. Die gegevens gaan versleuteld via onze server, en alleen jullie telefoons kunnen ze lezen. Scan je iets met AI, dan gaat die ene foto naar Google (zie hieronder)."),
    ("Wat gebeurt er als ik een nieuwe telefoon krijg?", "Maak in Instellingen een back-up: één bestand met alle dieren, gegevens en foto’s. Bewaar het in Google Drive of mail het naar jezelf, en zet het terug op je nieuwe telefoon."),
    ("Hoe werken de herinneringen?", "Per vaccinatie of behandeling kies je hoe ver vooraf je een melding wilt, plus een melding op de dag zelf op het tijdstip dat je instelt. Medicijnen herinneren je op elk tijdstip, met de knoppen ‘Gegeven’ en ‘Later’."),
    ("Is het alleen voor honden?", "Nee. Kwispelboek is er voor honden, katten, konijnen, vogels en andere huisdieren. Suggesties voor vaccinaties passen zich aan per diersoort, en vogels weeg je in grammen."),
-   ("Wat gebeurt er met mijn foto bij scannen met AI?", "Alleen als je zelf kiest om te scannen, wordt die ene foto naar Google (Gemini) gestuurd om de tekst te lezen. Wij bewaren hem niet. Je controleert het resultaat altijd voordat er iets wordt opgeslagen."),
+   ("Wat gebeurt er met mijn foto bij scannen met AI?", "Alleen als je zelf kiest om te scannen, gaat die ene foto via onze server naar Google (Gemini) om de tekst te lezen. Onze server slaat hem niet op. Google gebruikt hem niet om zijn AI te trainen en bewaart hem maximaal 55 dagen om misbruik op te sporen. Je controleert het resultaat altijd voordat er iets wordt opgeslagen."),
    ("Wat kan ik doen als mijn dier overleden is?", "Zet je dier in herinnering via het menu op het profiel. De zorgtaken en meldingen stoppen, en je dier krijgt een eigen herinneringspagina met je eigen woorden, maandfoto’s en dagboek. Niets wordt gewist, en een dier in herinnering telt niet mee voor de 2 gratis dieren."),
    ("Geeft Kwispelboek medisch advies?", "Nee. Kwispelboek helpt je bijhouden en onthouden. Voorgestelde schema’s zijn gangbare standaarden; volg altijd het advies van je eigen dierenarts."),
    ("Waar kan ik Kwispelboek downloaden?", "Kwispelboek staat gratis in Google Play voor Android. In het Engels heet de app Wagbook. Een iPhone-versie staat nog niet gepland."),
@@ -151,13 +150,13 @@ T = {
   "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Free on Google Play for Android.",
   "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/tools/", "Tools"), ("/en/blog/", "Blog")],
   "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
-  "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account: everything stays on your phone.",
+  "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account needed. Your data lives on your phone; only sharing with your household and AI scans go encrypted through our server.",
   "soon_small": "GET IT ON", "soon": "Google Play", "hl": "en", "see_features": "See the features",
   "notify": "Question or idea? Mail us", "notify_subject": "Question about Wagbook",
   "badges": ["Free to use", "No account", "No ads"],
   "alt_today": "Wagbook: the Today screen with progress ring, your pets and what to do now",
   "alt_profile": "Wagbook: a dog's profile with the tabs Care, Health and Passport",
-  "trust": [("🔒", "Your data stays on your phone"), ("🚫", "No ads, no tracking"), ("🐾", "Dogs, cats, rabbits, birds & more"), ("🌍", "English & Dutch")],
+  "trust": [("🔒", "No account needed"), ("🚫", "No ads, no tracking"), ("🐾", "Dogs, cats, rabbits, birds & more"), ("🌍", "English & Dutch")],
   "feat_eyebrow": "Features", "feat_title": "Everything for your pet’s health, in one place",
   "feat_lead": "For owners who want peace of mind: nothing forgotten, everything at hand, and a little fun along the way.",
   "features": [
@@ -190,8 +189,7 @@ T = {
    ("💾", "amber", "Backup in one file", "All pets, records and photos in one file. Keep it in Google Drive and restore it on a new phone.", False),
    ("📄", "", "PDF for the vet", "A clear overview with microchip number, vaccinations with batch numbers, medication, weight and recent visits.", True),
    ("🧑‍🍼", "", "Pet sitter overview", "Food, character, medication and contact details in one PDF for the sitter or boarding kennel.", True),
-   ("📷", "", "Scan the pet passport", "Photograph the vaccination page and the dates and batch numbers are filled in. You always check first.", True),
-   ("🏷️", "", "Scan the vaccine sticker", "Ticking off a vaccination? Photograph the sticker and the batch number is filled in.", True),
+   ("📷", "", "Scan with AI", "Photograph the pet passport, the vaccine sticker, a vet invoice or a medicine label, and the details are filled in for you. You always check first.", True),
   ],
   "spots": [
    ("today", "Today", "Open the app and you know what to do",
@@ -225,11 +223,11 @@ T = {
   "faq_eyebrow": "FAQ", "faq_title": "Frequently asked questions",
   "faq": [
    ("Is Wagbook free?", "Yes. You can keep up to 2 pets for free with all logs, reminders, the weight chart, the travel checklist, the missing poster and backups. PRO adds unlimited pets and photos, the PDF overviews and AI scanning."),
-   ("Do I need an account?", "No. Wagbook works without an account and stores everything on your own phone. Want to keep track together with your partner or housemate? Link your phones with a code. That data travels encrypted through our server, and only your phones can read it."),
+   ("Do I need an account?", "No. Wagbook works without an account and keeps your data on your own phone. Want to keep track together with your partner or housemate? Link your phones with a code. That data travels encrypted through our server, and only your phones can read it. If you scan something with AI, that one photo goes to Google (see below)."),
    ("What happens when I get a new phone?", "Make a backup in Settings: one file with all pets, records and photos. Keep it in Google Drive or email it to yourself, and restore it on your new phone."),
    ("How do the reminders work?", "For each vaccination or treatment you choose how far in advance you want a reminder, plus one on the day itself at the time you set. Medication reminds you at every time of day, with ‘Given’ and ‘Later’ buttons."),
    ("Is it only for dogs?", "No. Wagbook is for dogs, cats, rabbits, birds and other pets. Vaccination suggestions adapt to the species, and birds are weighed in grams."),
-   ("What happens to my photo when I scan with AI?", "Only when you choose to scan, that one photo is sent to Google (Gemini) to read the text. We do not store it. You always check the result before anything is saved."),
+   ("What happens to my photo when I scan with AI?", "Only when you choose to scan, that one photo goes through our server to Google (Gemini) to read the text. Our server does not store it. Google does not use it to train its AI and keeps it for at most 55 days to detect abuse. You always check the result before anything is saved."),
    ("What can I do when my pet has passed away?", "Keep your pet in memory from the menu on their profile. Care tasks and reminders stop, and your pet gets a memorial page of their own with your words, monthly photos and diary. Nothing is deleted, and a pet in memory doesn’t count towards the 2 free pets."),
    ("Does Wagbook give medical advice?", "No. Wagbook helps you keep track and remember. Suggested schedules are common defaults; always follow the advice of your own vet."),
    ("Where can I download Wagbook?", "Wagbook is free on Google Play for Android. In Dutch the app is called Kwispelboek. An iPhone version is not planned yet."),
@@ -245,18 +243,18 @@ T = {
 PRIVACY = {
  "nl": {
   "title": "Privacybeleid – Kwispelboek",
-  "desc": "Privacybeleid van Kwispelboek, het huisdier-logboek van Grounded Studio. Geen account, geen advertenties, geen tracking: je gegevens blijven op je telefoon.",
+  "desc": "Privacybeleid van Kwispelboek, het huisdier-logboek van Grounded Studio. Geen account, geen advertenties, geen tracking. Je gegevens staan op je telefoon.",
   "h1": "Privacybeleid",
   "meta": f"Laatst bijgewerkt: {UPDATED['nl']} · Grounded Studio, Nederland",
-  "summary": "Kort gezegd: alles wat je invoert blijft op je eigen telefoon. Alleen als je zelf kiest voor Samen bijhouden, gaan je gegevens versleuteld naar onze server; wij kunnen ze niet lezen. Geen account, geen advertenties, geen tracking.",
+  "summary": "Kort gezegd: wat je invoert staat op je eigen telefoon. Alleen als je zelf kiest voor Samen bijhouden, gaan je gegevens versleuteld naar onze server; wij kunnen ze niet lezen. En alleen als je zelf iets scant met AI, gaat die ene foto naar Google. Geen account, geen advertenties, geen tracking.",
   "sections": [
    ("Wie zijn wij", ["Kwispelboek (in het Engels: Wagbook) is een app van Grounded Studio uit Nederland. Voor vragen over privacy kun je mailen naar <a href=\"mailto:%s\">%s</a>." % (MAIL, MAIL)]),
-   ("Opgeslagen op je telefoon", ["Je hebt geen account nodig. Alles wat je invoert, zoals dieren, vaccinaties, medicijnen, dierenartsbezoeken, gewicht, reizen, foto’s en je eigen naam en telefoonnummer, wordt op deze telefoon opgeslagen. Gebruik je Samen bijhouden niet, dan gaat er niets naar ons toe."]),
+   ("Opgeslagen op je telefoon", ["Je hebt geen account nodig. Alles wat je invoert, zoals dieren, vaccinaties, medicijnen, dierenartsbezoeken, gewicht, reizen, foto’s en je eigen naam en telefoonnummer, wordt op deze telefoon opgeslagen. Gebruik je Samen bijhouden en scannen met AI niet, dan gaat er niets naar ons toe."]),
    ("Samen bijhouden (optioneel)", ["Als je zelf kiest om telefoons te koppelen, stuurt de app je dieren, taken, medicijnen, gewicht, dierenartsbezoeken, reizen, voer en dagboek naar onze server (Cloudflare, in Europa), zodat je andere telefoons ze kunnen ophalen. Alles wordt op je telefoon versleuteld (AES-256) met een sleutel die alleen in jullie koppelcode zit. Wij en Cloudflare kunnen de inhoud dus niet lezen. De server bewaart per regel alleen een willekeurige id, het tijdstip van de wijziging en het versleutelde blok. Foto’s, je instellingen en meldingen blijven op elke telefoon apart en gaan nooit naar de server."]),
    ("Geen advertenties, geen tracking", ["De app toont geen advertenties, bevat geen analytics of tracking en gebruikt geen advertentie-ID."]),
    ("Herinneringen en widget", ["Herinneringen worden op je telefoon zelf ingepland. De widget op je beginscherm toont gegevens uit de app op je eigen telefoon. Daarvoor wordt niets naar ons verstuurd."]),
    ("Delen en PDF’s", ["Een PDF (bijvoorbeeld voor de dierenarts of de oppas), een vermist-poster of een back-upbestand gaat alleen naar de plek waar jij het zelf naartoe stuurt of opslaat. Staat de Android-back-up aan in je telefooninstellingen, dan kan Android ook een kopie van de app-gegevens in je eigen Google-account bewaren."]),
-   ("Scannen met AI (optioneel, PRO)", ["Alleen als je zelf kiest om een dierenpaspoort, rekening of medicijnetiket te scannen, wordt die ene foto via een beveiligde verbinding naar Google (Gemini API) gestuurd om de tekst te lezen. Wij bewaren de foto niet. Je controleert het resultaat altijd voordat er iets wordt opgeslagen. Voordat je voor het eerst scant, vraagt de app je toestemming."]),
+   ("Scannen met AI (optioneel, PRO)", ["Alleen als je zelf kiest om een dierenpaspoort, vaccinatiesticker, rekening of medicijnetiket te scannen, gaat die ene foto via een beveiligde verbinding naar onze server (Cloudflare) en van daar naar Google (de betaalde Gemini API) om de tekst te lezen. Onze server slaat de foto niet op. Google gebruikt gegevens uit de betaalde Gemini API niet om zijn producten te verbeteren en bewaart ze maximaal 55 dagen om misbruik op te sporen (<a href='https://ai.google.dev/gemini-api/docs/usage-policies' rel='noopener'>voorwaarden van Google</a>). Je controleert het resultaat altijd voordat er iets wordt opgeslagen. Voordat je voor het eerst scant, vraagt de app je toestemming."]),
    ("Aankopen", ["Kwispelboek PRO koop je via Google Play. Google regelt de betaling; de app krijgt alleen te zien of PRO actief is. Wij ontvangen geen betaalgegevens."]),
    ("Toestemmingen", ["De app vraagt alleen wat nodig is: toestemming voor meldingen (herinneringen) en internet (scannen met AI, aankopen en Samen bijhouden). Foto’s maak of kies je via de standaardcamera en fotokiezer van Android; de app krijgt alleen de foto die jij kiest."]),
    ("Deze website", ["We tellen bezoeken aan kwispelboek.app met Cloudflare Web Analytics, zonder cookies: welke pagina is bekeken, van welke site je kwam, browser, type apparaat, land en hoe snel de pagina laadde. Cloudflare gebruikt geen cookies of fingerprinting en maakt geen profiel van je; wij zien alleen totalen. Dit gaat over de website, niet over de app."]),
@@ -268,18 +266,18 @@ PRIVACY = {
  },
  "en": {
   "title": "Privacy policy – Wagbook",
-  "desc": "Privacy policy of Wagbook (Kwispelboek), the pet health log by Grounded Studio. No account, no ads, no tracking: your data stays on your phone.",
+  "desc": "Privacy policy of Wagbook (Kwispelboek), the pet health log by Grounded Studio. No account, no ads, no tracking. Your data lives on your phone.",
   "h1": "Privacy policy",
   "meta": f"Last updated: {UPDATED['en']} · Grounded Studio, the Netherlands",
-  "summary": "In short: everything you enter stays on your own phone. Only if you choose Share with your household does your data go to our server, encrypted; we cannot read it. No account, no ads, no tracking.",
+  "summary": "In short: what you enter lives on your own phone. Only if you choose Share with your household does your data go to our server, encrypted; we cannot read it. And only if you scan something with AI does that one photo go to Google. No account, no ads, no tracking.",
   "sections": [
    ("Who we are", ["Wagbook (Kwispelboek in Dutch) is an app by Grounded Studio from the Netherlands. For privacy questions, email <a href=\"mailto:%s\">%s</a>." % (MAIL, MAIL)]),
-   ("Stored on your phone", ["You don’t need an account. Everything you enter, such as pets, vaccinations, medication, vet visits, weights, trips, photos and your own name and phone number, is stored on this phone. If you don’t use Share with your household, nothing is sent to us."]),
+   ("Stored on your phone", ["You don’t need an account. Everything you enter, such as pets, vaccinations, medication, vet visits, weights, trips, photos and your own name and phone number, is stored on this phone. If you don’t use Share with your household or AI scanning, nothing is sent to us."]),
    ("Share with your household (optional)", ["If you choose to link phones, the app sends your pets, tasks, medication, weights, vet visits, trips, food and diary to our server (Cloudflare, in Europe) so your other phones can fetch them. Everything is encrypted on your phone (AES-256) with a key that only exists in your household code. So we and Cloudflare cannot read the contents. Per item the server only keeps a random id, the time of the change and the encrypted block. Photos, your settings and reminders stay separate on each phone and never go to the server."]),
    ("No ads, no tracking", ["The app shows no ads, contains no analytics or tracking, and does not use the advertising ID."]),
    ("Reminders and widget", ["Reminders are scheduled on your phone itself. The home screen widget shows data from the app on your own phone. Nothing is sent to us for this."]),
    ("Sharing and PDFs", ["A PDF (for example for the vet or a pet sitter), a missing poster or a backup file goes only where you send or save it yourself. If Android backup is switched on in your phone settings, Android may also keep a copy of the app data in your own Google account."]),
-   ("Scanning with AI (optional, PRO)", ["Only when you choose to scan a pet passport, invoice or medicine label, that one photo is sent over a secure connection to Google (Gemini API) to read the text. We do not store the photo. You always check the result before anything is saved. The app asks for your consent before your first scan."]),
+   ("Scanning with AI (optional, PRO)", ["Only when you choose to scan a pet passport, vaccine sticker, invoice or medicine label, that one photo is sent over a secure connection to our server (Cloudflare) and from there to Google (the paid Gemini API) to read the text. Our server does not store the photo. Google does not use data from the paid Gemini API to improve its products and keeps it for at most 55 days to detect abuse (<a href='https://ai.google.dev/gemini-api/docs/usage-policies' rel='noopener'>Google’s terms</a>). You always check the result before anything is saved. The app asks for your consent before your first scan."]),
    ("Purchases", ["Wagbook PRO is bought through Google Play. Google handles the payment; the app only learns whether PRO is active. We receive no payment details."]),
    ("Permissions", ["The app only asks for what it needs: permission for notifications (reminders) and internet (AI scanning, purchases and Share with your household). You take or pick photos through Android’s standard camera and photo picker; the app only receives the photo you choose."]),
    ("This website", ["We count visits to wagbook.app and kwispelboek.app with Cloudflare Web Analytics, without cookies: which page was viewed, the site you came from, browser, device type, country and how fast the page loaded. Cloudflare does not use cookies or fingerprinting and does not build a profile of you; we only see totals. This is about the website, not the app."]),
@@ -623,8 +621,8 @@ def llms_txt():
     lines = ["# Kwispelboek (Wagbook)", "",
              "> Kwispelboek (Dutch) / Wagbook (English) is an Android app by Grounded Studio (the Netherlands) to keep track of "
              "pet health: vaccinations, deworming, flea & tick treatments, medication courses, vet visits and costs, weight, "
-             "travel checklists, a missing-pet poster, a diary, monthly photo album, year in review, first aid, 'on this day' memories, seasonal tips (fireworks, ticks, heat) and a memorial page for pets that passed away, with reminders. No account: all data stays on the phone. "
-             "Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI passport scanning. "
+             "travel checklists, a missing-pet poster, a diary, monthly photo album, year in review, first aid, 'on this day' memories, seasonal tips (fireworks, ticks, heat) and a memorial page for pets that passed away, with reminders. No account needed: data lives on the phone; only optional household sharing (end-to-end encrypted) and AI scans go through a server. "
+             "Free for up to 2 pets; PRO (€2.99/month or €19.99/year) adds unlimited pets, PDF overviews and AI scanning (passport, vaccine sticker, invoice, medicine label). "
              "Available on Google Play: " + PLAY_URL + "", "",
              "## Main pages",
              f"- [Kwispelboek (Dutch)]({DOMAIN}/): features, screenshots, pricing and FAQ",
