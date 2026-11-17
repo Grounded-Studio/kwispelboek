@@ -304,7 +304,7 @@ def cta(b, lang):
     x = TX[lang]
     url = f'{b.PLAY_URL}&amp;hl={b.T[lang]["hl"]}'
     return f"""<div class="post-cta">
-  <img src="/assets/img/kwispel-happy.svg" alt="" width="96" height="96" loading="lazy">
+  <img src="/assets/img/kwispel-happy.svg" alt="{escape(b.T[lang]['kw_alt'])}" width="96" height="96" loading="lazy">
   <div><h2>{escape(x['cta_title'])}</h2><p>{escape(x['cta_text'])}</p>
   <a class="btn btn-primary" href="{url}" rel="noopener">{escape(x['cta_btn'])}</a></div>
 </div>"""

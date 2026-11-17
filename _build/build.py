@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 import extra  # noqa: E402
 
-CSS_V = "6"
+CSS_V = "7"
 
 MONTHS = {"nl": ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
           "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
@@ -55,7 +55,10 @@ T = {
   "title": "Kwispelboek – Huisdier logboek voor hond, kat & meer",
   "desc": "Vaccinaties, ontworming, medicijnen en dierenartsbezoeken van al je huisdieren op één plek, met herinneringen op tijd. Zonder account, gratis voor Android.",
   "nav": [("#functies", "Functies"), ("#schermen", "Screenshots"), ("#pro", "Prijzen"), ("#faq", "Vragen"), ("/hulpmiddelen/", "Hulpmiddelen"), ("/blog/", "Blog")],
-  "h1": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
+  "h1": 'Kwispelboek – huisdier logboek &amp; vaccinatieherinnering',
+  "slogan": 'Zorg voor je maatje,<br><span class="accent">zonder iets te vergeten</span>',
+  "kw_alt": "Kwispel, de mascotte van Kwispelboek",
+  "pro_month": "Kwispelboek PRO per maand", "pro_year": "Kwispelboek PRO per jaar",
   "lead": "Kwispelboek houdt vaccinaties, ontworming, medicijnen, dierenartsbezoeken en gewicht van al je dieren bij en herinnert je op het juiste moment. Afvinken met een pootstempel, een agenda met een kleur per dier en confetti als alles gedaan is. Geen account nodig. Je gegevens staan op je telefoon; alleen als je samen bijhoudt of met AI scant, gaat er iets versleuteld via onze server.",
   "soon_small": "ONTDEK HET OP", "soon": "Google Play", "hl": "nl", "see_features": "Bekijk de functies",
   "notify": "Vraag of idee? Mail ons", "notify_subject": "Vraag over Kwispelboek",
@@ -149,7 +152,10 @@ T = {
   "title": "Wagbook – Pet health log for dogs, cats & more",
   "desc": "Vaccinations, deworming, medication and vet visits for all your pets in one place, with reminders on time. No account. Free on Google Play for Android.",
   "nav": [("#features", "Features"), ("#screens", "Screenshots"), ("#pro", "Pricing"), ("#faq", "FAQ"), ("/en/tools/", "Tools"), ("/en/blog/", "Blog")],
-  "h1": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
+  "h1": 'Wagbook – pet health log &amp; vaccination reminder app',
+  "slogan": 'Care for your buddy,<br><span class="accent">without forgetting a thing</span>',
+  "kw_alt": "Kwispel, the Wagbook mascot",
+  "pro_month": "Wagbook PRO monthly", "pro_year": "Wagbook PRO yearly",
   "lead": "Wagbook keeps track of vaccinations, deworming, medication, vet visits and weight for all your pets and reminds you at the right moment. Tick things off with a paw stamp, see a calendar with a colour per pet and get confetti when everything is done. No account needed. Your data lives on your phone; only sharing with your household and AI scans go encrypted through our server.",
   "soon_small": "GET IT ON", "soon": "Google Play", "hl": "en", "see_features": "See the features",
   "notify": "Question or idea? Mail us", "notify_subject": "Question about Wagbook",
@@ -391,7 +397,11 @@ def home(lang):
         "@context": "https://schema.org", "@type": "MobileApplication", "name": t["name"],
         "alternateName": other["name"], "operatingSystem": "Android", "applicationCategory": "LifestyleApplication",
         "description": t["desc"], "url": DOMAIN + t["path"], "image": f"{DOMAIN}/assets/img/og-{lang}.jpg",
-        "inLanguage": ["nl", "en"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+        "inLanguage": ["nl", "en"], "offers": [{"@type": "Offer", "name": "Free" if lang == "en" else "Gratis", "price": "0", "priceCurrency": "EUR"},
+                   {"@type": "Offer", "name": t["pro_month"], "price": "2.99", "priceCurrency": "EUR",
+                    "priceSpecification": {"@type": "UnitPriceSpecification", "price": "2.99", "priceCurrency": "EUR", "billingDuration": "P1M"}},
+                   {"@type": "Offer", "name": t["pro_year"], "price": "19.99", "priceCurrency": "EUR",
+                    "priceSpecification": {"@type": "UnitPriceSpecification", "price": "19.99", "priceCurrency": "EUR", "billingDuration": "P1Y"}}],
         "installUrl": PLAY_URL, "downloadUrl": PLAY_URL,
         "author": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
     }
@@ -425,7 +435,7 @@ def home(lang):
     faq = "".join(f"<details><summary>{escape(q)}</summary><p>{escape(a)}</p></details>" for q, a in t["faq"])
     trust = "".join(f'<li><span aria-hidden="true">{i}</span>{escape(x)}</li>' for i, x in t["trust"])
     badges = "".join(f"<span><i></i>{escape(b)}</span>" for b in t["badges"])
-    kw = "".join(f'<figure class="kw-{m}"><img src="/assets/img/kwispel-{m}.svg" alt="" width="150" height="150" loading="lazy">'
+    kw = "".join(f'<figure class="kw-{m}"><img src="/assets/img/kwispel-{m}.svg" alt="{escape(t['kw_alt'])}: {escape(n.lower())}" width="150" height="150" loading="lazy">'
                  f'<figcaption><b>{escape(n)}</b><span>{escape(d)}</span></figcaption></figure>' for m, n, d in t["kw"])
 
     return head(lang, t["title"], t["desc"], t["path"], other["path"], lang, extra) + header(lang, t["path"], other["path"]) + f"""<main id="main">
@@ -433,7 +443,8 @@ def home(lang):
   <div class="wrap">
     <div>
       <img class="hero-icon" src="/assets/img/icon.webp" alt="{t['name']}" width="72" height="72">
-      <h1>{t['h1']}</h1>
+      <h1 class="hero-h1">{t['h1']}</h1>
+      <p class="slogan">{t['slogan']}</p>
       <p class="lead">{escape(t['lead'])}</p>
       <div class="actions">{soon}{notify}</div>
       <div class="badges">{badges}</div>
@@ -492,7 +503,7 @@ def home(lang):
 <section style="padding-top:20px;padding-bottom:40px">
   <div class="wrap">
     <div class="cta">
-      <img class="cta-kw" src="/assets/img/kwispel-party.svg" alt="" width="130" height="130" loading="lazy">
+      <img class="cta-kw" src="/assets/img/kwispel-party.svg" alt="{escape(t['kw_alt'])}" width="130" height="130" loading="lazy">
       <h2>{escape(t['cta_title'])}</h2>
       <p>{escape(t['cta_text'])}</p>
       <div class="actions">{soon}<a class="btn btn-primary" href="mailto:{MAIL}?subject={subject}">{MAIL_SVG}{t['notify']}</a></div>
@@ -607,7 +618,7 @@ def article(lang, a):
 <p class="summary">{escape(art['desc'])}</p>
 {render_body(art['body'])}
 <div class="post-cta">
-  <img src="/assets/img/kwispel-happy.svg" alt="" width="96" height="96" loading="lazy">
+  <img src="/assets/img/kwispel-happy.svg" alt="{escape(t['kw_alt'])}" width="96" height="96" loading="lazy">
   <div><h2>{escape(b['cta_title'])}</h2><p>{escape(b['cta_text'])}</p>
   <a class="btn btn-primary" href="{PLAY_URL}&amp;hl={t['hl']}" rel="noopener">{escape(b['cta_btn'])}</a></div>
 </div>
@@ -655,7 +666,7 @@ NOT_FOUND = f"""<!doctype html>
 </head>
 <body>
 <main class="legal" style="text-align:center;padding-top:96px">
-<img src="/assets/img/kwispel-curious.svg" alt="" width="140" height="140" style="margin:0 auto 16px">
+<img src="/assets/img/kwispel-curious.svg" alt="Kwispel, de mascotte van Kwispelboek" width="140" height="140" style="margin:0 auto 16px">
 <h1>Oeps, deze pagina is weggelopen</h1>
 <p class="meta">This page ran off. Let’s go back home.</p>
 <div class="actions" style="justify-content:center;margin-top:24px">
@@ -783,7 +794,7 @@ NOT_FOUND_EN = f"""<!doctype html>
 </head>
 <body>
 <main class="legal" style="text-align:center;padding-top:96px">
-<img src="/assets/img/kwispel-curious.svg" alt="" width="140" height="140" style="margin:0 auto 16px">
+<img src="/assets/img/kwispel-curious.svg" alt="Kwispel, the Wagbook mascot" width="140" height="140" style="margin:0 auto 16px">
 <h1>Oops, this page ran off</h1>
 <p class="meta">Let’s go back home.</p>
 <div class="actions" style="justify-content:center;margin-top:24px">
