@@ -38,6 +38,9 @@ SITE = Path(__file__).resolve().parent.parent
 DOMAIN = "https://kwispelboek.app"
 EN_DOMAIN = "https://wagbook.app"
 EN_SITE = SITE.parent / "wagbook-site"
+# Real reviews only, supplied by the owner: [("quote", "name, place"), ...]. Empty list = no section.
+REVIEWS = {"nl": [], "en": []}
+
 UPDATED = {"nl": "17 november 2026", "en": "17 November 2026"}
 MAIL = "contact@grounded-studio.app"
 
@@ -68,6 +71,17 @@ T = {
   "trust": [("🔒", "Geen account nodig"), ("🚫", "Geen advertenties of tracking"), ("🐾", "Hond, kat, konijn, vogel & meer"), ("💬", "Nederlands & Engels")],
   "feat_eyebrow": "Functies", "feat_title": "Alles voor de gezondheid van je dier, op één plek",
   "feat_lead": "Voor baasjes die rust willen: niets vergeten, alles bij de hand, en het mag best een beetje leuk zijn.",
+  "reasons": [
+   ("🔔", "", "Nooit meer een vaccinatie of ontworming vergeten", "Herinneringen voor vaccinaties, ontworming, vlooien- en tekenmiddel en medicijnen, zo ver vooraf als jij wilt."),
+   ("☀️", "amber", "Elke dag in één oogopslag", "Vandaag laat zien wat er moet gebeuren, voor al je dieren samen. Afvinken doe je met één tik."),
+   ("💊", "sage", "Medicijnen en kuren onder controle", "Per dag, doorlopend of als kuur, met een melding op het juiste tijdstip en een teller voor de dosis."),
+   ("🩺", "", "Alles bij de hand bij de dierenarts", "Bezoeken, kosten, gewichtsgrafiek en paspoortgegevens op één plek. Met PRO ook als PDF."),
+   ("👨‍👩‍👧", "amber", "Samen met je huisgenoten", "Koppel telefoons met een code. Wat de één afvinkt, ziet de ander ook, versleuteld en zonder account."),
+   ("🎁", "sage", "Gratis en zonder advertenties", "Tot 2 dieren gratis, zonder account. PRO voor meer dieren, PDF’s en scannen met AI."),
+  ],
+  "all_feats": "Alle {n} functies bekijken",
+  "video_eyebrow": "Video", "video_title": "Zo werkt Kwispelboek in anderhalve minuut", "video_more": "Meer over de video",
+  "reviews_eyebrow": "Reviews", "reviews_title": "Wat baasjes zeggen",
   "features": [
    ("☀️", "", "Vandaag in één oogopslag", "Een voortgangsring, ‘Nu doen’ op volgorde van belang, wat er later vandaag komt en een balk met de hele week. Voor al je dieren samen.", False),
    ("🐾", "amber", "Afvinken is een feestje", "Tik op ✓ en er verschijnt een pootstempel. Alles gedaan? Dan komen er confetti en een blije Kwispel, en houd je je reeks bij.", False),
@@ -119,7 +133,8 @@ T = {
   ],
   "shots_eyebrow": "Screenshots", "shots_title": "Zo ziet Kwispelboek eruit",
   "shots_lead": "Echte schermen uit de app, met voorbeelddieren.",
-  "shots": [("today", "Vandaag"), ("pets", "Mijn dieren"), ("profile", "Profiel"), ("health", "Gezondheid"), ("agenda", "Agenda"), ("add", "Snel noteren"), ("party", "Verjaardag"), ("done", "Alles gedaan!")],
+  "shots": [("health", "Gezondheid"), ("add", "Snel noteren"), ("party", "Verjaardagskaart")],
+  "alt_pets": "Kwispelboek: Mijn dieren, een overzicht van al je huisdieren met wat er openstaat",
   "kw_eyebrow": "Kwispel", "kw_title": "Maak kennis met Kwispel",
   "kw_lead": "Onze mascotte laat zich zien op de momenten die ertoe doen.",
   "kw": [("happy", "Blij", "Als alles voor vandaag gedaan is"), ("sleeping", "Slaapt", "Op een rustige dag zonder taken"), ("curious", "Nieuwsgierig", "Als er nog iets ingevuld kan worden"), ("party", "Feest", "Op verjaardagen en adoptiedagen")],
@@ -165,6 +180,17 @@ T = {
   "trust": [("🔒", "No account needed"), ("🚫", "No ads, no tracking"), ("🐾", "Dogs, cats, rabbits, birds & more"), ("🌍", "English & Dutch")],
   "feat_eyebrow": "Features", "feat_title": "Everything for your pet’s health, in one place",
   "feat_lead": "For owners who want peace of mind: nothing forgotten, everything at hand, and a little fun along the way.",
+  "reasons": [
+   ("🔔", "", "Never forget a vaccination or deworming again", "Reminders for vaccinations, deworming, flea and tick treatments and medication, as far ahead as you like."),
+   ("☀️", "amber", "Every day at a glance", "Today shows what needs doing for all your pets together. Tick it off with one tap."),
+   ("💊", "sage", "Medication and courses under control", "Daily, ongoing or as a course, with a reminder at the right time and a dose counter."),
+   ("🩺", "", "Everything at hand at the vet", "Visits, costs, weight chart and passport details in one place. With PRO as a PDF too."),
+   ("👨‍👩‍👧", "amber", "Together with your household", "Link phones with a code. What one of you ticks off, the other sees too, encrypted and without an account."),
+   ("🎁", "sage", "Free and without ads", "Up to 2 pets for free, no account. PRO for more pets, PDFs and AI scanning."),
+  ],
+  "all_feats": "See all {n} features",
+  "video_eyebrow": "Video", "video_title": "How Wagbook works", "video_more": "More about the video",
+  "reviews_eyebrow": "Reviews", "reviews_title": "What pet owners say",
   "features": [
    ("☀️", "", "Today at a glance", "A progress ring, ‘To do now’ with the most important first, what’s coming later today and a strip with the whole week. For all your pets together.", False),
    ("🐾", "amber", "Ticking off is a treat", "Tap ✓ and a paw stamp appears. All done? Then there’s confetti and a happy Kwispel, and you keep your streak going.", False),
@@ -216,7 +242,8 @@ T = {
   ],
   "shots_eyebrow": "Screenshots", "shots_title": "See Wagbook in action",
   "shots_lead": "Real screens from the app, with example pets.",
-  "shots": [("today", "Today"), ("pets", "My pets"), ("profile", "Pet profile"), ("health", "Health"), ("agenda", "Calendar"), ("add", "Quick log"), ("party", "Birthday"), ("done", "All done!")],
+  "shots": [("health", "Health"), ("add", "Quick log"), ("party", "Birthday card")],
+  "alt_pets": "Wagbook: My pets, an overview of all your pets with what is still open",
   "kw_eyebrow": "Kwispel", "kw_title": "Meet Kwispel",
   "kw_lead": "Our mascot shows up at the moments that matter.",
   "kw": [("happy", "Happy", "When everything for today is done"), ("sleeping", "Sleeping", "On a quiet day without tasks"), ("curious", "Curious", "When there’s still something to fill in"), ("party", "Party", "On birthdays and adoption days")],
@@ -418,12 +445,45 @@ def home(lang):
         extra += ("<script>try{if(/\\/\\/wagbook\\.app/.test(document.referrer))localStorage.setItem('kb-lang','nl');if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
                   "&&!/bot|crawl|spider/i.test(navigator.userAgent)){localStorage.setItem('kb-lang','en');location.replace('/en/')}}catch(e){}</script>\n")
 
+    reasons = "".join(
+        f'<div class="card {tone}"><div class="ico" aria-hidden="true">{ico}</div><h3>{escape(title)}</h3><p>{escape(desc)}</p></div>'
+        for ico, tone, title, desc in t["reasons"])
+    video = ""
+    if lang == "nl":
+        v = sys.modules["extra"].VIDEO
+        video = f"""
+<section id="video" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">{t['video_eyebrow']}</span><h2>{escape(t['video_title'])}</h2></div>
+    <div class="video home-video" id="video-box">
+      <button type="button" class="video-play" aria-label="{escape(v['play'])}">
+        <img src="{v['thumb']}" alt="{escape(v['name'])}" width="1280" height="720" loading="lazy">
+        <span class="video-btn" aria-hidden="true"></span>
+      </button>
+    </div>
+    <p class="meta center">{escape(v['consent'])} <a href="{v['path']}">{t['video_more']}</a></p>
+  </div>
+</section>
+<script>document.querySelector('#video-box .video-play').addEventListener('click',function(){{var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/{v['id']}?autoplay=1&rel=0';f.title={json.dumps(v['name'], ensure_ascii=False)};f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;var d=document.getElementById('video-box');d.innerHTML='';d.appendChild(f)}});</script>
+"""
+    reviews = ""
+    if REVIEWS.get(lang):
+        items = "".join(f'<figure class="card review"><blockquote>“{escape(q)}”</blockquote><figcaption>{escape(who)}</figcaption></figure>'
+                        for q, who in REVIEWS[lang])
+        reviews = f"""
+<section id="reviews" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">{t['reviews_eyebrow']}</span><h2>{escape(t['reviews_title'])}</h2></div>
+    <div class="grid">{items}</div>
+  </div>
+</section>
+"""
     feats = "".join(
         f'<div class="card {tone}"><div class="ico" aria-hidden="true">{ico}</div><h3>{escape(title)}'
         f'{" <span class=\"pro\">PRO</span>" if pro else ""}</h3><p>{escape(desc)}</p></div>'
         for ico, tone, title, desc, pro in t["features"])
     spots = ""
-    for i, (img, eb, title, text, bullets) in enumerate(t["spots"]):
+    for i, (img, eb, title, text, bullets) in enumerate(t["spots"][1:]):
         lis = "".join(f"<li>{escape(b)}</li>" for b in bullets)
         spots += (f'<div class="spot{" flip" if i % 2 else ""}"><div class="text"><span class="eyebrow">{escape(eb)}</span>'
                   f'<h2>{escape(title)}</h2><p class="lead" style="margin-top:14px">{escape(text)}</p><ul>{lis}</ul></div>'
@@ -451,7 +511,7 @@ def home(lang):
     </div>
     <div class="phones">
       {phone(f"today-{lang}", t['alt_today'], "main", eager=True)}
-      {phone(f"profile-{lang}", t['alt_profile'], "back")}
+      {phone(f"pets-{lang}", t['alt_pets'], "back")}
     </div>
   </div>
 </section>
@@ -461,10 +521,22 @@ def home(lang):
 <section id="{ids[0]}">
   <div class="wrap">
     <div class="head"><span class="eyebrow">{t['feat_eyebrow']}</span><h2>{escape(t['feat_title'])}</h2><p class="lead">{escape(t['feat_lead'])}</p></div>
-    <div class="grid">{feats}</div>
+    <div class="grid">{reasons}</div>
+    <details class="all-feats"><summary>{t['all_feats'].format(n=len(t['features']))}</summary><div class="grid">{feats}</div></details>
   </div>
 </section>
 
+<section id="pro" style="padding-top:40px">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">{t['pro_eyebrow']}</span><h2>{escape(t['pro_title'])}</h2><p class="lead">{escape(t['pro_lead'])}</p></div>
+    <div class="plans">
+      <div class="plan"><h3>{t['free_title']}</h3><p class="price">{escape(t['free_price'])}</p><ul>{free}</ul></div>
+      <div class="plan pro-plan"><h3>{t['name']} {t['pro_title2']}</h3><p class="price">{escape(t['pro_price'])}</p><ul>{pro}</ul></div>
+    </div>
+    <div class="actions" style="margin-top:26px">{soon}</div>
+  </div>
+</section>
+{video}
 <section style="padding-top:20px">
   <div class="wrap">{spots}</div>
 </section>
@@ -483,16 +555,7 @@ def home(lang):
   </div>
 </section>
 
-<section id="pro" style="padding-top:40px">
-  <div class="wrap">
-    <div class="head"><span class="eyebrow">{t['pro_eyebrow']}</span><h2>{escape(t['pro_title'])}</h2><p class="lead">{escape(t['pro_lead'])}</p></div>
-    <div class="plans">
-      <div class="plan"><h3>{t['free_title']}</h3><p class="price">{escape(t['free_price'])}</p><ul>{free}</ul></div>
-      <div class="plan pro-plan"><h3>{t['name']} {t['pro_title2']}</h3><p class="price">{escape(t['pro_price'])}</p><ul>{pro}</ul></div>
-    </div>
-  </div>
-</section>
-
+{reviews}
 <section id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="head"><span class="eyebrow">{t['faq_eyebrow']}</span><h2>{escape(t['faq_title'])}</h2></div>
