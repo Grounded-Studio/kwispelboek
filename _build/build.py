@@ -304,7 +304,7 @@ def head(lang, title, desc, path, alt_path, og, extra=""):
 <link rel="canonical" href="{DOMAIN}{path}">
 <link rel="alternate" hreflang="{lang}" href="{DOMAIN}{path}">
 <link rel="alternate" hreflang="{other}" href="{DOMAIN}{alt_path}">
-<link rel="alternate" hreflang="x-default" href="{DOMAIN}{path if lang == 'nl' else alt_path}">
+<link rel="alternate" hreflang="x-default" href="{DOMAIN}{alt_path if lang == 'nl' else path}">
 <meta name="theme-color" content="#F2F6F9">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -407,7 +407,7 @@ def home(lang):
              + crumbs(lang, [(t["name"], t["path"])])[1])
     if lang == "nl":
         # First visit with a non-Dutch browser: offer English once (no forced redirect).
-        extra += ("<script>try{if(/[?&]nl\\b/.test(location.search))localStorage.setItem('kb-lang','nl');if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
+        extra += ("<script>try{if(/\\/\\/wagbook\\.app/.test(document.referrer))localStorage.setItem('kb-lang','nl');if(!localStorage.getItem('kb-lang')&&!/^nl\\b/i.test(navigator.language||'')"
                   "&&!/bot|crawl|spider/i.test(navigator.userAgent)){localStorage.setItem('kb-lang','en');location.replace('/en/')}}catch(e){}</script>\n")
 
     feats = "".join(
@@ -708,6 +708,7 @@ def sitemap(lang):
     <lastmod>{mod}</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="{nl_url}"/>
     <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{en_url}"/>
   </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             'xmlns:xhtml="http://www.w3.org/1999/xhtml"'
@@ -733,7 +734,7 @@ def en_links(text):
             return f'{attr}="{path[3:]}"'
         if path.startswith(STATIC):
             return m.group(0)
-        return f'{attr}="{DOMAIN}{"/?nl" if path == "/" else path}"'
+        return f'{attr}="{DOMAIN}{path}"'
     text = re.sub(r'(href|src)="(/[^"]*)"', fix, text)
     text = text.replace(DOMAIN + "/en/", EN_DOMAIN + "/")
     for s in ("/assets/", "/icon-512.png"):
@@ -788,7 +789,7 @@ NOT_FOUND_EN = f"""<!doctype html>
 <h1>Oops, this page ran off</h1>
 <p class="meta">Let’s go back home.</p>
 <div class="actions" style="justify-content:center;margin-top:24px">
-<a class="btn btn-primary" href="/">Go to Wagbook</a><a class="btn btn-ghost" href="{DOMAIN}/?nl">Nederlands</a>
+<a class="btn btn-primary" href="/">Go to Wagbook</a><a class="btn btn-ghost" href="{DOMAIN}/">Nederlands</a>
 </div>
 </main>
 </body>
