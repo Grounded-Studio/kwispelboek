@@ -118,7 +118,7 @@ TOOL_UI = {
              "Een Europees dierenpaspoort, afgegeven door je dierenarts.", "Na een eerste rabiësprik 21 dagen wachten. Bij een herhaalprik die op tijd is gegeven niet opnieuw.",
              "Naar Ierland, Finland, Malta of Noorwegen moet je hond 1 tot 5 dagen voor aankomst ook een lintwormbehandeling krijgen.",
              "Buiten de EU en naar het Verenigd Koninkrijk gelden andere regels. Kijk altijd op de site van de overheid van je bestemming."],
-             blog="Lees ook: Op reis met je hond of kat", blog_slug="op-reis-met-hond-of-kat"),
+             blog="Lees ook: Wat heb je nodig om met je hond of kat naar het buitenland te gaan?", blog_link="/gidsen/op-reis-met-huisdier-buitenland/"),
   "en": dict(mode_shot="Date of the first rabies shot", mode_birth="Or: your puppy’s or kitten’s date of birth",
              res_shot="You may cross the border from", res_birth="Earliest possible travel date",
              birth_note="A rabies shot is allowed from 12 weeks. Then another 21 days of waiting: about 15 weeks in total.",
@@ -126,7 +126,7 @@ TOOL_UI = {
              "A European pet passport, issued by your vet.", "Wait 21 days after a first rabies shot. Not again for a booster given on time.",
              "For Ireland, Finland, Malta or Norway, your dog also needs a tapeworm treatment 1 to 5 days before arrival.",
              "Outside the EU and for the United Kingdom, other rules apply. Always check the government website of your destination."],
-             blog="Also read: Travelling with your dog or cat", blog_slug="travelling-with-your-dog-or-cat"),
+             blog="Also read: What do you need to travel abroad with your dog or cat?", blog_link="/en/guides/travelling-abroad-with-pet/"),
  },
  "food": {
   "nl": dict(bag="Zak of doos (kg)", daily="Per dag (gram)", opened="Geopend op", price="Prijs van de zak (€, mag leeg)",
@@ -345,7 +345,7 @@ def tool_form(lang, key):
 <h2>{u['how']}</h2><p>{u['how_text']}</p>"""
     if key == "travel":
         rules = "".join(f"<li>{escape(r)}</li>" for r in u["rules_list"])
-        blog_path = ("/blog/" if lang == "nl" else "/en/blog/") + u["blog_slug"] + "/"
+        blog_path = u["blog_link"]
         return f"""<form class="tool" onsubmit="return false">
   <label class="field">{u['mode_shot']}<input id="shot" type="date"></label>
   <output class="result" id="out1" aria-live="polite"></output>

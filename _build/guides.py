@@ -54,11 +54,11 @@ GUIDES = [
     {
         "key": "deworm", "emoji": "🪱", "sources": ["esccap_nl"],
         "related": {"nl": [("/gidsen/vaccinatieschema-pup-kitten/", "Vaccinatieschema voor pup en kitten"),
-                           ("/blog/vlooien-en-teken-hoe-vaak-behandelen/", "Vlooien en teken: hoe vaak behandelen?"),
+                           ("/gidsen/vlooien-en-teken-hond-kat/", "Vlooien en teken: hoe vaak behandelen?"),
                            ("/voor/hond/", "Kwispelboek voor je hond"), ("/voor/kat/", "Kwispelboek voor je kat"),
                            ("/checklists/puppy-in-huis/", "Checklist: puppy in huis")],
                     "en": [("/en/guides/puppy-kitten-vaccination-schedule/", "Puppy and kitten vaccination schedule"),
-                           ("/en/blog/fleas-and-ticks-how-often/", "Fleas and ticks: how often to treat?"),
+                           ("/en/guides/fleas-and-ticks-dog-cat/", "Fleas and ticks: how often to treat?"),
                            ("/en/for/dogs/", "Wagbook for your dog"), ("/en/for/cats/", "Wagbook for your cat"),
                            ("/en/checklists/new-puppy/", "Checklist: new puppy")]},
         "nl": {
@@ -258,6 +258,11 @@ GUIDES = [
 ]
 
 
+def src_of(key, lang):
+    s = SRC[key]
+    return s[lang] if isinstance(s, dict) else s
+
+
 def p_guide(lang, g):
     return f'{TX[lang]["path"]}{g[lang]["slug"]}/'
 
@@ -292,7 +297,7 @@ def guide_page(b, extra, lang, g):
              + "</tbody></table></div>")
     secs = "".join(f"<h2>{escape(h)}</h2>" + "".join(f"<p>{escape(p)}</p>" for p in ps) for h, ps in x["sections"])
     faq = "".join(f"<details><summary>{escape(q)}</summary><p>{escape(a)}</p></details>" for q, a in x["faq"])
-    src = "".join(f'<li><a href="{u}" rel="noopener">{escape(n)}</a></li>' for n, u in (SRC[k] for k in g["sources"]))
+    src = "".join(f'<li><a href="{u}" rel="noopener">{escape(n)}</a></li>' for n, u in (src_of(k, lang) for k in g["sources"]))
     url = f'{b.PLAY_URL}&amp;hl={b.T[lang]["hl"]}'
     cta = f"""<div class="post-cta">
   <img src="/assets/img/kwispel-happy.svg" alt="{escape(b.T[lang]['kw_alt'])}" width="96" height="96" loading="lazy">
@@ -321,7 +326,7 @@ def guide_page(b, extra, lang, g):
               "inLanguage": lang, "datePublished": DATE, "dateModified": DATE, "url": b.DOMAIN + path,
               "author": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
               "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"},
-              "citation": [u for _, u in (SRC[k] for k in g["sources"])]}
+              "citation": [u for _, u in (src_of(k, lang) for k in g["sources"])]}
     ld = (f'<script type="application/ld+json">{json.dumps(art_ld, ensure_ascii=False)}</script>\n'
           f'<script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>\n')
     return extra.page(b, lang, x["title"], x["desc"], path, alt, trail, body, extra_ld=ld)
@@ -345,9 +350,22 @@ def hub_page(b, lang):
 
 
 def build(b, extra):
+    from blog_content import ARTICLES as ALL_ARTICLES
+    by_key = {g["key"]: g for g in GUIDES}
+    for a in ALL_ARTICLES:  # old blog posts that became a guide: keep the URL alive as a redirect
+        if a["key"] in MOVED:
+            g = by_key[MOVED[a["key"]]]
+            b.out(b.SITE / "blog" / a["nl"]["slug"] / "index.html", b.redirect_stub(b.DOMAIN + p_guide("nl", g)))
+            b.out(b.EN_SITE / "blog" / a["en"]["slug"] / "index.html", b.redirect_stub(b.EN_DOMAIN + p_guide("en", g).removeprefix("/en")))
+            b.out(b.SITE / "en" / "blog" / a["en"]["slug"] / "index.html", b.redirect_stub(b.EN_DOMAIN + p_guide("en", g).removeprefix("/en")))
     for lang, w in (("nl", b.write), ("en", b.write_en)):
         def rel(path):
             return (path.removeprefix("/en") if lang == "en" else path).lstrip("/") + "index.html"
         w(rel(TX[lang]["path"]), hub_page(b, lang))
         for g in GUIDES:
             w(rel(p_guide(lang, g)), guide_page(b, extra, lang, g))
+
+
+from guides_more import MORE_GUIDES, MORE_SRC, MOVED  # noqa: E402
+SRC.update(MORE_SRC)
+GUIDES += MORE_GUIDES

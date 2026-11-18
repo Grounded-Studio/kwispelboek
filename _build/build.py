@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 import extra  # noqa: E402
 import guides  # noqa: E402
+ARTICLES = [a for a in ARTICLES if a["key"] not in guides.MOVED]  # these topics live on as guides
 
 CSS_V = "7"
 

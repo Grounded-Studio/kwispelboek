@@ -78,32 +78,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/blog/saying-goodbye-to-your-pet/"/>
   </url>
   <url>
-    <loc>https://kwispelboek.app/blog/op-reis-met-hond-of-kat/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/op-reis-met-hond-of-kat/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/travelling-with-your-dog-or-cat/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/blog/travelling-with-your-dog-or-cat/"/>
-  </url>
-  <url>
-    <loc>https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/vlooien-en-teken-hoe-vaak-behandelen/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/fleas-and-ticks-how-often/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/blog/fleas-and-ticks-how-often/"/>
-  </url>
-  <url>
     <loc>https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/</loc>
     <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/medicijnen-geven-aan-je-huisdier/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/giving-your-pet-medication/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/blog/giving-your-pet-medication/"/>
-  </url>
-  <url>
-    <loc>https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/blog/gewicht-huisdier-bijhouden/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/blog/tracking-your-pets-weight/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/blog/tracking-your-pets-weight/"/>
   </url>
   <url>
     <loc>https://kwispelboek.app/blog/wat-bijhouden-voor-de-dierenarts/</loc>
@@ -132,6 +111,41 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/vaccinatieschema-pup-kitten/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/puppy-kitten-vaccination-schedule/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/puppy-kitten-vaccination-schedule/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/gidsen/op-reis-met-huisdier-buitenland/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/op-reis-met-huisdier-buitenland/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/travelling-abroad-with-pet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/travelling-abroad-with-pet/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/gidsen/vlooien-en-teken-hond-kat/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/vlooien-en-teken-hond-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/fleas-and-ticks-dog-cat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/fleas-and-ticks-dog-cat/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/gidsen/gezond-gewicht-hond-kat/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/gezond-gewicht-hond-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/dog-cat-healthy-weight/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/dog-cat-healthy-weight/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/gidsen/giftig-eten-hond-kat/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/giftig-eten-hond-kat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/toxic-foods-dogs-cats/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/toxic-foods-dogs-cats/"/>
+  </url>
+  <url>
+    <loc>https://kwispelboek.app/gidsen/huisdier-vermist-wat-te-doen/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kwispelboek.app/gidsen/huisdier-vermist-wat-te-doen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagbook.app/guides/lost-pet-what-to-do/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagbook.app/guides/lost-pet-what-to-do/"/>
   </url>
   <url>
     <loc>https://kwispelboek.app/hulpmiddelen/</loc>
