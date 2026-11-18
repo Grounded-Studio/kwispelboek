@@ -292,3 +292,11 @@ footer a:hover{color:var(--brand)}
 .all-feats>.grid{margin-top:20px}
 .review blockquote{margin:0 0 10px;font-style:italic}
 .review figcaption{color:var(--muted);font-weight:700}
+.table-wrap{overflow-x:auto;margin:14px 0 8px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card)}
+.guide-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.guide-table th,.guide-table td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.guide-table thead th{background:var(--brand-soft);color:var(--brand-dark);font-weight:800}
+.guide-table tbody tr:last-child th,.guide-table tbody tr:last-child td{border-bottom:0}
+.guide-table tbody th{font-weight:800;min-width:9em}
+.sources{padding-left:20px}
+.sources a{word-break:break-word}

@@ -15,6 +15,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blog_content import ARTICLES, BLOG_T, DATE as BLOG_DATE  # noqa: E402
 import extra  # noqa: E402
+import guides  # noqa: E402
 
 CSS_V = "7"
 
@@ -153,7 +154,7 @@ T = {
    ("Is het alleen voor honden?", "Nee. Kwispelboek is er voor honden, katten, konijnen, vogels en andere huisdieren. Suggesties voor vaccinaties passen zich aan per diersoort, en vogels weeg je in grammen."),
    ("Wat gebeurt er met mijn foto bij scannen met AI?", "Alleen als je zelf kiest om te scannen, gaat die ene foto via onze server naar Google (Gemini) om de tekst te lezen. Onze server slaat hem niet op. Google gebruikt hem niet om zijn AI te trainen en bewaart hem maximaal 55 dagen om misbruik op te sporen. Je controleert het resultaat altijd voordat er iets wordt opgeslagen."),
    ("Wat kan ik doen als mijn dier overleden is?", "Zet je dier in herinnering via het menu op het profiel. De zorgtaken en meldingen stoppen, en je dier krijgt een eigen herinneringspagina met je eigen woorden, maandfoto’s en dagboek. Niets wordt gewist, en een dier in herinnering telt niet mee voor de 2 gratis dieren."),
-   ("Geeft Kwispelboek medisch advies?", "Nee. Kwispelboek helpt je bijhouden en onthouden. Voorgestelde schema’s zijn gangbare standaarden; volg altijd het advies van je eigen dierenarts."),
+   ("Geeft Kwispelboek medisch advies?", "Nee. Kwispelboek helpt je bijhouden en onthouden. Voorgestelde schema’s zijn gangbare Nederlandse standaarden, gebaseerd op de adviezen van ESCCAP (ontworming) en de KNMvD (vaccinaties). In onze gidsen op kwispelboek.app/gidsen/ staan de bronnen. Volg altijd het advies van je eigen dierenarts."),
    ("Waar kan ik Kwispelboek downloaden?", "Kwispelboek staat gratis in Google Play voor Android. In het Engels heet de app Wagbook. Een iPhone-versie staat nog niet gepland."),
   ],
   "cta_title": "Nu gratis in Google Play",
@@ -262,7 +263,7 @@ T = {
    ("Is it only for dogs?", "No. Wagbook is for dogs, cats, rabbits, birds and other pets. Vaccination suggestions adapt to the species, and birds are weighed in grams."),
    ("What happens to my photo when I scan with AI?", "Only when you choose to scan, that one photo goes through our server to Google (Gemini) to read the text. Our server does not store it. Google does not use it to train its AI and keeps it for at most 55 days to detect abuse. You always check the result before anything is saved."),
    ("What can I do when my pet has passed away?", "Keep your pet in memory from the menu on their profile. Care tasks and reminders stop, and your pet gets a memorial page of their own with your words, monthly photos and diary. Nothing is deleted, and a pet in memory doesn’t count towards the 2 free pets."),
-   ("Does Wagbook give medical advice?", "No. Wagbook helps you keep track and remember. Suggested schedules are common defaults; always follow the advice of your own vet."),
+   ("Does Wagbook give medical advice?", "No. Wagbook helps you keep track and remember. Suggested schedules are common Dutch defaults, based on the advice of ESCCAP (deworming) and the Dutch veterinary association KNMvD (vaccinations). Our guides at wagbook.app/guides/ list the sources. Always follow the advice of your own vet."),
    ("Where can I download Wagbook?", "Wagbook is free on Google Play for Android. In Dutch the app is called Kwispelboek. An iPhone version is not planned yet."),
   ],
   "cta_title": "Free on Google Play now",
@@ -395,7 +396,7 @@ def footer(lang):
     return f"""<footer>
   <div class="wrap">
     <span>© 2026 {t['name']} · {t['foot_by']} <a href="https://grounded-studio.app/">Grounded Studio</a></span>
-    <nav aria-label="Footer"><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{extra.TX[lang]['tools_path']}">{extra.TX[lang]['tools']}</a><a href="{extra.TX[lang]['species_path']}">{extra.TX[lang]['species']}</a><a href="{extra.TX[lang]['lists_path']}">{extra.TX[lang]['lists']}</a>{'<a href="/video/">Video</a>' if lang == 'nl' else ''}<a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
+    <nav aria-label="Footer"><a href="{guides.TX[lang]['path']}">{guides.TX[lang]['name']}</a><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{extra.TX[lang]['tools_path']}">{extra.TX[lang]['tools']}</a><a href="{extra.TX[lang]['species_path']}">{extra.TX[lang]['species']}</a><a href="{extra.TX[lang]['lists_path']}">{extra.TX[lang]['lists']}</a>{'<a href="/video/">Video</a>' if lang == 'nl' else ''}<a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
   </div>
 </footer>
 <script>
@@ -708,8 +709,10 @@ def llms_txt():
     lines += ["", "## Blog (English)"]
     lines += [f'- [{a["en"]["title"]}]({DOMAIN}/en/blog/{a["en"]["slug"]}/): {a["en"]["desc"]}' for a in ARTICLES]
     lines += ["", "## Tools, species pages and checklists (Dutch)"] + extra.llms_lines("nl", DOMAIN)
+    lines += ["", "## Guides (Dutch)"] + guides.llms_lines("nl", DOMAIN)
     lines += ["", "## Video (Dutch)", f"- [{extra.VIDEO['h1']}]({DOMAIN}{extra.VIDEO['path']}): {extra.VIDEO['desc']}"]
     lines += ["", "## Tools, species pages and checklists (English)"] + extra.llms_lines("en", EN_DOMAIN)
+    lines += ["", "## Guides (English)"] + guides.llms_lines("en", EN_DOMAIN)
     lines += ["", "## Optional",
               "- [Grounded Studio](https://grounded-studio.app/): the studio behind the app",
               "- Contact: contact@grounded-studio.app", ""]
@@ -748,7 +751,7 @@ MANIFEST = {
 }
 
 SITEMAP_URLS = [("/", "/en/", site_lastmod()), ("/privacy/", "/en/privacy/", BLOG_DATE), ("/blog/", "/en/blog/", site_lastmod())] + [
-    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES] + extra.pages()
+    (f"/blog/{a['nl']['slug']}/", f"/en/blog/{a['en']['slug']}/", art_date(a)) for a in ARTICLES] + guides.pages() + extra.pages()
 
 
 def page_lastmod(root, rel, fallback):
@@ -886,6 +889,7 @@ for a in ARTICLES:
     write(f"blog/{a['nl']['slug']}/index.html", article("nl", a))
     write_en(f"blog/{a['en']['slug']}/index.html", article("en", a))
 extra.build(sys.modules[__name__])
+guides.build(sys.modules[__name__], extra)
 write("llms.txt", llms_txt())
 out(EN_SITE / "llms.txt", nl_links(llms_txt()))
 write("404.html", NOT_FOUND)

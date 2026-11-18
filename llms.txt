@@ -49,6 +49,10 @@
 - [Checklist: puppy in huis](https://kwispelboek.app/checklists/puppy-in-huis/): Een printbare checklist voor als er een puppy komt: spullen, de eerste dagen, de dierenarts en papieren.
 - [Checklist: op vakantie met je huisdier](https://kwispelboek.app/checklists/op-vakantie/): Een printbare checklist voor op vakantie met je hond of kat: papieren, inpakken, de reis en op je bestemming.
 
+## Guides (Dutch)
+- [Hoe vaak moet je je hond of kat ontwormen?](https://kwispelboek.app/gidsen/hoe-vaak-ontwormen-hond-kat/): Hoe vaak ontworm je een pup, kitten of volwassen hond of kat? Het advies van ESCCAP op een rij, met een overzichtstabel en veelgestelde vragen.
+- [Welke vaccinaties heeft je pup of kitten nodig, en wanneer?](https://kwispelboek.app/gidsen/vaccinatieschema-pup-kitten/): Wanneer krijgt je pup of kitten welke vaccinatie? Het schema volgens de KNMvD en de WSAVA, met de booster, herhalingen en een overzichtstabel.
+
 ## Video (Dutch)
 - [Zo werkt Kwispelboek](https://kwispelboek.app/video/): Bekijk in anderhalve minuut hoe Kwispelboek je helpt herinneren aan ontworming, vaccinaties, medicijnen en gewicht van je hond, kat of konijn.
 
@@ -62,6 +66,10 @@
 - [Wagbook for your bird: weight in grams and more](https://wagbook.app/for/birds/): Keep track of your budgie’s, canary’s or parrot’s care: weight in grams, vet visits, medication, food and a diary.
 - [Checklist: a new puppy at home](https://wagbook.app/checklists/new-puppy/): A printable checklist for when a puppy is coming: supplies, the first days, the vet and paperwork.
 - [Checklist: going on holiday with your pet](https://wagbook.app/checklists/holiday/): A printable checklist for a holiday with your dog or cat: paperwork, packing, the trip and at your destination.
+
+## Guides (English)
+- [How often should you deworm your dog or cat?](https://wagbook.app/guides/how-often-deworm-dog-cat/): How often should you deworm a puppy, kitten, adult dog or cat? The ESCCAP advice in one place, with a summary table and frequently asked questions.
+- [Which vaccinations does your puppy or kitten need, and when?](https://wagbook.app/guides/puppy-kitten-vaccination-schedule/): When does your puppy or kitten get which vaccination? The schedule from the WSAVA and the Dutch veterinary association, with booster, repeats and a table.
 
 ## Optional
 - [Grounded Studio](https://grounded-studio.app/): the studio behind the app
