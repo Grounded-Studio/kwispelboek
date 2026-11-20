@@ -33,7 +33,7 @@
 - [What should you keep track of for the vet? A handy checklist](https://wagbook.app/blog/what-to-keep-for-the-vet/): Which details about your pet are useful at the vet, at a new practice, for a pet sitter or in an emergency. With a checklist you can use right away.
 
 ## Tools, species pages and checklists (Dutch)
-- [Hoe oud is je hond of kat in mensenjaren?](https://kwispelboek.app/hulpmiddelen/leeftijd-in-mensenjaren/): Reken de leeftijd van je hond of kat om naar mensenjaren. Voor honden telt ook de grootte mee.
+- [Hoe oud is je hond of kat in mensenjaren?](https://kwispelboek.app/hulpmiddelen/leeftijd-in-mensenjaren/): Reken de leeftijd van je hond of kat om naar mensenjaren, met een tabel van hondenjaren en kattenjaren van 1 tot 16 jaar. Voor honden telt ook de grootte mee.
 - [Wanneer mag je op reis? De 21-dagenregel berekenen](https://kwispelboek.app/hulpmiddelen/21-dagenregel/): Bereken vanaf welke dag je hond, kat of fret binnen de EU de grens over mag na een eerste rabiësvaccinatie.
 - [Voercalculator: hoe lang doe je met een zak voer?](https://kwispelboek.app/hulpmiddelen/voercalculator/): Bereken hoeveel dagen een zak voer meegaat, wanneer hij op is en wat het voer per dag en per maand kost.
 - [Kwispelboek voor je hond: vaccinaties en ontworming](https://kwispelboek.app/voor/hond/): Houd de zorg voor je hond bij: cocktail-enting, leptospirose, kennelhoest, rabiës, ontworming, vlooien en teken, gewicht en voer. Met herinneringen op tijd.
@@ -56,7 +56,7 @@
 - [Zo werkt Kwispelboek](https://kwispelboek.app/video/): Bekijk in anderhalve minuut hoe Kwispelboek je helpt herinneren aan ontworming, vaccinaties, medicijnen en gewicht van je hond, kat of konijn.
 
 ## Tools, species pages and checklists (English)
-- [How old is your dog or cat in human years?](https://wagbook.app/tools/pet-age-in-human-years/): Convert your dog’s or cat’s age into human years. For dogs, size matters too.
+- [How old is your dog or cat in human years?](https://wagbook.app/tools/pet-age-in-human-years/): Convert your dog’s or cat’s age into human years, with a chart of dog years and cat years from 1 to 16. For dogs, size matters too.
 - [When can you travel? Work out the 21-day rule](https://wagbook.app/tools/21-day-rule/): Work out from which day your dog, cat or ferret may cross a border within the EU after a first rabies vaccination.
 - [Food calculator: how long does a bag of food last?](https://wagbook.app/tools/food-calculator/): Work out how many days a bag of food lasts, when it runs out and what the food costs per day and per month.
 - [Wagbook for your dog: vaccinations, deworming and more](https://wagbook.app/for/dogs/): Keep track of your dog’s care: core vaccine, leptospirosis, kennel cough, rabies, deworming, fleas and ticks, weight and food. With reminders on time.

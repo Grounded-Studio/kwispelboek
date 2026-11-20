@@ -6,6 +6,7 @@ English paths are written with the /en/ prefix, like everywhere in build.py; en_
 wagbook.app."""
 from html import escape
 import json
+import math
 import re
 
 DATE = "2026-11-14"
@@ -70,11 +71,11 @@ TOOLS = [
   "key": "age", "emoji": "🎂",
   "nl": {"slug": "leeftijd-in-mensenjaren", "title": "Hoe oud is je hond of kat in mensenjaren?",
          "short": "Leeftijd in mensenjaren",
-         "desc": "Reken de leeftijd van je hond of kat om naar mensenjaren. Voor honden telt ook de grootte mee.",
+         "desc": "Reken de leeftijd van je hond of kat om naar mensenjaren, met een tabel van hondenjaren en kattenjaren van 1 tot 16 jaar. Voor honden telt ook de grootte mee.",
          "intro": "De oude regel ‘één hondenjaar is zeven mensenjaren’ klopt niet. Een hond is na één jaar al volwassen, en grote honden worden sneller oud dan kleine. Deze rekenhulp gebruikt de gangbare schatting die ook veel dierenartsen gebruiken."},
   "en": {"slug": "pet-age-in-human-years", "title": "How old is your dog or cat in human years?",
          "short": "Age in human years",
-         "desc": "Convert your dog’s or cat’s age into human years. For dogs, size matters too.",
+         "desc": "Convert your dog’s or cat’s age into human years, with a chart of dog years and cat years from 1 to 16. For dogs, size matters too.",
          "intro": "The old rule ‘one dog year is seven human years’ isn’t right. A dog is an adult after one year, and big dogs age faster than small ones. This calculator uses the common estimate that many vets use too."},
  },
  {
@@ -105,10 +106,32 @@ TOOL_UI = {
  "age": {
   "nl": dict(species="Dier", dog="Hond", cat="Kat", size="Grootte", small="Klein (tot 10 kg)", medium="Middel (10–25 kg)",
              large="Groot (meer dan 25 kg)", age="Leeftijd in jaren", result="mensenjaren", stage=["Pup of kitten", "Jongvolwassen", "Volwassen", "Senior"],
-             how="Zo rekenen we", how_text="Het eerste jaar telt als 15 mensenjaren, het tweede als 9. Daarna telt elk jaar als ongeveer 4 mensenjaren voor katten en kleine honden, 4,5 voor middelgrote en 5,25 voor grote honden. Het blijft een schatting: elk dier veroudert anders."),
+             how="Zo rekenen we", how_text="Het eerste jaar telt als 15 mensenjaren, het tweede als 9. Daarna telt elk jaar als ongeveer 4 mensenjaren voor katten en kleine honden, 4,5 voor middelgrote en 5,25 voor grote honden. Het blijft een schatting: elk dier veroudert anders.",
+             table="Tabel: hondenjaren en kattenjaren in mensenjaren",
+             cols=["Leeftijd", "Kat of kleine hond", "Middelgrote hond", "Grote hond"], yr="jaar",
+             faq_title="Veelgestelde vragen",
+             faq=[("Klopt het dat één hondenjaar zeven mensenjaren is?",
+                   "Nee. Een hond of kat van één jaar is al volwassen, en dat past bij ongeveer 15 mensenjaren. Na het tweede jaar gaat het langzamer: ongeveer 4 tot 5 mensenjaren per jaar, afhankelijk van de grootte."),
+                  ("Waarom worden grote honden sneller oud?",
+                   "Grote honden leven gemiddeld korter dan kleine honden. Daarom telt elk jaar na het tweede bij een grote hond zwaarder mee: 5,25 mensenjaren, tegen 4 bij een kleine hond."),
+                  ("Wanneer is een hond of kat senior?",
+                   "Deze rekenhulp noemt een grote hond senior vanaf 7 jaar, een middelgrote vanaf 9, een kleine hond vanaf 10 en een kat vanaf 11 jaar. Dat is een grove indeling: je dierenarts kijkt naar je eigen dier."),
+                  ("Hoe oud is een kat van 10 in mensenjaren?",
+                   "Ongeveer 56 mensenjaren: 15 voor het eerste jaar, 9 voor het tweede en 8 keer 4 voor de jaren daarna.")]),
   "en": dict(species="Pet", dog="Dog", cat="Cat", size="Size", small="Small (up to 10 kg)", medium="Medium (10–25 kg)",
              large="Large (over 25 kg)", age="Age in years", result="human years", stage=["Puppy or kitten", "Young adult", "Adult", "Senior"],
-             how="How we calculate", how_text="The first year counts as 15 human years, the second as 9. After that, every year counts as about 4 human years for cats and small dogs, 4.5 for medium dogs and 5.25 for large dogs. It stays an estimate: every animal ages differently."),
+             how="How we calculate", how_text="The first year counts as 15 human years, the second as 9. After that, every year counts as about 4 human years for cats and small dogs, 4.5 for medium dogs and 5.25 for large dogs. It stays an estimate: every animal ages differently.",
+             table="Chart: dog years and cat years in human years",
+             cols=["Age", "Cat or small dog", "Medium dog", "Large dog"], yr="yr",
+             faq_title="Frequently asked questions",
+             faq=[("Is one dog year really seven human years?",
+                   "No. A dog or cat of one year is already an adult, which matches about 15 human years. After the second year it slows down: about 4 to 5 human years per year, depending on size."),
+                  ("Why do large dogs age faster?",
+                   "Large dogs live shorter lives on average than small dogs. That is why every year after the second counts for more in a large dog: 5.25 human years, against 4 for a small dog."),
+                  ("When is a dog or cat a senior?",
+                   "This calculator calls a large dog a senior from 7 years, a medium dog from 9, a small dog from 10 and a cat from 11. It is a rough guide: your vet looks at your own pet."),
+                  ("How old is a 10-year-old cat in human years?",
+                   "About 56 human years: 15 for the first year, 9 for the second and 8 times 4 for the years after that.")]),
  },
  "travel": {
   "nl": dict(mode_shot="Datum van de eerste rabiësprik", mode_birth="Of: geboortedatum van je pup of kitten",
@@ -328,6 +351,25 @@ def also(lang, skip=None):
 
 
 # ---------------------------------------------------------------------------------------------- tool pages
+def human_years(age, per):
+    """Same formula as the age tool's script: 15 for year 1, 9 for year 2, then `per` per year."""
+    return age * 15 if age <= 1 else 15 + (age - 1) * 9 if age <= 2 else 24 + (age - 2) * per
+
+
+def age_table(u):
+    head = "".join(f'<th scope="col">{escape(c)}</th>' for c in u["cols"])
+    rows = "".join(f'<tr><th scope="row">{a} {u["yr"]}</th>'
+                   + "".join(f"<td>{math.floor(human_years(a, per) + 0.5)}</td>" for per in (4, 4.5, 5.25)) + "</tr>"  # = JS Math.round
+                   for a in range(1, 17))
+    return (f'<h2>{escape(u["table"])}</h2><div class="table-wrap"><table class="guide-table">'
+            f'<thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>')
+
+
+def age_faq(u):
+    items = "".join(f"<details><summary>{escape(q)}</summary><p>{escape(a)}</p></details>" for q, a in u["faq"])
+    return f'<h2>{escape(u["faq_title"])}</h2><div class="faq">{items}</div>'
+
+
 def tool_form(lang, key):
     u = TOOL_UI[key][lang]
     if key == "age":
@@ -342,7 +384,9 @@ def tool_form(lang, key):
   <label class="field">{u['age']}<input id="age" type="number" min="0" max="30" step="0.5" value="5" inputmode="decimal"></label>
   <output class="result" id="out" aria-live="polite"></output>
 </form>
-<h2>{u['how']}</h2><p>{u['how_text']}</p>"""
+<h2>{u['how']}</h2><p>{u['how_text']}</p>
+{age_table(u)}
+{age_faq(u)}"""
     if key == "travel":
         rules = "".join(f"<li>{escape(r)}</li>" for r in u["rules_list"])
         blog_path = u["blog_link"]
@@ -422,9 +466,14 @@ def tool_page(b, lang, t):
 <p class="meta"><em>{escape(TX[lang]['disclaimer'])}</em></p>
 {cta(b, lang)}
 {also(lang, t)}"""
+    extra_ld = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
+    u = TOOL_UI[t["key"]][lang]
+    if "faq" in u:
+        faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in u["faq"]]}
+        extra_ld += f'<script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>\n'
     return page(b, lang, f'{x["title"]} | {b.T[lang]["name"]}', x["desc"], path, alt, trail, body,
-                extra_ld=f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n',
-                script=tool_script(lang, t["key"]))
+                extra_ld=extra_ld, script=tool_script(lang, t["key"]))
 
 
 def hub(b, lang, kind):
