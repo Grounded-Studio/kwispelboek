@@ -287,6 +287,7 @@ CHECKLISTS = [
   "nl": {"slug": "op-vakantie", "title": "Checklist: op vakantie met je huisdier", "h1": "Checklist: op vakantie met je huisdier",
          "desc": "Een printbare checklist voor op vakantie met je hond of kat: papieren, inpakken, de reis en op je bestemming.",
          "lead": "Samen op vakantie? Vink deze lijst af, dan ben je goed voorbereid.",
+         "see": ("/gidsen/huisdier-vermist-wat-te-doen/", "Raakt je dier onderweg toch kwijt? Lees Huisdier vermist: wat moet je doen?"),
          "groups": [
           ("Ruim van tevoren", ["Regels van het land opzoeken op de site van de overheid", "Chip werkt en staat op jouw naam", "Europees dierenpaspoort", "Rabiësvaccinatie geldig (na een eerste prik: 21 dagen wachten)", "Lintwormbehandeling als je bestemming dat vraagt", "Bescherming tegen ziektes op je bestemming, vraag je dierenarts"]),
           ("Inpakken", ["Voer voor de hele reis, plus een paar dagen extra", "Voer- en waterbak", "Medicijnen voor de hele vakantie", "Riem, tuigje en een reservepenning", "Mand of kleed dat naar thuis ruikt", "Poepzakjes", "Een recente foto van je dier"]),
@@ -296,6 +297,7 @@ CHECKLISTS = [
   "en": {"slug": "holiday", "title": "Checklist: going on holiday with your pet", "h1": "Checklist: going on holiday with your pet",
          "desc": "A printable checklist for a holiday with your dog or cat: paperwork, packing, the trip and at your destination.",
          "lead": "Going on holiday together? Tick off this list and you’ll be well prepared.",
+         "see": ("/en/guides/lost-pet-what-to-do/", "Pet goes missing while you’re away? Read Lost pet: what should you do?"),
          "groups": [
           ("Well in advance", ["Look up the country’s rules on the government website", "Microchip works and is registered in your name", "European pet passport", "Valid rabies vaccination (after a first shot: wait 21 days)", "Tapeworm treatment if your destination requires it", "Protection against diseases at your destination, ask your vet"]),
           ("Packing", ["Food for the whole trip, plus a few extra days", "Food and water bowls", "Medication for the whole holiday", "Lead, harness and a spare tag", "Bed or blanket that smells of home", "Poop bags", "A recent photo of your pet"]),
@@ -553,7 +555,7 @@ def checklist_page(b, lang, c):
 <div class="actions no-print"><a class="btn btn-primary" href="{pdf}" download>{t['pdf']}</a><button class="btn btn-ghost" type="button" onclick="window.print()">{t['print']}</button></div>
 {checklist_html(lang, c)}
 <p class="meta no-print"><em>{escape(t['checked'])}</em> <button class="linkbtn" type="button" id="reset">{t['reset']}</button></p>
-<div class="no-print">{cta(b, lang)}
+{f'<p class="no-print"><a href="{x["see"][0]}">{escape(x["see"][1])} →</a></p>{chr(10)}' if x.get("see") else ""}<div class="no-print">{cta(b, lang)}
 {also(lang, c)}</div>"""
     script = """<script>(function(){var k='kb-cl-';document.querySelectorAll('.checklist input').forEach(function(i){
 try{i.checked=localStorage.getItem(k+i.dataset.k)==='1'}catch(e){}
