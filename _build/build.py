@@ -924,3 +924,9 @@ out(EN_SITE / "CNAME", "wagbook.app\n")
 import pdfs  # noqa: E402
 pdfs.make(SITE, EN_SITE, extra)
 print("built")
+
+# Cross-promo block for the other Grounded Studio apps (re-added after every build).
+import subprocess as _sp, sys as _sys, os as _os  # noqa: E402
+_XP = r"C:\meten_weten_bouw\scripts\cross_promo.py"
+if _os.path.exists(_XP):
+    _sp.run([_sys.executable, "-I", _XP, "kwispelboek", "wagbook"], check=False)
