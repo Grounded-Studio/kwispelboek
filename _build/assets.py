@@ -6,12 +6,14 @@ from fontTools import subset
 
 SITE = Path(__file__).resolve().parent.parent
 SHOTS = Path(sys.argv[1])
+# `--icons`: only the icons and OG images (e.g. after a new app icon).
+ICONS_ONLY = "--icons" in sys.argv[2:]
 APP = Path(r"C:\huisdierlogboek\assets")
 IMG = SITE / "assets" / "img"
 FONTS = SITE / "assets" / "fonts"
 
 # Screenshots -> webp, 540px wide
-for lang in ("nl", "en"):
+for lang in (() if ICONS_ONLY else ("nl", "en")):
     for n in ("today", "pets", "profile", "health", "agenda", "add", "party", "card", "done"):
         im = Image.open(SHOTS / f"{n}_{lang}.png").convert("RGB")
         im = im.resize((540, round(540 * im.height / im.width)), Image.LANCZOS)
@@ -34,7 +36,7 @@ rounded(icon, 32).save(SITE / "favicon-32.png")
 
 # Fonts: Nunito latin subset as woff2
 unicodes = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2193,U+2212"
-for w in ("Regular", "SemiBold", "Bold", "ExtraBold", "Black"):
+for w in (() if ICONS_ONLY else ("Regular", "SemiBold", "Bold", "ExtraBold", "Black")):
     subset.main([str(APP / "fonts" / f"Nunito-{w}.ttf"), f"--unicodes={unicodes}", "--flavor=woff2",
                  f"--output-file={FONTS / f'nunito-{w.lower()}.woff2'}", "--layout-features=*"])
 
@@ -42,8 +44,8 @@ for w in ("Regular", "SemiBold", "Bold", "ExtraBold", "Black"):
 CREAM, INK, TERRA, SAGE, SAND = "#F2F6F9", "#1C2B36", "#2B7A9E", "#3FA36C", "#DCEEF6"
 def font(w, s): return ImageFont.truetype(str(APP / "fonts" / f"Nunito-{w}.ttf"), s)
 copy = {
-    "nl": ("Vaccinaties, ontworming & medicijnen", "op tijd, voor elk huisdier.", "Binnenkort · Android"),
-    "en": ("Vaccinations, deworming & medication", "on time, for every pet.", "Coming soon · Android"),
+    "nl": ("Vaccinaties, ontworming & medicijnen", "op tijd, voor elk huisdier.", "Gratis in Google Play"),
+    "en": ("Vaccinations, deworming & medication", "on time, for every pet.", "Free on Google Play"),
 }
 names = {"nl": "Kwispelboek", "en": "Wagbook"}
 for lang, (l1, l2, pill) in copy.items():
@@ -59,7 +61,8 @@ for lang, (l1, l2, pill) in copy.items():
     tw = d.textlength(pill, font=f)
     d.rounded_rectangle((70, 478, 70 + tw + 52, 530), radius=26, fill=TERRA)
     d.text((96, 486), pill, font=f, fill="white")
-    shot = Image.open(SHOTS / f"today_{lang}.png").convert("RGB")
+    # The site's own (current) Today screenshot, made above or earlier.
+    shot = Image.open(IMG / f"today-{lang}.webp").convert("RGB")
     w = 300; h = round(w * shot.height / shot.width)
     shot = shot.resize((w, h), Image.LANCZOS)
     frame = Image.new("RGB", (w + 24, h + 24), INK)
