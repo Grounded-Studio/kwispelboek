@@ -413,7 +413,7 @@ def footer(lang):
     return f"""<footer>
   <div class="wrap">
     <span>© 2026 {t['name']} · {t['foot_by']} <a href="https://grounded-studio.app/">Grounded Studio</a></span>
-    <nav aria-label="Footer"><a href="{guides.TX[lang]['path']}">{guides.TX[lang]['name']}</a><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{extra.TX[lang]['tools_path']}">{extra.TX[lang]['tools']}</a><a href="{extra.TX[lang]['species_path']}">{extra.TX[lang]['species']}</a><a href="{extra.TX[lang]['lists_path']}">{extra.TX[lang]['lists']}</a>{'<a href="/video/">Video</a>' if lang == 'nl' else ''}<a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
+    <nav aria-label="Footer"><a href="{guides.TX[lang]['path']}">{guides.TX[lang]['name']}</a><a href="{BLOG_T[lang]['path']}">Blog</a><a href="{extra.TX[lang]['tools_path']}">{extra.TX[lang]['tools']}</a><a href="{extra.TX[lang]['species_path']}">{extra.TX[lang]['species']}</a><a href="{extra.TX[lang]['lists_path']}">{extra.TX[lang]['lists']}</a><a href="{'/video/' if lang == 'nl' else '/en/video/'}">Video</a><a href="{t['privacy']}">{t['foot_privacy']}</a><a href="mailto:{MAIL}">{t['foot_contact']}</a><a href="https://grounded-studio.app/">Grounded Studio</a></nav>
   </div>
 </footer>
 <script>
@@ -467,8 +467,8 @@ def home(lang):
         f'<div class="card {tone}"><div class="ico" aria-hidden="true">{ico}</div><h3>{escape(title)}</h3><p>{escape(desc)}</p></div>'
         for ico, tone, title, desc in t["reasons"])
     video = ""
-    if lang == "nl":
-        v = sys.modules["extra"].VIDEO
+    if True:
+        v = sys.modules["extra"].VIDEOS[lang]
         video = f"""
 <section id="video" style="padding-top:40px">
   <div class="wrap">
@@ -806,8 +806,8 @@ def sitemap(lang):
   </url>""")
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             'xmlns:xhtml="http://www.w3.org/1999/xhtml"'
-            + (' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"' if lang == "nl" else "") + '>\n'
-            + "\n".join(rows + ([extra.video_sitemap_row(sys.modules[__name__])] if lang == "nl" else [])) + "\n</urlset>\n")
+            ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">\n'
+            + "\n".join(rows + [extra.video_sitemap_row(sys.modules[__name__], lang)]) + "\n</urlset>\n")
 
 
 STATIC = ("/assets/", "/favicon", "/icon-", "/apple-touch-icon", "/site.webmanifest")
@@ -915,6 +915,14 @@ write("404.html", NOT_FOUND)
 out(EN_SITE / "404.html", NOT_FOUND_EN)
 write("site.webmanifest", json.dumps(MANIFEST, indent=2))
 out(EN_SITE / "site.webmanifest", json.dumps({**MANIFEST, "name": "Wagbook", "short_name": "Wagbook"}, indent=2))
+# Cross-promo block for the other Grounded Studio apps (re-added after every
+# build). Before the sitemap: page_lastmod compares the finished pages with
+# the committed ones, so without the block every page looked changed.
+import subprocess as _sp, sys as _sys, os as _os  # noqa: E402
+_XP = r"C:\meten_weten_bouw\scripts\cross_promo.py"
+if _os.path.exists(_XP):
+    _sp.run([_sys.executable, "-I", _XP, "kwispelboek", "wagbook"], check=False)
+
 write("sitemap.xml", sitemap("nl"))
 out(EN_SITE / "sitemap.xml", sitemap("en"))
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
@@ -924,9 +932,3 @@ out(EN_SITE / "CNAME", "wagbook.app\n")
 import pdfs  # noqa: E402
 pdfs.make(SITE, EN_SITE, extra)
 print("built")
-
-# Cross-promo block for the other Grounded Studio apps (re-added after every build).
-import subprocess as _sp, sys as _sys, os as _os  # noqa: E402
-_XP = r"C:\meten_weten_bouw\scripts\cross_promo.py"
-if _os.path.exists(_XP):
-    _sp.run([_sys.executable, "-I", _XP, "kwispelboek", "wagbook"], check=False)

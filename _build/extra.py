@@ -613,15 +613,16 @@ def build(b):
             # print source for the PDF (not linked, not in the sitemap)
             site = b.SITE if lang == "nl" else b.EN_SITE
             b.out(site / "_print" / f"{c[lang]['slug']}.html", checklist_print(b, lang, c))
-    b.write("video/index.html", video_page(b))
+    b.write("video/index.html", video_page(b, "nl"))
+    b.write_en("video/index.html", video_page(b, "en"))
 
 
-# ---------------------------------------------------------------------------------------------- video page (NL only)
+# ---------------------------------------------------------------------------------------------- video pages (NL + EN)
 VIDEO = {
-    "id": "1M8IMolNsa4",
+    "id": "AS8vqlPjmjE",
     "path": "/video/",
-    "upload": "2026-11-09T08:00:28-08:00",
-    "duration": "PT1M28S",
+    "upload": "2026-11-22T15:11:37-08:00",
+    "duration": "PT1M30S",
     "thumb": "/assets/img/video-nl.webp",
     "name": "Kwispelboek – Nooit meer vergeten wanneer je huisdier ontwormd of gevaccineerd moet worden",
     "title": "Video: zo werkt Kwispelboek | Kwispelboek",
@@ -642,18 +643,46 @@ VIDEO = {
     ],
 }
 
+VIDEO_EN = {
+    "id": "PjDapGCTTz8",
+    "path": "/en/video/",
+    "upload": "2026-11-27T17:40:45-08:00",
+    "duration": "PT1M30S",
+    "thumb": "/assets/img/video-en.webp",
+    "name": "Wagbook – Never forget when your pet needs deworming or a vaccination again",
+    "title": "Video: how Wagbook works | Wagbook",
+    "h1": "How Wagbook works",
+    "crumb": "Video",
+    "desc": "See in a minute and a half how Wagbook reminds you of deworming, vaccinations, medication and weight for your dog, cat or rabbit.",
+    "lead": "In a minute and a half you see how to add your pet, tick off care and get a reminder in time.",
+    "play": "Play video",
+    "consent": "The video only loads from YouTube when you press play.",
+    "watch": "Watch on YouTube",
+    "points_h": "What you see in the video",
+    "points": [
+        "Adding your pet, with a photo, species and date of birth",
+        "Deworming, fleas and vaccinations with a reminder in time",
+        "Ticking things off on the Today screen, with a party from Kwispel",
+        "The profile with care, health and passport for every pet",
+        "The calendar with everything coming up",
+    ],
+}
 
-def video_page(b):
-    v = VIDEO
-    url = b.DOMAIN + v["path"]
+VIDEOS = {"nl": VIDEO, "en": VIDEO_EN}
+
+
+def video_page(b, lang):
+    v = VIDEOS[lang]
+    other = VIDEOS["en" if lang == "nl" else "nl"]
+    url = (b.DOMAIN + v["path"]) if lang == "nl" else b.EN_DOMAIN + v["path"].removeprefix("/en")
     ld = {"@context": "https://schema.org", "@type": "VideoObject", "name": v["name"], "description": v["desc"],
           "thumbnailUrl": [b.DOMAIN + v["thumb"], f"https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg"],
-          "uploadDate": v["upload"], "duration": v["duration"], "inLanguage": "nl",
+          "uploadDate": v["upload"], "duration": v["duration"], "inLanguage": lang,
           "embedUrl": f"https://www.youtube-nocookie.com/embed/{v['id']}",
           "contentUrl": f"https://www.youtube.com/watch?v={v['id']}", "url": url,
           "publisher": {"@type": "Organization", "name": "Grounded Studio", "url": "https://grounded-studio.app/"}}
     ld_html = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n'
-    trail = [(b.T["nl"]["name"], b.T["nl"]["path"]), (v["crumb"], v["path"])]
+    trail = [(b.T[lang]["name"], b.T[lang]["path"]), (v["crumb"], v["path"])]
     points = "".join(f"<li>{escape(p)}</li>" for p in v["points"])
     body = f"""<h1>{escape(v['h1'])}</h1>
 <p class="lead">{escape(v['lead'])}</p>
@@ -666,30 +695,35 @@ def video_page(b):
 <p class="meta">{escape(v['consent'])} <a href="https://www.youtube.com/watch?v={v['id']}" rel="noopener">{escape(v['watch'])}</a></p>
 <h2>{escape(v['points_h'])}</h2>
 <ul>{points}</ul>
-{cta(b, "nl")}
-{also("nl")}"""
+{cta(b, lang)}
+{also(lang)}"""
     script = (f"<script>document.querySelector('.video-play').addEventListener('click',function(){{"
               f"var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/{v['id']}?autoplay=1&rel=0';"
               f"f.title={json.dumps(v['name'], ensure_ascii=False)};f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';"
               f"f.allowFullscreen=true;var d=document.getElementById('video');d.innerHTML='';d.appendChild(f)}});</script>\n")
-    html = page(b, "nl", v["title"], v["desc"], v["path"], b.T["en"]["path"], trail, body, extra_ld=ld_html, script=script)
-    # Dutch only: no English alternate for this page.
-    html = re.sub(r'<link rel="alternate" hreflang="en"[^>]*>\n', "", html)
-    html = re.sub(r'(<link rel="alternate" hreflang="x-default" href=")[^"]*', r"\g<1>" + url, html)
-    return html
+    return page(b, lang, v["title"], v["desc"], v["path"], other["path"], trail, body, extra_ld=ld_html, script=script)
 
 
-def video_sitemap_row(b):
-    v = VIDEO
+def video_sitemap_row(b, lang="nl"):
+    v = VIDEOS[lang]
+    domain, site = (b.DOMAIN, b.SITE) if lang == "nl" else (b.EN_DOMAIN, b.EN_SITE)
+    other = VIDEOS["en" if lang == "nl" else "nl"]
+    o_domain = b.EN_DOMAIN if lang == "nl" else b.DOMAIN
+    o_path = other["path"].removeprefix("/en")
+    loc = v["path"].removeprefix("/en")
+    o_lang = "en" if lang == "nl" else "nl"
     return f"""  <url>
-    <loc>{b.DOMAIN}{v['path']}</loc>
-    <lastmod>{b.page_lastmod(b.SITE, 'video/index.html', DATE)}</lastmod>
+    <loc>{domain}{loc}</loc>
+    <lastmod>{b.page_lastmod(site, 'video/index.html', DATE)}</lastmod>
+    <xhtml:link rel="alternate" hreflang="{lang}" href="{domain}{loc}"/>
+    <xhtml:link rel="alternate" hreflang="{o_lang}" href="{o_domain}{o_path}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{b.EN_DOMAIN}{VIDEO_EN['path'].removeprefix('/en')}"/>
     <video:video>
-      <video:thumbnail_loc>{b.DOMAIN}{v['thumb']}</video:thumbnail_loc>
+      <video:thumbnail_loc>{domain}{v['thumb']}</video:thumbnail_loc>
       <video:title>{escape(v['name'])}</video:title>
       <video:description>{escape(v['desc'])}</video:description>
       <video:player_loc>https://www.youtube-nocookie.com/embed/{v['id']}</video:player_loc>
-      <video:duration>88</video:duration>
+      <video:duration>90</video:duration>
       <video:publication_date>{v['upload']}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
